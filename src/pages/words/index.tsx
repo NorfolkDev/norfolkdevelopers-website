@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 
-export default function WordsRoute() {
+function WordsRoute({ posts }) {
   return (
     <Layout>
       <h1 className="text-4xl font-extrabold">/words [index]</h1>
@@ -12,3 +12,10 @@ export default function WordsRoute() {
     </Layout>
   );
 }
+
+export async function getStaticProps() {
+  const { getPosts } = require("../../lib/get-posts");
+  return { props: { posts: getPosts() } };
+}
+
+export default WordsRoute;
