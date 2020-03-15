@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout";
 export default function IndexRoute() {
   return (
     <Layout>
-      <main className="inset typography mt-20 text-2xl font-light">
+      <main className="inset typography mt-20 text-2xl">
         <p>Hello, I'm Shaun 👋</p>
         <p>
           I like{" "}
