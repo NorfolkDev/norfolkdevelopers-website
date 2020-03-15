@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
+import matter, { GrayMatterFile } from "gray-matter";
 import siteConfig from "../../site.config";
 
 const POSTS_DIRECTORY_NAME = siteConfig.postsDirectory;
@@ -8,6 +8,10 @@ const POSTS_DIRECTORY = path.join(
   process.cwd(),
   `/src/pages/${POSTS_DIRECTORY_NAME}`
 );
+
+function isFile(path: string): boolean {
+  return path.includes(".");
+}
 
 // recursively load posts in directory
 function getPostPaths(dir: string = "/") {
@@ -22,27 +26,27 @@ function getPostPaths(dir: string = "/") {
         !file.endsWith(".jsx")
     );
 
-  // filter file extensions so we have directories to descend into
-  let directories = files.filter(file => !file.includes("."));
-
-  // posts are the files with dots, and direcotories searched
-  let posts = [
-    ...files.filter(file => file.includes(".")),
-    ...directories.map(file => getPostPaths(file)).flat()
+  return [
+    ...files.filter(file => isFile(file)),
+    ...files
+      .filter(file => !isFile(file))
+      .map(file => getPostPaths(file))
+      .flat()
   ];
-
-  return posts;
 }
 
 // load file contents and front matter
 function getPostData(posts: string[]) {
   return posts.map(postPath => {
     const filename = path.parse(postPath);
-    const file = fs.readFileSync(`${POSTS_DIRECTORY}/${postPath}`);
+    const file: string = fs.readFileSync(
+      `${POSTS_DIRECTORY}/${postPath}`,
+      "utf-8"
+    );
     const { content, data } = matter(file);
     return {
+      ...data,
       body: content,
-      meta: data,
       path:
         `/${POSTS_DIRECTORY_NAME}` +
         path.join(filename.dir, filename.name).replace("/index", "")
@@ -51,8 +55,14 @@ function getPostData(posts: string[]) {
 }
 
 export function getPosts() {
-  console.log("Scanning for posts", `pages/${POSTS_DIRECTORY_NAME}/**`);
+  const TAG = "[ posts ]";
+  console.log(`${TAG} scanning for posts`, `pages/${POSTS_DIRECTORY_NAME}/**`);
   const postPaths = getPostPaths();
-  postPaths.forEach(path => console.log(path));
-  return getPostData(postPaths);
+  postPaths.forEach(path => console.log(`${TAG} -`, path));
+  return getPostData(postPaths).sort(
+    (a, b) =>
+      // TODO type front matter import
+      // @ts-ignore
+      new Date(b.date).getMilliseconds() - new Date(a.date).getMilliseconds()
+  );
 }
