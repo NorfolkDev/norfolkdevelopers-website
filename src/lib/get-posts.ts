@@ -44,6 +44,15 @@ function getPostData(posts: string[]) {
       "utf-8"
     );
     const { content, data } = matter(file);
+
+    if (typeof data.tags === "string") {
+      data.tags = data.tags.split(",").map(tag => tag.trim());
+    }
+
+    if (typeof data.author === "string") {
+      data.author = data.author.split(",").map(author => author.trim());
+    }
+
     return {
       ...data,
       body: content,
