@@ -7,16 +7,21 @@ const navLinks = [
   { url: "/music", label: "music" }
 ];
 
-export default function Layout({ children }) {
+type Props = {
+  children: React.ReactNode;
+  location?: string;
+};
+
+export default function Layout({ children, location }: Props) {
   return (
-    <div className="ml-auto mr-auto w-full lg:w-2/3">
-      <header>
-        <h1 className="text-center pt-16 pb-2 font-extrabold text-3xl hover:text-blue-600">
+    <div className="ml-auto mr-auto w-full md:w-4/5 lg:max-w-5xl mb-64">
+      <header className="md:flex h-32 fade-out">
+        <h1 className="inset font-extrabold text-3xl hover:text-blue-600 self-center">
           <Link href="/">
             <a>{config.siteName}</a>
           </Link>
         </h1>
-        <nav className="text-2xl text-center font-normal">
+        <nav className="inset text-2xl font-normal align-middle justify-center self-center">
           {navLinks.map(navLink => (
             <Link href={navLink.url} key={navLink.label}>
               <a className="pr-2 pl-2 font-semibold text-blue-600 hover:text-blue-400">
