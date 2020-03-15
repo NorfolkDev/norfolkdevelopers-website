@@ -17,7 +17,7 @@ body {
 }
 
 .typography h2 {
-  @apply font-bold text-2xl;
+  @apply font-bold text-2xl mt-4 mb-4;
 }
 
 .typography h3 {
@@ -30,11 +30,11 @@ body {
 }
 
 .typography a {
-  @apply text-blue-600 underline font-semibold;
+  @apply text-gray-600 underline font-semibold;
 }
 
 .typography a:hover {
-  @apply text-blue-400;
+  @apply text-gray-900;
 }
 
 /* inset side gutters*/
