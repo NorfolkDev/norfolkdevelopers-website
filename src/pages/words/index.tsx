@@ -4,11 +4,21 @@ import Layout from "../../components/layout/Layout";
 function WordsRoute({ posts }) {
   return (
     <Layout>
-      <h1 className="text-4xl font-extrabold">/words [index]</h1>
-      <p className="text-gray-500 text-base mt-4">Wednesday 27 March 2020</p>
-      <Link href="/words/test-slug">
-        <a>Test Post</a>
-      </Link>
+      <h1 className="inset mt-8 text-4xl font-extrabold ">/words [index]</h1>
+      <main className="inset mt-4">
+        <ul>
+          {posts.map(post => (
+            <li key={post.path} className="mb-4">
+              <span className="block text-base text-gray-500">{post.date}</span>
+              <Link href={post.path || "/"}>
+                <a className="text-blue-700 hover:text-blue-400">
+                  {post.title}
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </main>
     </Layout>
   );
 }
