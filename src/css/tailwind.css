@@ -7,3 +7,37 @@
 body {
   @apply text-xl;
 }
+
+.typography p {
+  @apply mb-8;
+}
+
+.typography h1 {
+  @apply font-extrabold text-4xl;
+}
+
+.typography h2 {
+  @apply font-bold text-2xl;
+}
+
+.typography h3 {
+  @apply font-bold text-xl;
+}
+
+.typography ul {
+  list-style-type: disc;
+  @apply ml-6 mb-8;
+}
+
+.typography a {
+  @apply text-blue-400 underline;
+}
+
+.typography a:hover {
+  @apply text-blue-700;
+}
+
+/* inset side gutters*/
+.inset {
+  @apply ml-8 mr-8;
+}
