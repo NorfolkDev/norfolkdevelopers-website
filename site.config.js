@@ -1,4 +1,5 @@
 const siteConfig = {
+  siteName: "shaun.church",
   postsDirectory: "words"
 };
 
