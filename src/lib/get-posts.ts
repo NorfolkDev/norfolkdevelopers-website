@@ -86,7 +86,7 @@ export function getPosts(useCache?: boolean) {
 }
 
 export function getTags() {
-  return getPosts(true).reduce((acc, current, index) => {
+  return getPosts(false).reduce((acc, current, index) => {
     console.log("index", index, acc);
     if (!current.tags) {
       return acc;
@@ -98,7 +98,7 @@ export function getTags() {
       acc[tag].push(current);
     });
     return acc;
-  });
+  }, []);
 }
 
 export function getPostsForTag(tag: string) {
