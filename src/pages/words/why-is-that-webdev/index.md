@@ -2,9 +2,10 @@
 date: "2014-03-23T18:05:00+01:00"
 title: "Why is that Web Dev running Android Studio?"
 path: "/words/why-is-that-web-dev-running-android-studio"
+tags: "android, apps, code"
 ---
 
-<p class="attention-grabber">Some of the reasons I’ve decided to start learning Android development instead of doubling down on JavaScript and the open web.</p>
+**Some of the reasons I’ve decided to start learning Android development instead of doubling down on JavaScript and the open web.**
 
 <figure>
 	<img src="/static/why-is-that-webdev/androidstudio.jpg" alt="Android Studio" />
