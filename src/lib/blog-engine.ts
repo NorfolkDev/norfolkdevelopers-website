@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import parseFrontMatter from "./parseFrontMatter";
 import siteConfig from "../../site.config";
+import { slugify } from "./slugify";
 
 const POSTS_DIRECTORY_NAME = siteConfig.postsDirectory;
 const POSTS_DIRECTORY = path.join(
@@ -9,7 +10,7 @@ const POSTS_DIRECTORY = path.join(
   `/src/pages/${POSTS_DIRECTORY_NAME}`
 );
 
-let cache = { posts: [] };
+let cache = { posts: [], authors: [], tags: [] };
 
 function isFile(path: string): boolean {
   return path.includes(".");
@@ -26,7 +27,10 @@ function getPostPaths(dir: string = "/") {
         !file.endsWith(".ts") &&
         !file.endsWith(".js") &&
         !file.endsWith(".jsx") &&
-        !file.endsWith(".DS_Store")
+        !file.endsWith(".DS_Store") &&
+        !file.endsWith(".jpg") &&
+        !file.endsWith(".png") &&
+        !file.endsWith(".jpeg")
     );
 
   return [
@@ -67,8 +71,8 @@ function getPostData(posts: string[]): FrontMatter[] {
 
 export function getPosts(useCache?: boolean) {
   const TAG = "[ posts ]";
-  if (useCache && cache.posts !== []) {
-    console.log(`${TAG} Using cached posts...`);
+  if (useCache && cache.posts.length > 0) {
+    console.log(`${TAG} Using cached posts...`, cache.posts);
     return cache.posts;
   }
   cache.posts = [];
@@ -86,8 +90,7 @@ export function getPosts(useCache?: boolean) {
 }
 
 export function getTags() {
-  return getPosts(false).reduce((acc, current, index) => {
-    console.log("index", index, acc);
+  return getPosts(true).reduce((acc, current, index) => {
     if (!current.tags) {
       return acc;
     }
@@ -103,4 +106,20 @@ export function getTags() {
 
 export function getPostsForTag(tag: string) {
   return getTags()[tag];
+}
+
+export function getAuthors() {
+  return getPosts(true).reduce((acc, current, index) => {
+    if (!current.author) {
+      return acc;
+    }
+    current.author.forEach(authorName => {
+      const authorSlug = slugify(authorName);
+      if (!acc[authorSlug]) {
+        acc[authorSlug] = [];
+      }
+      acc[authorSlug].push(current);
+    });
+    return acc;
+  }, []);
 }
