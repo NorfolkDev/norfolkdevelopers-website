@@ -1,6 +1,6 @@
 ---
 date: "2019-08-31T09:21:00+01:00"
-title: "Part I: Apps are not private"
+title: "Offline Apps Part I: Apps are not private"
 tags: "apps, privacy"
 author: "Shaun Church, Alex Scotton"
 ---
