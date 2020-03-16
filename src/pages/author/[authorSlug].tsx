@@ -1,9 +1,19 @@
 import { useCallback } from "react";
 import { slugify } from "../../lib/slugify";
 import Layout from "../../components/layout/Layout";
+import config from "../../../site.config";
 
 export async function getStaticPaths() {
   const { getAuthors } = require("../../lib/blog-engine");
+
+  // no pagesif disables
+  if (!config.features.authorPages) {
+    return {
+      paths: [],
+      fallback: false
+    };
+  }
+
   return {
     paths:
       Object.keys(getAuthors()).map(author => {

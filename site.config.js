@@ -1,6 +1,10 @@
 const siteConfig = {
   siteName: " ~/shaun.church",
-  postsDirectory: "words"
+  postsDirectory: "words",
+  features: {
+    authorPages: true,
+    tagPages: true
+  }
 };
 
 export default siteConfig;

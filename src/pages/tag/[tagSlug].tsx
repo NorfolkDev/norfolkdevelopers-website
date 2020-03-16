@@ -1,4 +1,13 @@
+import config from "../../../site.config";
+
 export async function getStaticPaths() {
+  if (!config.features.tagPages) {
+    return {
+      paths: [],
+      fallback: false
+    };
+  }
+
   const { getTags } = require("../../lib/blog-engine");
 
   return {
