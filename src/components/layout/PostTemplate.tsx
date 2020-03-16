@@ -10,12 +10,12 @@ export default function PostTemplate({ frontMatter, children }) {
     <Layout>
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
         {frontMatter.date && (
-          <pre className="inset inline-block text-gray-600 text-sm">
+          <pre className="inset inline-block text-gray-500 text-sm">
             {frontMatter.date}
           </pre>
         )}
-        <pre className="inset block text-gray-600 text-sm">{router.asPath}</pre>
-        <h1 className="inset hashtag mt-2 mb-2 text-5xl font-bold leading-none">
+        <pre className="inset block text-gray-500 text-sm">{router.asPath}</pre>
+        <h1 className="inset hashtag mt-2 mb-2 text-5xl font-bold leading-tight">
           {frontMatter.title}
         </h1>
         {frontMatter.tags ? (

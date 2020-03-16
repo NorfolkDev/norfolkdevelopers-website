@@ -52,13 +52,13 @@ body {
 }
 
 .article figure {
-  @apply -ml-6 -mr-6;
+  @apply -ml-6 -mr-6 mb-8;
 }
 
 .article figure img {
-  @apply shadow-lg rounded-md;
+  @apply shadow-xl rounded-md;
 }
 
 .article figure figcaption {
-  @apply text-sm italic text-gray-500 mt-2 ml-6;
+  @apply text-base italic text-gray-500 mt-2 ml-6;
 }
