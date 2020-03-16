@@ -15,7 +15,7 @@ type Props = {
 export default function Layout({ children, location }: Props) {
   return (
     <div className="ml-auto mr-auto w-full md:w-4/5 lg:max-w-5xl mb-64">
-      <header className="md:flex h-32 fade-out">
+      <header className="mt-6 md:mt-16 md:mb-16 md:flex fade-out">
         <h1 className="inset font-extrabold text-3xl hover:text-blue-600 self-center">
           <Link href="/">
             <a>{config.siteName}</a>
@@ -25,7 +25,7 @@ export default function Layout({ children, location }: Props) {
           {navLinks.map(navLink => (
             <Link href={navLink.url} key={navLink.label}>
               <a className="pr-2 pl-2 font-semibold text-blue-600 hover:text-blue-400">
-                {navLink.label}
+                /{navLink.label}
               </a>
             </Link>
           ))}
