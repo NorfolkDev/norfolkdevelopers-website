@@ -2,7 +2,6 @@
 date: "2019-08-31T09:21:00+01:00"
 title: "Offline Apps Part I: Apps are not private"
 tags: "apps, privacy"
-author: "Shaun Church, Alex Scotton"
 ---
 
 **It's hard to build cloud-synced collaborative apps if you genuinely care about user privacy. Most apps are not private by default _by design_. They should be.**
