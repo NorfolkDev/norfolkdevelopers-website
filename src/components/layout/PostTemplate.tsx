@@ -1,6 +1,7 @@
 import Layout from "./Layout";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { slugify } from "../../lib/slugify";
 
 export default function PostTemplate({ frontMatter, children }) {
   const router = useRouter();
@@ -30,6 +31,19 @@ export default function PostTemplate({ frontMatter, children }) {
               </span>
             ))}
           </pre>
+        ) : null}
+        {frontMatter.author ? (
+          <span className="inset block text-base mt-4 text-gray-600">
+            by{[" "]}
+            {frontMatter.author.map((author, i) => (
+              <span key={author}>
+                <Link href={`/author/${slugify(author)}`}>
+                  <a className="underline">{author}</a>
+                </Link>
+                {i < frontMatter.author.length - 1 ? ", " : ""}
+              </span>
+            ))}
+          </span>
         ) : null}
         <main className="typography inset mt-8">{children}</main>
       </article>
