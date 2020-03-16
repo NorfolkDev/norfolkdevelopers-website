@@ -1,6 +1,17 @@
 import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 
+export async function getStaticProps({ params }) {
+  const { getTags } = require("../../lib/blog-engine");
+  const tags = Object.keys(getTags());
+
+  return {
+    props: {
+      tags
+    }
+  };
+}
+
 export default function TagsRoute({ tags }) {
   return (
     <Layout>
@@ -16,15 +27,4 @@ export default function TagsRoute({ tags }) {
       </main>
     </Layout>
   );
-}
-
-export async function getStaticProps({ params }) {
-  const { getTags } = require("../../lib/get-posts");
-  const tags = Object.keys(getTags());
-
-  return {
-    props: {
-      tags
-    }
-  };
 }

@@ -1,16 +1,5 @@
-export default function TagSlug({ posts }) {
-  return (
-    <div>
-      Tagslug
-      {posts.map(post => (
-        <div>{post.title}</div>
-      ))}
-    </div>
-  );
-}
-
 export async function getStaticPaths() {
-  const { getTags } = require("../../lib/get-posts");
+  const { getTags } = require("../../lib/blog-engine");
 
   return {
     paths: Object.keys(getTags()).map(tag => {
@@ -21,11 +10,22 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { getTags } = require("../../lib/get-posts");
-  const posts = getTags()[params.tagSlug];
+  const { getTags } = require("../../lib/blog-engine");
+
   return {
     props: {
-      posts
+      posts: getTags()[params.tagSlug]
     }
   };
+}
+
+export default function TagSlug({ posts }) {
+  return (
+    <div>
+      Tagslug
+      {posts.map(post => (
+        <div>{post.title}</div>
+      ))}
+    </div>
+  );
 }

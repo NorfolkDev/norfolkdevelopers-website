@@ -2,7 +2,7 @@ import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 
 export async function getStaticProps() {
-  const { getPosts } = require("../../lib/get-posts");
+  const { getPosts } = require("../../lib/blog-engine");
   return { props: { posts: getPosts() } };
 }
 
