@@ -2,11 +2,12 @@ import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 
 function WordsRoute({ posts }) {
-  // console.log(posts);
   return (
-    <Layout>
-      <h1 className="inset mt-8 text-3xl font-extrabold pb-4">/words</h1>
-      <main className="inset mt-4">
+    <Layout location="words">
+      <h1 className="inset mt-8 text-3xl font-extrabold pb-4 lg:max-w-3xl mr-auto ml-auto">
+        /words
+      </h1>
+      <main className="inset mt-4 border-gray-600 important:mr-auto important:ml-auto block">
         <ul>
           {posts.map(post => (
             <li key={post.path} className="mb-4">
