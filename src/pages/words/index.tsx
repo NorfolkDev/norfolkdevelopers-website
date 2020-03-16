@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 
-function WordsRoute({ posts }) {
+export async function getStaticProps() {
+  const { getPosts } = require("../../lib/get-posts");
+  return { props: { posts: getPosts() } };
+}
+
+export default function WordsRoute({ posts }) {
   return (
     <Layout location="words">
       <h1 className="inset mt-8 text-3xl font-extrabold pb-4 lg:max-w-3xl mr-auto ml-auto">
@@ -24,10 +29,3 @@ function WordsRoute({ posts }) {
     </Layout>
   );
 }
-
-export async function getStaticProps() {
-  const { getPosts } = require("../../lib/get-posts");
-  return { props: { posts: getPosts() } };
-}
-
-export default WordsRoute;
