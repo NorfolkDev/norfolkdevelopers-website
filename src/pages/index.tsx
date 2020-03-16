@@ -1,9 +1,14 @@
 import Link from "next/link";
 import Layout from "../components/layout/Layout";
+import Head from "next/head";
+import siteConfig from "../../site.config";
 
 export default function IndexRoute() {
   return (
     <Layout>
+      <Head>
+        <title>{siteConfig.siteName}</title>
+      </Head>
       <main className="inset typography mt-20 text-5xl">
         <p className="text-5xl">
           Hello, I'm <span className="font-bold">Shaun</span> 👋
@@ -29,8 +34,8 @@ export default function IndexRoute() {
           </Link>{" "}
           as well.
         </p>
-        <p className="text-2xl text-gray-500"></p>
-        <p className="text-2xl text-gray-500">
+        <p className="text-2xl text-gray-600"></p>
+        <p className="text-2xl text-gray-600">
           Come at me on twitter{" "}
           <a href="https://twitter.com/shaunchurch">@shaunchurch</a>.
         </p>
