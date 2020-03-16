@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import matter, { GrayMatterFile } from "gray-matter";
+import parseFrontMatter from "./parseFrontMatter";
 import siteConfig from "../../site.config";
 
 const POSTS_DIRECTORY_NAME = siteConfig.postsDirectory;
@@ -43,15 +43,7 @@ function getPostData(posts: string[]) {
       `${POSTS_DIRECTORY}/${postPath}`,
       "utf-8"
     );
-    const { content, data } = matter(file);
-
-    if (typeof data.tags === "string") {
-      data.tags = data.tags.split(",").map(tag => tag.trim());
-    }
-
-    if (typeof data.author === "string") {
-      data.author = data.author.split(",").map(author => author.trim());
-    }
+    const { content, data } = parseFrontMatter(file);
 
     return {
       ...data,
@@ -75,3 +67,5 @@ export function getPosts() {
       new Date(b.date).getMilliseconds() - new Date(a.date).getMilliseconds()
   );
 }
+
+export function getTags() {}
