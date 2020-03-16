@@ -1,5 +1,7 @@
 import Link from "next/link";
 import config from "../../../site.config";
+import Head from "next/head";
+import siteConfig from "../../../site.config";
 
 const navLinks = [
   { url: `/${config.postsDirectory}`, label: "words" },
@@ -14,24 +16,30 @@ type Props = {
 
 export default function Layout({ children, location }: Props) {
   return (
-    <div className="ml-auto mr-auto w-full md:w-4/5 lg:max-w-5xl mb-64">
-      <header className="mt-6 md:mt-16 md:mb-16 md:flex fade-out">
-        <h1 className="inset font-extrabold text-3xl hover:text-blue-600 self-center">
-          <Link href="/">
-            <a>{config.siteName}</a>
-          </Link>
-        </h1>
-        <nav className="inset text-2xl font-normal align-middle justify-center self-center">
-          {navLinks.map(navLink => (
-            <Link href={navLink.url} key={navLink.label}>
-              <a className="pr-2 pl-2 font-semibold text-blue-600 hover:text-blue-400">
-                /{navLink.label}
-              </a>
+    <>
+      <Head>
+        <title>{siteConfig.siteName}</title>
+        <meta name="description" content={siteConfig.description} />
+      </Head>
+      <div className="ml-auto mr-auto w-full md:w-4/5 lg:max-w-5xl mb-64">
+        <header className="mt-6 md:mt-16 md:mb-16 md:flex fade-out">
+          <h1 className="inset font-extrabold text-3xl hover:text-blue-600 self-center">
+            <Link href="/">
+              <a>{config.siteName}</a>
             </Link>
-          ))}
-        </nav>
-      </header>
-      {children}
-    </div>
+          </h1>
+          <nav className="inset text-2xl font-normal align-middle justify-center self-center">
+            {navLinks.map(navLink => (
+              <Link href={navLink.url} key={navLink.label}>
+                <a className="pr-2 pl-2 font-semibold text-blue-600 hover:text-blue-400">
+                  /{navLink.label}
+                </a>
+              </Link>
+            ))}
+          </nav>
+        </header>
+        {children}
+      </div>
+    </>
   );
 }
