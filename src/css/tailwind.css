@@ -50,3 +50,15 @@ body {
 .hashtag-2:before {
   content: "##";
 }
+
+.article figure {
+  @apply -ml-6 -mr-6;
+}
+
+.article figure img {
+  @apply shadow-lg rounded-md;
+}
+
+.article figure figcaption {
+  @apply text-sm italic text-gray-500 mt-2 ml-6;
+}

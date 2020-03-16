@@ -7,7 +7,7 @@ path: "/words/why-is-that-web-dev-running-android-studio"
 <p class="attention-grabber">Some of the reasons I’ve decided to start learning Android development instead of doubling down on JavaScript and the open web.</p>
 
 <figure>
-	<img src="./androidstudio.jpg" alt="Android Studio" />
+	<img src="/static/why-is-that-webdev/androidstudio.jpg" alt="Android Studio" />
 	<figcaption>Android Studio</figcaption>
 </figure>
 

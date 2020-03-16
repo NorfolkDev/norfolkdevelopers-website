@@ -8,7 +8,7 @@ export default function PostTemplate({ frontMatter, children }) {
 
   return (
     <Layout>
-      <article className="mt-8 lg:max-w-3xl mr-auto ml-auto">
+      <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
         {frontMatter.date && (
           <pre className="inset inline-block text-gray-600 text-sm">
             {frontMatter.date}
