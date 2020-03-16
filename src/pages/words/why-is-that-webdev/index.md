@@ -8,7 +8,7 @@ tags: "android, apps, code"
 **Some of the reasons I’ve decided to start learning Android development instead of doubling down on JavaScript and the open web.**
 
 <figure>
-	<img src="/static/images/why-is-that-webdev/androidstudio.jpg" alt="Android Studio" />
+	<img src="/static/images/why-is-that-webdev/androidstudio.jpg" loading="lazy" alt="Android Studio" />
 	<figcaption>Android Studio</figcaption>
 </figure>
 
@@ -33,14 +33,14 @@ Android is the dominant operating system of the coming decade. Beyond smart phon
 Smart phone apps have a huge advantage over web based apps because they’re always present. Billions of us never leave the house without our phones; nearly 80% of them are running Android. When Android runs on your wrist, or on your glasses things will be even more accessible. A website cannot compete in this context.
 
 <figure>
-	<img src="/static/images/why-is-that-webdev/Android_iOS_MS.png" alt="Android and iOS Market share" />
+	<img src="/static/images/why-is-that-webdev/Android_iOS_MS.png" loading="lazy" alt="Android and iOS Market share" />
 	<figcaption>Android and iOS Market Share</figcaption>
 </figure>
 
 Native platform apps are clearly where the bulk of our communication and interaction will occur (isn’t this [already](http://www.whatsapp.com) [true](http://www.facebook.com)?). When push notifications appear in your field of vision or on your wrist and a simple swipe or voice command launches an app’s content or activity a seamless experience is created that’s very difficult to match with any other technology. HTML5 apps might come close on a powerful phone, but a low power, low energy watch will be less kind.
 
 <figure>
-	<img src="/static/images/why-is-that-webdev/glass_notifications.jpg" />
+	<img src="/static/images/why-is-that-webdev/glass_notifications.jpg" loading="lazy" alt="Google Glass Notifications" />
 	<figcaption>Google Glass Notifications</figcaption>
 </figure>
 
