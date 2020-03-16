@@ -17,7 +17,7 @@ body {
 }
 
 .typography h2 {
-  @apply font-bold text-2xl mt-4 mb-4;
+  @apply font-bold text-2xl mt-12 mb-4;
 }
 
 .typography h3 {
@@ -52,13 +52,13 @@ body {
 }
 
 .article figure {
-  @apply -ml-6 -mr-6 mb-8;
+  @apply mb-12 mt-12 mr-auto ml-auto w-full;
 }
 
 .article figure img {
-  @apply shadow-xl rounded-md;
+  @apply shadow-xl rounded-md block mr-auto ml-auto;
 }
 
 .article figure figcaption {
-  @apply text-base italic text-gray-500 mt-2 ml-6;
+  @apply text-base italic text-center text-gray-500 mt-2 ml-6;
 }
