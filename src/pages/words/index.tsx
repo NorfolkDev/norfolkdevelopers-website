@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Layout from "../../components/layout/Layout";
+import Head from "next/head";
+import siteConfig from "../../../site.config";
 
 export async function getStaticProps() {
   const { getPosts } = require("../../lib/blog-engine");
@@ -9,6 +11,9 @@ export async function getStaticProps() {
 export default function WordsRoute({ posts }) {
   return (
     <Layout location="words">
+      <Head>
+        <title>{siteConfig.siteName}/words </title>
+      </Head>
       <h1 className="inset mt-8 text-3xl font-extrabold pb-4 lg:max-w-3xl mr-auto ml-auto">
         /words
       </h1>
