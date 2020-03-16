@@ -72,7 +72,7 @@ function getPostData(posts: string[]): FrontMatter[] {
 export function getPosts(useCache?: boolean) {
   const TAG = "[ posts ]";
   if (useCache && cache.posts.length > 0) {
-    console.log(`${TAG} Using cached posts...`, cache.posts);
+    console.log(`${TAG} Using cached posts...`);
     return cache.posts;
   }
   cache.posts = [];
