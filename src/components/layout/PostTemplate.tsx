@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function PostTemplate({ frontMatter, children }) {
   const router = useRouter();
 
-  console.log(frontMatter.tags);
   return (
     <Layout>
       <article className="mt-8 lg:max-w-3xl mr-auto ml-auto">
@@ -20,16 +19,16 @@ export default function PostTemplate({ frontMatter, children }) {
         </h1>
         {frontMatter.tags ? (
           <pre className="inset">
-            {frontMatter.tags
-              .split(",")
-              .map(tag => tag.trim())
-              .map(tag => (
-                <span className=" rounded-full bg-gray-200 p-1 mr-2 text-xs font-bold text-gray-600">
-                  <Link href={`/tag/${tag}`}>
-                    <a> #{tag} </a>
-                  </Link>
-                </span>
-              ))}
+            {frontMatter.tags.map(tag => (
+              <span
+                className=" rounded-full bg-gray-200 p-1 mr-2 text-xs font-bold text-gray-600"
+                key={tag}
+              >
+                <Link href={`/tag/${tag}`}>
+                  <a> #{tag} </a>
+                </Link>
+              </span>
+            ))}
           </pre>
         ) : null}
         <main className="typography inset mt-8">{children}</main>
