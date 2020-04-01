@@ -1,6 +1,6 @@
 const siteConfig = {
-  siteName: " ~/shaun.church",
-  description: "writing code and making a noise since forever",
+  siteName: "Next.js blog",
+  description: "Make blogs with next.",
   postsDirectory: "words",
   features: {
     authorPages: true,
