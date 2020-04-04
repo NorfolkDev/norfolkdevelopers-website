@@ -3,6 +3,7 @@
 @import "tailwindcss/components";
 /* purgecss end ignore */
 @import "tailwindcss/utilities";
+@import "prism-theme.css";
 
 body {
   @apply text-xl;
@@ -61,4 +62,9 @@ body {
 
 .article figure figcaption {
   @apply text-base italic text-center text-gray-500 mt-2 ml-6;
+}
+
+code,
+pre {
+  @apply rounded;
 }
