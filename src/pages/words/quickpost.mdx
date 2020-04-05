@@ -1,10 +1,11 @@
 ---
 title: Test post with a title that extends over two lines
 hero: ./images/hero.jpg
-excerpt: We don't support excerpts yet.
+excerpt: We don't support excerpts yet. But you can bet that when we do this will be appearing on the page. Apparently we can go on at length. Until we sqush the tags to pieces. Hmm.
 date: "2019-03-23T15:00"
 author: "Testy McTestface, Test Testerson"
 tags: "test, music, dev, mistakes"
+draft: false
 ---
 
 This is a test post to test out syntax highlighting, typograhy, images and other presentational things. 
@@ -131,6 +132,75 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 ```javascript
 var s = "JavaScript syntax highlighting";
 alert(s);
+```
+```html
+<div class="what">
+  <p>things here</p>
+</div>
+```
+```php
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTasksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('tasks');
+    }
+}
+```
+```rust
+// Unlike C/C++, there's no restriction on the order of function definitions
+fn main() {
+    // We can use this function here, and define it somewhere later
+    fizzbuzz_to(100);
+}
+
+// Function that returns a boolean value
+fn is_divisible_by(lhs: u32, rhs: u32) -> bool {
+    // Corner case, early return
+    if rhs == 0 {
+        return false;
+    }
+
+    // This is an expression, the `return` keyword is not necessary here
+    lhs % rhs == 0
+}
+
+// Functions that "don't" return a value, actually return the unit type `()`
+fn fizzbuzz(n: u32) -> () {
+    if is_divisible_by(n, 15) {
+        println!("fizzbuzz");
+    } else if is_divisible_by(n, 3) {
+        println!("fizz");
+    } else if is_divisible_by(n, 5) {
+        println!("buzz");
+    } else {
+        println!("{}", n);
+    }
+}
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia, sapien ac consectetur vestibulum, tortor dui euismod augue, ut lacinia felis nunc mollis metus. Nullam nec sem placerat neque rutrum interdum quis at ex. In scelerisque ligula vitae dapibus porttitor. Nam vel nunc nisi. Proin vel ante vitae purus imperdiet aliquet ut ac dolor. Maecenas tincidunt sit amet tortor vitae maximus. Fusce eu suscipit enim. Etiam sit amet consectetur massa, eget hendrerit felis. Aliquam vel rhoncus felis. Curabitur ac eros a velit placerat commodo. Aliquam egestas, est vitae imperdiet vestibulum, tellus elit maximus ex, nec finibus neque metus a sem. Nullam et auctor sapien, vel convallis tortor. Phasellus in diam id justo aliquet elementum.
