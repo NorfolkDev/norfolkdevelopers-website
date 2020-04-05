@@ -7,11 +7,10 @@
 @import "typography.css";
 
 body {
-  @apply text-xl;
-}
-
-.inset {
-  @apply ml-8 mr-8;
+  @apply mx-8;
+  @media (md) {
+    @apply mx-0;
+  }
 }
 
 .hashtag:before {
@@ -19,6 +18,12 @@ body {
   @apply mr-2 text-gray-400;
 }
 
-.hashtag-2:before {
-  content: "##";
+.theme-dark {
+  --color-bg-primary: #ff73b3;
+  --color-bg-secondary: #6f72b9;
+}
+
+.theme-light {
+  --color-bg-primary: black;
+  --color-bg-secondary: green;
 }
