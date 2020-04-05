@@ -1,11 +1,11 @@
 const siteConfig = {
-  siteName: "Next.js blog",
-  description: "Make blogs with next.",
+  siteName: "blog.com",
+  description: "This is a blog about things.",
   postsDirectory: "words",
   features: {
-    authorPages: true,
-    tagPages: true
-  }
+    authorPages: false,
+    tagPages: false,
+  },
 };
 
 export default siteConfig;
