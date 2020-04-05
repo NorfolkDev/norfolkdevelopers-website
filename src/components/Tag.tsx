@@ -24,7 +24,7 @@ const TAG_COLOURS: { [key: string]: TagTheme } = {
     foreground: "text-blue-800",
   },
   default: {
-    background: "bg-grey-300",
+    background: "bg-grey-400",
     foreground: "text-grey-700",
   },
 };
@@ -41,9 +41,10 @@ export default function Tag(props: Props) {
 
   return (
     <span
-      className={`rounded-full bg-gray-200 p-1 mr-2 text-xs font-bold text-gray-600 px-2 ${getClasses(
-        tag
-      )}`}
+      className={
+        "rounded-full bg-gray-200 p-1 text-xs font-bold text-gray-600 px-2 border-background-primary border" +
+        ` ${getClasses(tag)}`
+      }
       key={tag}
     >
       {siteConfig.features.tagPages ? (
