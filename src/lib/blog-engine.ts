@@ -55,6 +55,8 @@ export type FrontMatter = {
   date?: string;
   tags?: string[];
   author?: string[];
+  excerpt?: string[];
+  draft?: boolean;
 };
 
 // load file contents and front matter
@@ -87,12 +89,14 @@ export function getPosts(useCache?: boolean) {
   console.log(`${TAG} scanning for posts`, `pages/${POSTS_DIRECTORY_NAME}/**`);
   const postPaths = getPostPaths();
   postPaths.forEach((path) => console.log(`${TAG} -`, path));
-  const posts = getPostData(postPaths).sort(
-    (a, b) =>
-      // TODO type front matter import
-      // @ts-ignore
-      new Date(b.date).getMilliseconds() - new Date(a.date).getMilliseconds()
-  );
+  const posts = getPostData(postPaths)
+    .sort(
+      (a, b) =>
+        // TODO type front matter import
+        // @ts-ignore
+        new Date(b.date).getMilliseconds() - new Date(a.date).getMilliseconds()
+    )
+    .filter((post) => !post.draft);
   cache.posts = posts;
   return posts;
 }
@@ -111,10 +115,6 @@ export function getTags() {
     return acc;
   }, []);
 }
-
-// export function getPostsForTag(tag: string) {
-//   return getTags()[tag];
-// }
 
 export function getAuthors() {
   return getPosts(true).reduce((acc, current, index) => {
