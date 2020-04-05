@@ -7,16 +7,18 @@ const purgecss = [
       "./src/components/**/*.tsx",
       "./src/pages/**/*.tsx",
       "./src/pages/**/*.mdx",
-      "./src/pages/**/*.md"
+      "./src/pages/**/*.md",
+      "./src/css/**/*.css",
+      "./src/css/**/*.css",
     ],
-    defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-  }
+    defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+  },
 ];
 module.exports = {
   plugins: [
     "postcss-import",
     "tailwindcss",
     "autoprefixer",
-    ...(process.env.NODE_ENV === "production" ? [purgecss] : [])
-  ]
+    ...(process.env.NODE_ENV === "production" ? [purgecss] : []),
+  ],
 };
