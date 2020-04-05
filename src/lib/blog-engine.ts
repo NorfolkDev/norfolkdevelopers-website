@@ -20,9 +20,9 @@ function isFile(path: string): boolean {
 function getPostPaths(dir: string = "/") {
   const files = fs
     .readdirSync(`${POSTS_DIRECTORY}${dir}`)
-    .map(file => `${dir}${dir !== "/" ? "/" : ""}${file}`)
+    .map((file) => `${dir}${dir !== "/" ? "/" : ""}${file}`)
     .filter(
-      file =>
+      (file) =>
         !file.endsWith(".tsx") &&
         !file.endsWith(".ts") &&
         !file.endsWith(".js") &&
@@ -34,11 +34,11 @@ function getPostPaths(dir: string = "/") {
     );
 
   return [
-    ...files.filter(file => isFile(file)),
+    ...files.filter((file) => isFile(file)),
     ...files
-      .filter(file => !isFile(file))
-      .map(file => getPostPaths(file))
-      .flat()
+      .filter((file) => !isFile(file))
+      .map((file) => getPostPaths(file))
+      .flat(),
   ];
 }
 
@@ -51,7 +51,7 @@ type FrontMatter = {
 
 // load file contents and front matter
 function getPostData(posts: string[]): FrontMatter[] {
-  return posts.map(postPath => {
+  return posts.map((postPath) => {
     const filename = path.parse(postPath);
     const file: string = fs.readFileSync(
       `${POSTS_DIRECTORY}/${postPath}`,
@@ -64,7 +64,7 @@ function getPostData(posts: string[]): FrontMatter[] {
       body: content,
       path:
         `/${POSTS_DIRECTORY_NAME}` +
-        path.join(filename.dir, filename.name).replace("/index", "")
+        path.join(filename.dir, filename.name).replace("/index", ""),
     };
   });
 }
@@ -78,7 +78,7 @@ export function getPosts(useCache?: boolean) {
   cache.posts = [];
   console.log(`${TAG} scanning for posts`, `pages/${POSTS_DIRECTORY_NAME}/**`);
   const postPaths = getPostPaths();
-  postPaths.forEach(path => console.log(`${TAG} -`, path));
+  postPaths.forEach((path) => console.log(`${TAG} -`, path));
   const posts = getPostData(postPaths).sort(
     (a, b) =>
       // TODO type front matter import
@@ -94,7 +94,7 @@ export function getTags() {
     if (!current.tags) {
       return acc;
     }
-    current.tags.forEach(tag => {
+    current.tags.forEach((tag) => {
       if (!acc[tag]) {
         acc[tag] = [];
       }
@@ -113,7 +113,7 @@ export function getAuthors() {
     if (!current.author) {
       return acc;
     }
-    current.author.forEach(authorName => {
+    current.author.forEach((authorName) => {
       const authorSlug = slugify(authorName);
       if (!acc[authorSlug]) {
         acc[authorSlug] = [];
