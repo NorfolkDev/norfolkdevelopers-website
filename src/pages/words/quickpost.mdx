@@ -1,15 +1,22 @@
 ---
-title: Test post
+title: Test post with a title that extends over two lines
 hero: ./images/hero.jpg
 excerpt: We don't support excerpts yet.
+date: "2019-03-23T15:00"
+author: "Testy McTestface, Test Testerson"
+tags: "test, music, dev, mistakes"
 ---
 
 This is a test post to test out syntax highlighting, typograhy, images and other presentational things. 
 
-```jsx
+```tsx
 import styles from './Button.module.scss'
 
-export function Button() {
+type Props = {
+  test: string;
+}
+
+export function Button(props: Props) {
   return (
     <button
       type="button"      
@@ -23,10 +30,12 @@ export function Button() {
 
 
 ```javascript
-  // welcome to the code
-  const test = true;
-  const call = () => {}
-  call();
+let test = true;
+function hello() {
+  return "world";
+}
+const call = () => {}
+call();
 ```
 
 
@@ -40,14 +49,23 @@ export function Button() {
 It is recommended to NOT use H1s as it is reserved for the article heading. Any H1 is set as an H2.
 
 ## H2
+Aliquam nec eros finibus, lobortis eros sed, finibus lacus. Mauris sit amet lacus accumsan, gravida metus id, pellentesque lectus. Integer aliquet nisl quis turpis ultrices rutrum. Vivamus et nisi et massa maximus congue. Morbi hendrerit eros sed ipsum consequat rhoncus. Duis ac sodales ligula. Etiam consequat dignissim lorem eu blandit. Cras eget augue vitae massa condimentum malesuada id suscipit urna. Aliquam et purus ac felis elementum convallis nec eget ipsum. Vestibulum efficitur porttitor felis a interdum. Etiam vel mi in mi feugiat convallis.
 
 ### H3
 
+Aliquam nec eros finibus, lobortis eros sed, finibus lacus. Mauris sit amet lacus accumsan, gravida metus id, pellentesque lectus. Integer aliquet nisl quis turpis ultrices rutrum. Vivamus et nisi et massa maximus congue. Morbi hendrerit eros sed ipsum consequat rhoncus. Duis ac sodales ligula. Etiam consequat dignissim lorem eu blandit. Cras eget augue vitae massa condimentum malesuada id suscipit urna. Aliquam et purus ac felis elementum convallis nec eget ipsum. Vestibulum efficitur porttitor felis a interdum. Etiam vel mi in mi feugiat convallis.
+
 #### H4
+
+Aliquam nec eros finibus, lobortis eros sed, finibus lacus. Mauris sit amet lacus accumsan, gravida metus id, pellentesque lectus. Integer aliquet nisl quis turpis ultrices rutrum. Vivamus et nisi et massa maximus congue. Morbi hendrerit eros sed ipsum consequat rhoncus. Duis ac sodales ligula. Etiam consequat dignissim lorem eu blandit. Cras eget augue vitae massa condimentum malesuada id suscipit urna. Aliquam et purus ac felis elementum convallis nec eget ipsum. Vestibulum efficitur porttitor felis a interdum. Etiam vel mi in mi feugiat convallis.
 
 ##### H5
 
+Aliquam nec eros finibus, lobortis eros sed, finibus lacus. Mauris sit amet lacus accumsan, gravida metus id, pellentesque lectus. Integer aliquet nisl quis turpis ultrices rutrum. Vivamus et nisi et massa maximus congue. Morbi hendrerit eros sed ipsum consequat rhoncus. Duis ac sodales ligula. Etiam consequat dignissim lorem eu blandit. Cras eget augue vitae massa condimentum malesuada id suscipit urna. Aliquam et purus ac felis elementum convallis nec eget ipsum. Vestibulum efficitur porttitor felis a interdum. Etiam vel mi in mi feugiat convallis.
+
 ###### H6
+
+Aliquam nec eros finibus, lobortis eros sed, finibus lacus. Mauris sit amet lacus accumsan, gravida metus id, pellentesque lectus. Integer aliquet nisl quis turpis ultrices rutrum. Vivamus et nisi et massa maximus congue. Morbi hendrerit eros sed ipsum consequat rhoncus. Duis ac sodales ligula. Etiam consequat dignissim lorem eu blandit. Cras eget augue vitae massa condimentum malesuada id suscipit urna. Aliquam et purus ac felis elementum convallis nec eget ipsum. Vestibulum efficitur porttitor felis a interdum. Etiam vel mi in mi feugiat convallis.
 
 ## Emphasis
 
@@ -97,13 +115,14 @@ Some text to show that the reference links can follow later.
 
 ## Images
 
-<div className="Image__Small">
+<figure className="post-image">
   <img
-    src="./images/article-image-2.jpg"
-    title="Logo Title Text 1"
-    alt="Alt text"
+    src="/static/images/test-post/sunset.jpg"
+    title="Sunset"
+    alt="sunset"
   />
-</div>
+  <figcaption>Sunset</figcaption>
+</figure>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 
@@ -114,7 +133,19 @@ var s = "JavaScript syntax highlighting";
 alert(s);
 ```
 
-```
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia, sapien ac consectetur vestibulum, tortor dui euismod augue, ut lacinia felis nunc mollis metus. Nullam nec sem placerat neque rutrum interdum quis at ex. In scelerisque ligula vitae dapibus porttitor. Nam vel nunc nisi. Proin vel ante vitae purus imperdiet aliquet ut ac dolor. Maecenas tincidunt sit amet tortor vitae maximus. Fusce eu suscipit enim. Etiam sit amet consectetur massa, eget hendrerit felis. Aliquam vel rhoncus felis. Curabitur ac eros a velit placerat commodo. Aliquam egestas, est vitae imperdiet vestibulum, tellus elit maximus ex, nec finibus neque metus a sem. Nullam et auctor sapien, vel convallis tortor. Phasellus in diam id justo aliquet elementum.
+
+Suspendisse gravida velit efficitur, laoreet ipsum sed, commodo arcu. Morbi interdum est ac urna accumsan aliquam. Curabitur non tincidunt nisl, eu vulputate nibh. Sed rutrum euismod leo et lobortis. Aliquam sit amet auctor sapien. Nam scelerisque tempus tortor et tristique. In vulputate consectetur erat, in accumsan urna volutpat quis.
+
+Aliquam nec eros finibus, lobortis eros sed, finibus lacus. Mauris sit amet lacus accumsan, gravida metus id, pellentesque lectus. Integer aliquet nisl quis turpis ultrices rutrum. Vivamus et nisi et massa maximus congue. Morbi hendrerit eros sed ipsum consequat rhoncus. Duis ac sodales ligula. Etiam consequat dignissim lorem eu blandit. Cras eget augue vitae massa condimentum malesuada id suscipit urna. Aliquam et purus ac felis elementum convallis nec eget ipsum. Vestibulum efficitur porttitor felis a interdum. Etiam vel mi in mi feugiat convallis.
+
+## Title here to interrupt the text
+Mauris metus nulla, venenatis a elit in, interdum pulvinar leo. Nullam ut nibh risus. Aliquam eget eleifend orci, vitae egestas leo. Nunc bibendum auctor urna vitae vulputate. Integer tincidunt auctor ante. Nullam placerat volutpat pretium. Praesent fermentum nulla a lacus euismod iaculis. Sed imperdiet nisi a porta sodales. Fusce sagittis nibh non leo rhoncus mollis.
+
+Ut dapibus orci non tristique suscipit. Aenean commodo augue id rutrum ullamcorper. Aliquam facilisis rhoncus elit non rhoncus. Nulla ut ipsum urna. Fusce consectetur elit in nunc volutpat interdum. Nunc pharetra blandit nibh mattis molestie. Proin sagittis, ante in dapibus accumsan, lorem massa posuere ipsum, sit amet eleifend ipsum eros eu tellus. Aenean bibendum scelerisque iaculis. Vivamus a nulla id ante laoreet tincidunt. Morbi vel pulvinar magna.
+
+
+```bash
 No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
 ```
@@ -135,10 +166,19 @@ export default props => (
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.
 
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
+> – <cite>Albert Einstein</cite>
+
+Something else
+
 > Blockquotes are very handy in email to emulate reply text.
 > This line is part of the same quote.
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+
 
 ## Horizontal Rule
 
