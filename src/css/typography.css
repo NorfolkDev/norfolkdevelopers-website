@@ -1,98 +1,97 @@
-.typography p + p {
-  @apply mt-6;
-}
+.typography {
+  @apply text-xl text-gray-700;
 
-.typography p + pre,
-.typography pre + p {
-  @apply mt-6;
-}
-
-.typography h1,
-.article h1 {
-  @apply font-extrabold text-4xl mb-4 inline-block;
-}
-
-@screen md {
-  .typography h1,
-  .article h1 {
-    @apply text-5xl;
+  h1 {
+    @apply font-extrabold text-4xl mb-2 inline-block;
+    @screen md {
+      @apply text-5xl;
+    }
   }
-}
 
-.typography h2 {
-  @apply font-bold text-2xl mt-12 mb-4;
-}
+  h2 {
+    @apply font-bold text-2xl mt-12 mb-4;
+  }
 
-.typography h3 {
-  @apply font-bold text-xl mt-12 mb-4;
-}
+  h3 {
+    @apply font-bold text-xl mt-12 mb-4;
+  }
 
-.typography h4,
-.typography h5,
-.typography h6 {
-  @apply font-bold mt-6 mb-2;
-}
+  h4,
+  h5,
+  h6 {
+    @apply font-bold mt-6 mb-2;
+  }
 
-.typography ul {
-  list-style-type: disc;
-  @apply ml-6 my-8;
-}
+  p + p {
+    @apply mt-6;
+  }
 
-.typography ol {
-  @apply list-decimal ml-6;
-}
+  p + pre,
+  pre + p {
+    @apply mt-6;
+  }
 
-.typography a {
-  @apply text-gray-600 underline font-semibold;
-}
+  a {
+    @apply text-gray-600 underline font-semibold;
 
-.typography a:hover {
-  @apply text-gray-900;
-}
+    &:hover {
+      @apply text-gray-900;
+    }
+  }
 
-.article figure {
-  @apply mb-6 mr-auto ml-auto w-full;
-}
+  ul {
+    list-style-type: disc;
+    @apply ml-6 my-6;
+  }
 
-.article figure img {
-  @apply shadow-xl rounded-md block mr-auto ml-auto;
-}
+  ol {
+    @apply list-decimal ml-6;
+  }
 
-.article figure figcaption {
-  @apply text-base italic text-center text-gray-500 mt-2 ml-6;
-}
+  figure {
+    @apply mb-6 mr-auto ml-auto w-full;
+  }
 
-code,
-pre {
-  @apply rounded mt-12 mb-12 text-base;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  text-align: justify;
-}
+  figure img {
+    @apply shadow-xl rounded-md block mr-auto ml-auto;
+  }
 
-hr {
-  @apply my-6;
-}
+  figure figcaption {
+    @apply text-base italic text-center text-gray-500 mt-2 ml-6;
+  }
 
-blockquote {
-  @apply bg-gray-200 border-l-8 my-6 py-4 px-4 rounded italic;
-  quotes: "\201C""\201D";
-}
+  code,
+  pre {
+    @apply rounded mt-12 mb-12 text-base;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+  }
 
-blockquote cite {
-  @apply text-lg text-gray-600;
-}
+  hr {
+    @apply my-6;
+  }
 
-blockquote:before {
-  @apply text-gray-500;
+  blockquote {
+    @apply bg-gray-200 border-l-8 my-6 py-4 px-4 rounded italic;
+    quotes: "\201C""\201D";
+  }
 
-  content: open-quote;
-  font-size: 3.5em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
-}
+  blockquote cite {
+    @apply text-lg text-gray-600;
+  }
 
-blockquote p {
-  display: inline;
+  blockquote:before {
+    @apply text-gray-500;
+
+    content: open-quote;
+    font-size: 3.5em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  blockquote p {
+    display: inline;
+  }
 }
