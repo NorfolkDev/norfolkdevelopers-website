@@ -17,8 +17,8 @@ const purgecss = [
 module.exports = {
   plugins: [
     "postcss-import",
-    "postcss-nested",
     "tailwindcss",
+    "postcss-nested",
     "autoprefixer",
     ...(process.env.NODE_ENV === "production" ? [purgecss] : []),
   ],
