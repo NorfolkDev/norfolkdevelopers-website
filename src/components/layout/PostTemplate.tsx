@@ -4,7 +4,7 @@ import Head from "next/head";
 import siteConfig from "../../../site.config";
 import { slugify } from "../../lib/slugify";
 import { dateFormat } from "../../lib/date-functions";
-import Tag from "../Tag";
+import TagList from "../TagList";
 
 type Props = {
   frontMatter: any;
@@ -19,13 +19,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
       </Head>
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
         <header className="inset mb-12">
-          {post.tags ? (
-            <div className="inline">
-              {post.tags.map((tag: string) => (
-                <Tag tag={tag} />
-              ))}
-            </div>
-          ) : null}
+          <TagList tags={post.tags} />
 
           <h1 className="hashtag mt-2 mb-1 text-5xl font-bold leading-tight">
             {post.title}
@@ -49,7 +43,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
             </span>
           ) : null}
         </header>
-        <div className="typography inset">{children}</div>
+        <div className="typography">{children}</div>
       </article>
     </Layout>
   );
