@@ -5,7 +5,12 @@ type Props = {
   tag: string;
 };
 
-const TAG_COLOURS = {
+type TagTheme = {
+  background: string;
+  foreground: string;
+};
+
+const TAG_COLOURS: { [key: string]: TagTheme } = {
   music: {
     background: "bg-red-200",
     foreground: "text-red-800",
@@ -24,7 +29,7 @@ const TAG_COLOURS = {
   },
 };
 
-function getClasses(key: string) {
+function getClasses(key: string): string {
   if (!(key in TAG_COLOURS)) {
     key = "default";
   }

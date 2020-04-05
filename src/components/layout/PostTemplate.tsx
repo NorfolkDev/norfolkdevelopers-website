@@ -6,7 +6,12 @@ import { slugify } from "../../lib/slugify";
 import { dateFormat } from "../../lib/date-functions";
 import Tag from "../Tag";
 
-export default function PostTemplate({ frontMatter: post, children }) {
+type Props = {
+  frontMatter: any;
+  children: any;
+};
+
+export default function PostTemplate({ frontMatter: post, children }: Props) {
   return (
     <Layout>
       <Head>
@@ -16,13 +21,13 @@ export default function PostTemplate({ frontMatter: post, children }) {
         <header className="inset mb-12">
           {post.tags ? (
             <div className="inline">
-              {post.tags.map((tag) => (
+              {post.tags.map((tag: string) => (
                 <Tag tag={tag} />
               ))}
             </div>
           ) : null}
 
-          <h1 className="hashtag mt-2 mb-2 text-5xl font-bold leading-tight">
+          <h1 className="hashtag mt-2 mb-1 text-5xl font-bold leading-tight">
             {post.title}
           </h1>
           {post.date && (
@@ -33,7 +38,7 @@ export default function PostTemplate({ frontMatter: post, children }) {
           {post.author && siteConfig.features.authorPages ? (
             <span className="block text-base text-gray-600">
               by{[" "]}
-              {post.author.map((author, i) => (
+              {post.author.map((author: string, i: number) => (
                 <span key={author}>
                   <Link href={`/author/${slugify(author)}`}>
                     <a className="underline">{author}</a>

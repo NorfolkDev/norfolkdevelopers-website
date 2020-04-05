@@ -10,14 +10,20 @@ const POSTS_DIRECTORY = path.join(
   `/src/pages/${POSTS_DIRECTORY_NAME}`
 );
 
-let cache = { posts: [], authors: [], tags: [] };
+type Cache = {
+  posts: FrontMatter[];
+  authors: any[];
+  tags: any[];
+};
+
+let cache: Cache = { posts: [], authors: [], tags: [] };
 
 function isFile(path: string): boolean {
   return path.includes(".");
 }
 
 // recursively load posts in directory
-function getPostPaths(dir: string = "/") {
+function getPostPaths(dir: string = "/"): string[] {
   const files = fs
     .readdirSync(`${POSTS_DIRECTORY}${dir}`)
     .map((file) => `${dir}${dir !== "/" ? "/" : ""}${file}`)
@@ -42,9 +48,11 @@ function getPostPaths(dir: string = "/") {
   ];
 }
 
-type FrontMatter = {
+export type FrontMatter = {
+  title?: string;
   body: string;
   path: string;
+  date?: string;
   tags?: string[];
   author?: string[];
 };
@@ -59,6 +67,7 @@ function getPostData(posts: string[]): FrontMatter[] {
     );
     const { content, data } = parseFrontMatter(file);
 
+    console.log("data", data);
     return {
       ...data,
       body: content,
@@ -95,18 +104,18 @@ export function getTags() {
       return acc;
     }
     current.tags.forEach((tag) => {
-      if (!acc[tag]) {
-        acc[tag] = [];
-      }
-      acc[tag].push(current);
+      return {
+        ...acc,
+        [tag]: current,
+      };
     });
     return acc;
   }, []);
 }
 
-export function getPostsForTag(tag: string) {
-  return getTags()[tag];
-}
+// export function getPostsForTag(tag: string) {
+//   return getTags()[tag];
+// }
 
 export function getAuthors() {
   return getPosts(true).reduce((acc, current, index) => {
@@ -115,10 +124,10 @@ export function getAuthors() {
     }
     current.author.forEach((authorName) => {
       const authorSlug = slugify(authorName);
-      if (!acc[authorSlug]) {
-        acc[authorSlug] = [];
-      }
-      acc[authorSlug].push(current);
+      return {
+        ...acc,
+        [authorSlug]: current,
+      };
     });
     return acc;
   }, []);

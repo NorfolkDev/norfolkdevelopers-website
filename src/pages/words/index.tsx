@@ -2,13 +2,18 @@ import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "../../../site.config";
+import { FrontMatter } from "../../lib/blog-engine";
 
 export async function getStaticProps() {
   const { getPosts } = require("../../lib/blog-engine");
   return { props: { posts: getPosts() } };
 }
 
-export default function WordsRoute({ posts }) {
+type Props = {
+  posts: FrontMatter[];
+};
+
+export default function WordsRoute({ posts }: Props) {
   return (
     <Layout location="words">
       <Head>
@@ -19,7 +24,7 @@ export default function WordsRoute({ posts }) {
       </h1>
       <main className="inset mt-4 border-gray-600 important:mr-auto important:ml-auto block">
         <ul>
-          {posts.map(post => (
+          {posts.map((post) => (
             <li key={post.path} className="mb-4">
               <span className="block text-base text-gray-500">{post.date}</span>
               <Link href={post.path || "/"}>
