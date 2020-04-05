@@ -1,11 +1,8 @@
 .typography {
-  @apply text-xl text-gray-700;
+  @apply text-xl;
 
   h1 {
     @apply font-extrabold text-4xl mb-2 inline-block;
-    @screen md {
-      @apply text-5xl;
-    }
   }
 
   h2 {
@@ -27,16 +24,18 @@
   }
 
   p + pre,
-  pre + p {
+  pre + p,
+  pre + pre {
     @apply mt-6;
   }
 
   a {
-    @apply text-gray-600 underline font-semibold;
+    @apply text-href-base underline;
+  }
 
-    &:hover {
-      @apply text-gray-900;
-    }
+  a:hover,
+  a:active {
+    @apply text-href-hover;
   }
 
   ul {
@@ -53,7 +52,7 @@
   }
 
   figure img {
-    @apply shadow-xl rounded-md block mr-auto ml-auto;
+    @apply shadow-xl block mr-auto ml-auto rounded;
   }
 
   figure figcaption {
@@ -62,23 +61,33 @@
 
   code,
   pre {
-    @apply rounded mt-12 mb-12 text-base;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    text-align: justify;
+    @apply text-base;
+
+    /* white-space: pre-wrap; */
+    /* word-wrap: break-word; */
+    /* text-align: justify; */
+  }
+
+  pre {
+    @apply -mx-8 p-8 bg-background-secondary;
+  }
+  @screen md {
+    pre {
+      @apply rounded-md;
+    }
   }
 
   hr {
-    @apply my-6;
+    @apply my-6 border-border-primary;
   }
 
   blockquote {
-    @apply bg-gray-200 border-l-8 my-6 py-4 px-4 rounded italic;
+    @apply bg-background-secondary border-l-8 border-border-primary my-6 py-4 px-6 rounded italic -mx-8;
     quotes: "\201C""\201D";
   }
 
   blockquote cite {
-    @apply text-lg text-gray-600;
+    @apply text-lg text-foreground-secondary;
   }
 
   blockquote:before {
