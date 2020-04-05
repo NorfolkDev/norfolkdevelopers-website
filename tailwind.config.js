@@ -1,7 +1,26 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        foreground: {
+          primary: "var(--color-text-primary)",
+          secondary: "var(--color-text-secondary)",
+        },
+        background: {
+          primary: "var(--color-bg-primary)",
+          secondary: "var(--color-bg-secondary)",
+        },
+        border: {
+          primary: "var(--color-border-primary)",
+        },
+        href: {
+          base: "var(--color-href-base)",
+          hover: "var(--color-href-hover)",
+          active: "var(--color-href-active)",
+        },
+      },
+    },
   },
   variants: {},
   plugins: [],
-}
+};

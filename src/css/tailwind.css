@@ -6,24 +6,29 @@
 @import "prism-theme.css";
 @import "typography.css";
 
-body {
-  @apply mx-8;
-  @media (md) {
-    @apply mx-0;
-  }
-}
-
 .hashtag:before {
   content: "#";
   @apply mr-2 text-gray-400;
 }
 
 .theme-dark {
-  --color-bg-primary: #ff73b3;
-  --color-bg-secondary: #6f72b9;
+  --color-bg-primary: theme("colors.gray.900");
+  --color-bg-secondary: theme("colors.gray.800");
+  --color-text-primary: theme("colors.gray.300");
+  --color-text-secondary: theme("colors.gray.500");
+  --color-border-primary: theme("colors.gray.700");
+  --color-href-base: theme("colors.red.600");
+  --color-href-hover: theme("colors.red.300");
+  --color-href-active: theme("colors.red.400");
 }
 
 .theme-light {
-  --color-bg-primary: black;
-  --color-bg-secondary: green;
+  --color-bg-primary: theme("colors.gray.100");
+  --color-bg-secondary: theme("colors.gray.200");
+  --color-text-primary: theme("colors.gray.900");
+  --color-text-secondary: theme("colors.gray.700");
+  --color-border-primary: theme("colors.gray.300");
+  --color-href-base: theme("colors.red.600");
+  --color-href-hover: theme("colors.red.800");
+  --color-href-active: theme("colors.red.700");
 }
