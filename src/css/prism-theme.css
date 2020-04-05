@@ -10,8 +10,8 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #d2c9ef;
-  background-color: #181726;
+  /* color: #d29ef; */
+  /* background-color: var("--color-bg-primary"); */
   font-family: "Hack", "Source Code Pro", "Monaco", monospace;
   text-align: left;
   white-space: pre;
@@ -53,7 +53,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #181726;
+  background: var(--color-bg-primary);
 }
 
 /* Inline code */
