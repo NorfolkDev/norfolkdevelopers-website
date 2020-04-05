@@ -67,7 +67,6 @@ function getPostData(posts: string[]): FrontMatter[] {
     );
     const { content, data } = parseFrontMatter(file);
 
-    console.log("data", data);
     return {
       ...data,
       body: content,
