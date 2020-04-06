@@ -25,7 +25,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
             {post.title}
           </h1>
           {post.date && (
-            <p className="block text-gray-500 text-sm font-bold">
+            <p className="block text-foreground-secondary font-bold">
               {dateFormat(new Date(post.date))}
             </p>
           )}
