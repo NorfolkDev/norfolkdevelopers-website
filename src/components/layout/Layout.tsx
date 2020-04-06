@@ -2,7 +2,7 @@ import Link from "next/link";
 import config from "../../../site.config";
 import Head from "next/head";
 import siteConfig from "../../../site.config";
-import { useState } from "react";
+import useDarkMode from "use-dark-mode";
 
 const navLinks = [
   { url: `/${config.postsDirectory}`, label: "words" },
@@ -16,11 +16,11 @@ type Props = {
 };
 
 export default function Layout({ children, location }: Props) {
-  const [theme, setTheme] = useState("dark");
+  const darkMode = useDarkMode(false);
 
   return (
     <div
-      className={`theme-${theme} text-foreground-primary px-8 bg-background-primary duration-200`}
+      className={`theme-${darkMode.value} text-foreground-primary px-8 bg-background-primary duration-200 border-t-2 border-pink-500`}
     >
       <Head>
         <title>{siteConfig.siteName}</title>
@@ -30,7 +30,7 @@ export default function Layout({ children, location }: Props) {
 
       <div className=" flex flex-col min-h-screen ml-auto mr-auto w-full md:w-4/5 lg:max-w-3xl">
         <header className="mt-6 md:mt-16 md:mb-16 md:flex fade-out">
-          <h1 className="inset font-extrabold text-3xl hover:text-blue-600 self-center">
+          <h1 className="inset font-extrabold text-3xl hover:text-pink-500 self-center">
             <Link href="/">
               <a>{config.siteName}</a>
             </Link>
@@ -38,20 +38,18 @@ export default function Layout({ children, location }: Props) {
           <nav className="inset text-lg font-normal align-middle justify-center self-center">
             {navLinks.map((navLink) => (
               <Link href={navLink.url} key={navLink.label}>
-                <a className="pr-2 pl-2 font-semibold text-foreground-secondary hover:text-blue-400">
+                <a className="pr-2 pl-2 font-semibold text-teal-600">
                   /{navLink.label}
                 </a>
               </Link>
             ))}
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              {theme === "dark" ? "☀️" : "😎"}
+            <button onClick={() => darkMode.toggle()}>
+              {darkMode.value ? "☀️" : "😎"}
             </button>
           </nav>
         </header>
         <main className="flex-grow">{children}</main>
-        <footer className="inset m-6 border-t py-4 text-base text-foreground-secondary text-center">
+        <footer className="inset my-6 border-t border-border-primary py-4 text-base text-foreground-secondary text-center">
           Made by 👽
         </footer>
       </div>
