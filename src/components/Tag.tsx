@@ -12,8 +12,8 @@ type TagTheme = {
 
 const TAG_COLOURS: { [key: string]: TagTheme } = {
   music: {
-    background: "bg-red-200",
-    foreground: "text-red-800",
+    background: "bg-pink-200",
+    foreground: "text-pink-800",
   },
   dev: {
     background: "bg-green-200",
@@ -42,7 +42,7 @@ export default function Tag(props: Props) {
   return (
     <span
       className={
-        "rounded-full bg-gray-200 p-1 text-xs font-bold text-gray-600 px-2 border-background-primary border" +
+        "inline-block rounded-full bg-gray-200 p-1 text-xs font-bold text-gray-600 px-2 mr-2 mb-2" +
         ` ${getClasses(tag)}`
       }
       key={tag}
