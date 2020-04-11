@@ -5,6 +5,10 @@
     @apply font-extrabold text-4xl mb-2 inline-block;
   }
 
+  h2:before {
+    content: "##";
+    @apply mr-2;
+  }
   h2 {
     @apply font-bold text-2xl mt-12 mb-4;
   }
@@ -17,6 +21,15 @@
   h5,
   h6 {
     @apply font-bold mt-6 mb-2;
+  }
+
+  p {
+    @apply text-lg;
+  }
+  @screen md {
+    p {
+      @apply text-xl;
+    }
   }
 
   p + p {
@@ -61,19 +74,25 @@
 
   code,
   pre {
-    @apply text-base;
+    @apply text-sm;
 
     /* white-space: pre-wrap; */
     /* word-wrap: break-word; */
     /* text-align: justify; */
   }
+  @screen md {
+    code,
+    pre {
+      @apply text-base;
+    }
+  }
 
   pre {
-    @apply -mx-8 p-8 bg-background-secondary;
+    @apply -mx-4 p-4 bg-background-secondary;
   }
   @screen md {
     pre {
-      @apply rounded-md;
+      @apply rounded-md -mx-8 p-8;
     }
   }
 
@@ -82,7 +101,7 @@
   }
 
   blockquote {
-    @apply bg-background-secondary border-l-8 border-border-primary my-6 py-4 px-6 rounded italic -mx-8;
+    @apply bg-background-secondary border-l-8 border-border-primary my-6 py-4 px-4 rounded italic -mx-4;
     quotes: "\201C""\201D";
   }
 

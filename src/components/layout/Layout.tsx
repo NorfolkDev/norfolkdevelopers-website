@@ -3,6 +3,7 @@ import config from "../../../site.config";
 import Head from "next/head";
 import siteConfig from "../../../site.config";
 import useDarkMode from "use-dark-mode";
+import { useRouter } from "next/router";
 
 const navLinks = [
   { url: `/${config.postsDirectory}`, label: "words" },
@@ -17,10 +18,11 @@ type Props = {
 
 export default function Layout({ children, location }: Props) {
   const darkMode = useDarkMode(false);
+  const router = useRouter();
 
   return (
     <div
-      className={`theme-${darkMode.value} text-foreground-primary px-8 bg-background-primary duration-200 border-t-2 border-pink-500`}
+      className={`text-foreground-primary px-4 bg-background-primary duration-200 border-t-2 border-pink-500`}
     >
       <Head>
         <title>{siteConfig.siteName}</title>
@@ -28,9 +30,9 @@ export default function Layout({ children, location }: Props) {
         <meta name="description" content={siteConfig.description} />
       </Head>
 
-      <div className=" flex flex-col min-h-screen ml-auto mr-auto w-full md:w-4/5 lg:max-w-3xl">
+      <div className="flex flex-col min-h-screen ml-auto mr-auto w-full md:w-4/5 lg:max-w-3xl">
         <header className="mt-6 md:mt-16 md:mb-16 md:flex fade-out">
-          <h1 className="inset font-extrabold text-3xl hover:text-pink-500 self-center">
+          <h1 className="inset font-extrabold tracking-tight text-2xl md:text-3xl hover:text-pink-500">
             <Link href="/">
               <a>{config.siteName}</a>
             </Link>
@@ -38,7 +40,16 @@ export default function Layout({ children, location }: Props) {
           <nav className="inset text-lg font-normal align-middle justify-center self-center">
             {navLinks.map((navLink) => (
               <Link href={navLink.url} key={navLink.label}>
-                <a className="pr-2 pl-2 font-semibold text-teal-600">
+                <a
+                  className={
+                    "pr-2 pl-2 font-semibold " +
+                    `${
+                      router.pathname === navLink.label
+                        ? "text-pink-500"
+                        : "text-teal-500"
+                    }`
+                  }
+                >
                   /{navLink.label}
                 </a>
               </Link>

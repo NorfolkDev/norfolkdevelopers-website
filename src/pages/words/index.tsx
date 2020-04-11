@@ -3,6 +3,7 @@ import Layout from "../../components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "../../../site.config";
 import { FrontMatter } from "../../lib/blog-engine";
+import PostCard from "../../components/PostCard";
 
 export async function getStaticProps() {
   const { getPosts } = require("../../lib/blog-engine");
@@ -23,16 +24,13 @@ export default function WordsRoute({ posts }: Props) {
         /words
       </h1>
       <main className="inset mt-4 border-gray-600 important:mr-auto important:ml-auto block">
-        <ul>
+        <ul className="-mx-4">
           {posts.map((post) => (
-            <li key={post.path} className="mb-4">
-              <span className="block text-base text-gray-500">{post.date}</span>
-              <Link href={post.path || "/"}>
-                <a className="text-2xl font-semibold text-blue-700 hover:text-blue-400">
-                  {post.title}
-                </a>
-              </Link>
-            </li>
+            <Link href={post.path || "/"}>
+              <a>
+                <PostCard post={post} />
+              </a>
+            </Link>
           ))}
         </ul>
       </main>

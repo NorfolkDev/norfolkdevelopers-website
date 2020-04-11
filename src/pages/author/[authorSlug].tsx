@@ -1,5 +1,7 @@
 import { useCallback } from "react";
+import { GetStaticProps } from "next";
 import { slugify } from "../../lib/slugify";
+import { FrontMatter } from "../../lib/blog-engine";
 import Layout from "../../components/layout/Layout";
 import config from "../../../site.config";
 
@@ -10,34 +12,42 @@ export async function getStaticPaths() {
   if (!config.features.authorPages) {
     return {
       paths: [],
-      fallback: false
+      fallback: false,
     };
   }
 
   return {
     paths:
-      Object.keys(getAuthors()).map(author => {
+      Object.keys(getAuthors()).map((author) => {
         return { params: { authorSlug: author } };
       }) || [],
-    fallback: false
+    fallback: false,
   };
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { getAuthors } = require("../../lib/blog-engine");
+  let authorSlug =
+    params && params.authorSlug[0]
+      ? params.authorSlug[0] || `${params.authorSlug}`
+      : "asd";
   return {
     props: {
-      posts: getAuthors()[params.authorSlug],
-      slug: params.authorSlug
-    }
+      posts: getAuthors()[authorSlug],
+      slug: authorSlug,
+    },
   };
-}
+};
 
-export default function AuthorSlug({ posts, slug }) {
+type Props = {
+  posts: FrontMatter[];
+  slug: string;
+};
+export default function AuthorSlug({ posts, slug }: Props) {
   const findAuthorName = useCallback(
     (posts, slug) => {
       let thisAuthor = "";
-      posts[0].author.forEach(author =>
+      posts[0].author.forEach((author: string) =>
         slugify(author) === slug ? (thisAuthor = author) : null
       );
       return thisAuthor;
@@ -49,7 +59,7 @@ export default function AuthorSlug({ posts, slug }) {
     <Layout>
       <h1 className="inset">{findAuthorName(posts, slug)}</h1>
       <main className="inset">
-        {posts.map(post => (
+        {posts.map((post: FrontMatter) => (
           <div key={post.title}>{post.title}</div>
         ))}
       </main>
