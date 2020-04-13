@@ -4,7 +4,7 @@ import siteConfig from "../../site.config";
 import { FrontMatter } from "../lib/blog-engine";
 import Link from "next/link";
 import PostCard from "../components/PostCard";
-import FeatureCard from "../components/FeatureCard";
+import FeatureCard, { FeatureThemes } from "../components/FeatureCard";
 
 type Props = {
   posts: FrontMatter[]; // TODO Type posts
@@ -73,7 +73,7 @@ export default function IndexRoute({ posts }: Props) {
               imagePath="/static/images/pages/index/room1.jpg"
               buttonCTA="Buy app"
               buttonLink="http://google.com"
-              color="orange"
+              color={FeatureThemes.orange}
             />
           </div>
           <div className="md:row-span-2">
@@ -83,7 +83,7 @@ export default function IndexRoute({ posts }: Props) {
               imagePath="/static/images/pages/index/room2.jpg"
               buttonCTA="Get app"
               buttonLink="http://google.com"
-              color="gray"
+              color={FeatureThemes.green}
             />
           </div>
           <div className="md:row-span-2">
@@ -93,7 +93,7 @@ export default function IndexRoute({ posts }: Props) {
               imagePath="/static/images/pages/index/snb-image.jpg"
               buttonCTA="Get app"
               buttonLink="http://google.com"
-              color="blue"
+              color={FeatureThemes.pink}
             />
           </div>
         </div>
