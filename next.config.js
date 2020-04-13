@@ -3,6 +3,13 @@ const rehypePrism = require("@mapbox/rehype-prism");
 
 const nextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "mdx", "md"],
+  experimental: {
+    modern: true,
+    async rewrites() {
+      return [{ source: "/rss", destination: "/api/rss" }];
+    },
+    catchAllRouting: true,
+  },
   webpack(config, options) {
     config.module.rules.push({
       test: /\.(md|mdx)$/,
