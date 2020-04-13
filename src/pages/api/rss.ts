@@ -1,10 +1,13 @@
-import { GetServerSideProps } from "next";
-import { FrontMatter } from "../lib/blog-engine";
-import siteConfig from "../../site.config";
+import { NextApiRequest, NextApiResponse } from "next";
+import { FrontMatter } from "../../lib/blog-engine";
+import siteConfig from "../../../site.config";
 
-export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
+export default function rssApiRoute(
+  req: NextApiRequest,
+  res: NextApiResponse<string>
+) {
   const hostname = req.headers.host;
-  const { getPosts } = require("../lib/blog-engine");
+  const { getPosts } = require("../../lib/blog-engine");
   res.setHeader("Content-Type", "text/xml");
   res.write(`<?xml version="1.0" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -32,9 +35,4 @@ ${getPosts()
 </rss>
 `);
   res.end();
-  return { props: { posts: getPosts() } };
-};
-
-export default function RSS() {
-  return <></>;
 }
