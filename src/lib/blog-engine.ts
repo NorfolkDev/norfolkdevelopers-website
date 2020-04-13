@@ -52,10 +52,10 @@ export type FrontMatter = {
   title?: string;
   body: string;
   path: string;
-  date?: string;
+  date: string;
   tags?: string[];
   author?: string[];
-  excerpt?: string[];
+  excerpt?: string;
   draft?: boolean;
 };
 
@@ -70,6 +70,7 @@ function getPostData(posts: string[]): FrontMatter[] {
     const { content, data } = parseFrontMatter(file);
 
     return {
+      date: "",
       ...data,
       body: content,
       path:
@@ -92,10 +93,8 @@ export function getPosts(useCache?: boolean) {
   const posts = getPostData(postPaths);
   posts
     .sort(
-      (a, b) =>
-        // TODO type front matter import
-        // @ts-ignore
-        new Date(b.date).getTime() - new Date(a.date).getTime()
+      (a: FrontMatter, b: FrontMatter) =>
+        new Date(b.date || "").getTime() - new Date(a.date).getTime()
     )
     .filter((post) => !post.draft);
   cache.posts = posts;
