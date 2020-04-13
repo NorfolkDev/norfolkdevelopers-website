@@ -25,8 +25,8 @@ ${getPosts()
       <guid>https://${hostname}${post.path}</guid>
       <pubDate>${post.date}</pubDate>
       <description><![CDATA[
-        <p>${post.excerpt}
-        <a href="https://${hostname}${post.path}">&nearr;</a></p>
+        ${post.excerpt || post.body}
+        <a href="https://${hostname}${post.path}">Read more</a>
       ]]></description>
     </item>`
   )
