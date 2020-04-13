@@ -4,16 +4,11 @@ import RSS from "rss";
 import { getPosts } from "./blog-engine";
 import siteConfig from "../../site.config";
 
-// const fs = require("fs");
-// const path = require("path");
-// const RSS = require("rss");
-// const getPosts = require("./blog-engine").getPosts;
-
 const previewItems = getPosts(true);
 
 function generate(outputPath: string) {
   const feed = new RSS({
-    title: "Next.js Blog",
+    title: siteConfig.siteName,
     site_url: siteConfig.rootUrl,
     feed_url: siteConfig.rootUrl + "/feed.xml",
   });
@@ -34,5 +29,4 @@ function generate(outputPath: string) {
   fs.writeFileSync(path.join(outputPath, "feed.xml"), rss);
 }
 
-// generate("./public/static/");
 export default generate;
