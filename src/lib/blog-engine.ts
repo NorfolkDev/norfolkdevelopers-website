@@ -89,12 +89,13 @@ export function getPosts(useCache?: boolean) {
   console.log(`${TAG} scanning for posts`, `pages/${POSTS_DIRECTORY_NAME}/**`);
   const postPaths = getPostPaths();
   postPaths.forEach((path) => console.log(`${TAG} -`, path));
-  const posts = getPostData(postPaths)
+  const posts = getPostData(postPaths);
+  posts
     .sort(
       (a, b) =>
         // TODO type front matter import
         // @ts-ignore
-        new Date(b.date).getMilliseconds() - new Date(a.date).getMilliseconds()
+        new Date(b.date).getTime() - new Date(a.date).getTime()
     )
     .filter((post) => !post.draft);
   cache.posts = posts;
