@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
     "start": "next start",
-    "build": "next build && next export",
+    "build:rss": "npx tsc --project tsconfig.rss.json && node built/src/lib/build-rss.js",
+    "build": "next build && next export && npm run build:rss",
     "export": "next export"
   },
   "author": "",

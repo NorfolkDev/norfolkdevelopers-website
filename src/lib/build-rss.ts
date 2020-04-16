@@ -1,8 +1,15 @@
-import * as fs from "fs";
+import fs from "fs";
 import path from "path";
 import RSS from "rss";
 import { getPosts } from "./blog-engine";
+// @ts-ignore
 import siteConfig from "../../site.config";
+
+// const fs = require("fs");
+// const path = require("path");
+// const RSS = require("rss");
+// const { getPosts } = require("./blog-engine");
+// const siteConfig = require("../../site.config");
 
 const previewItems = getPosts(true);
 
@@ -13,7 +20,7 @@ function generate(outputPath: string) {
     feed_url: siteConfig.rootUrl + "/feed.xml",
   });
 
-  previewItems.map((post) => {
+  previewItems.map((post: any) => {
     feed.item({
       title: post.title || "",
       url: siteConfig.rootUrl + post.path,
@@ -29,4 +36,4 @@ function generate(outputPath: string) {
   fs.writeFileSync(path.join(outputPath, "feed.xml"), rss);
 }
 
-export default generate;
+generate("./public");
