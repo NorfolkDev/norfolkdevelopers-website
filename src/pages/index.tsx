@@ -83,7 +83,7 @@ export default function IndexRoute({ posts }: Props) {
             <FeatureCard
               title="Featured app"
               description="Awesome app used by people."
-              imagePath="/static/images/pages/index/snb-image.jpg"
+              imagePath="/static/images/pages/index/room1.jpg"
               buttonCTA="Get app"
               buttonLink="http://google.com"
               color={FeatureThemes.pink}
@@ -96,9 +96,7 @@ export default function IndexRoute({ posts }: Props) {
           </h2>
           <span className="inline-block "></span>
           <Link href="/words">
-            <a className="ml-auto text-foreground-secondary">
-              All posts &raquo;
-            </a>
+            <a className="ml-auto text-foreground-primary">All posts &raquo;</a>
           </Link>
         </header>
         <ul className="-mx-4">

@@ -79,6 +79,7 @@ export default function FeatureCard({
         <img
           className="object-cover h-full w-full opacity-50"
           src={imagePath}
+          alt={description}
         />
       )}
       <div
