@@ -44,6 +44,7 @@ function getPostPaths(dir: string = "/"): string[] {
     ...files
       .filter((file) => !isFile(file))
       .map((file) => getPostPaths(file))
+      // @ts-ignore
       .flat(),
   ];
 }
