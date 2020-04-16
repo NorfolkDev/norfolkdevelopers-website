@@ -84,7 +84,7 @@ export default function FeatureCard({
       <div
         className={`h-full w-full absolute inset-0 opacity-75 ${theme.bgOverlay}`}
       ></div>
-      <div className="w-full absolute bottom-0 p-6">
+      <div className="w-full absolute bottom-0 p-4">
         <h3
           className={`font-bold text-2xl tracking-tighter ${theme.textHeader}`}
         >

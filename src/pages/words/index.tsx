@@ -27,11 +27,7 @@ export default function WordsRoute({ posts }: Props) {
       <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
         <ul className="-mx-4">
           {posts.map((post) => (
-            <Link href={post.path || "/"}>
-              <a>
-                <PostCard post={post} />
-              </a>
-            </Link>
+            <PostCard key={post.path} post={post} />
           ))}
         </ul>
       </main>

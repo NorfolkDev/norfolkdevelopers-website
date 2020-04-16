@@ -20,11 +20,9 @@ export default function Layout({ children, location }: Props) {
   const darkMode = useDarkMode(false);
   const router = useRouter();
 
-  console.log("router", router.pathname);
-
   return (
     <div
-      className={`text-foreground-primary px-4 bg-background-primary duration-200 border-t-2 border-pink-500`}
+      className={`text-foreground-primary px-4 bg-background-primary duration-200 border-t-0 border-pink-500`}
     >
       <Head>
         <title>{siteConfig.siteName}</title>
@@ -50,11 +48,11 @@ export default function Layout({ children, location }: Props) {
               <Link href={navLink.url} key={navLink.label}>
                 <a
                   className={
-                    "px-2 md:px-3 font-semibold " +
+                    "px-2 md:px-3 font-semibold hover:text-pink-500 " +
                     `${
                       router.pathname.includes(navLink.url)
                         ? "border-b-4 pb-2 border-pink-500"
-                        : "text-foreground-secondary hover:text-foreground-primary "
+                        : "text-foreground-secondary"
                     }`
                   }
                 >
@@ -67,14 +65,16 @@ export default function Layout({ children, location }: Props) {
             onClick={() => darkMode.toggle()}
             id="toggleTheme"
             aria-pressed={darkMode.value}
-            className="ml-auto"
+            className="ml-auto p-2 inline-block transform hover:-rotate-180 duration-300 ease-in-out "
           >
             {darkMode.value ? "☀️" : "😎"}
           </button>
         </header>
         <main className="flex-grow">{children}</main>
         <footer className="my-6 border-border-primary py-4 text-base text-foreground-secondary text-center">
-          👽
+          <span className="inline-block p-2 transform rotate-0 hover:-rotate-180 duration-500 ease-in-out cursor-pointer">
+            👽
+          </span>
         </footer>
       </div>
     </div>

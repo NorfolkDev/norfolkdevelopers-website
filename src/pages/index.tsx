@@ -22,22 +22,34 @@ export default function IndexRoute({ posts }: Props) {
         <title>{siteConfig.siteName}</title>
       </Head>
       <main className="mt-12 md:mt-6">
-        <p className="tracking-tight leading-tight text-2xl md:text-4xl">
-          Hello, I'm Shaun. I <strong>build software</strong> for a living and
-          pretend to have time to <strong>write music and words</strong>.
+        <p className="hashtag tracking-tight leading-tight text-2xl md:text-5xl">
+          Hello, I'm Shaun. I build{" "}
+          <span className="border-b-4 font-bold border-blue-500">software</span>{" "}
+          for a living and pretend to have time to write{" "}
+          <a
+            href="https://soundcloud.com/shaunchurch"
+            className="border-b-4 font-bold border-green-500"
+          >
+            music
+          </a>{" "}
+          and{" "}
+          <Link href="/words">
+            <a className="border-b-4 font-bold border-yellow-500">words</a>
+          </Link>
+          .
         </p>
 
         <p className="tracking-tight text-lg mt-6 mb-12 md:text-xl">
           –{" "}
           <a
-            className="text-blue-600 hover:text-pink-600"
+            className="text-pink-500 hover:text-gray-600"
             href="https://twitter.com/shaunchurch"
           >
             @shaunchurch
           </a>
         </p>
         <header className="flex flex-row items-center">
-          <h2 className="text-base uppercase tracking-widest my-6 text-foreground-secondary">
+          <h2 className="text-base uppercase border-b-4 border-background-secondary tracking-widest my-6 text-foreground-secondary">
             Featured projects
           </h2>
           {/* <Link href="/words">
@@ -63,7 +75,7 @@ export default function IndexRoute({ posts }: Props) {
               description="Shhh. Get live lyrics from last.fm to your desktop."
               imagePath="/static/images/pages/index/room2.jpg"
               buttonCTA="Get app"
-              buttonLink="http://google.com"
+              buttonLink="https://github.com/shaunchurch/lastfm-lyricsheet"
               color={FeatureThemes.green}
             />
           </div>
@@ -73,15 +85,16 @@ export default function IndexRoute({ posts }: Props) {
               description="Awesome app used by people."
               imagePath="/static/images/pages/index/snb-image.jpg"
               buttonCTA="Get app"
-              buttonLink="https://github.com/shaunchurch/lastfm-lyricsheet/releases/tag/v0.1.0"
+              buttonLink="http://google.com"
               color={FeatureThemes.pink}
             />
           </div> */}
         </div>
         <header className="flex flex-row items-center">
-          <h2 className="text-base uppercase tracking-widest my-6 text-foreground-secondary">
+          <h2 className="text-base uppercase border-b-4 border-background-secondary tracking-widest my-8 text-foreground-secondary">
             Latest posts
           </h2>
+          <span className="inline-block "></span>
           <Link href="/words">
             <a className="ml-auto text-foreground-secondary">
               All posts &raquo;
@@ -90,7 +103,7 @@ export default function IndexRoute({ posts }: Props) {
         </header>
         <ul className="-mx-4">
           {posts.map((post) => (
-            <PostCard post={post} />
+            <PostCard key={post.path} post={post} />
           ))}
         </ul>
       </main>

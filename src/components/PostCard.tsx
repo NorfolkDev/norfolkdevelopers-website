@@ -26,7 +26,7 @@ export default function PostCard({ post }: Props) {
             </h2>
           </a>
         </Link>
-        <p className="text-foreground-secondary text-lg mt-4">{post.excerpt}</p>
+        <p className="text-foreground-secondary text-lg mt-2">{post.excerpt}</p>
       </div>
     </li>
   );
