@@ -1,5 +1,5 @@
 const siteConfig = {
-  siteName: "://newblog.com",
+  siteName: "~/shaun.church",
   rootUrl: "https://next-blog.shaun.now.sh",
   description: "This is a blog about things.",
   postsDirectory: "words",

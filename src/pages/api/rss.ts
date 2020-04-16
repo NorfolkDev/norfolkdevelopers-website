@@ -19,7 +19,7 @@ export default function rssApiRoute(
     <language>en</language>
 ${getPosts()
   .map(
-    (post: FrontMatter) => `      <item>
+    (post: FrontMatter) => `<item>
       <title>${post.title}</title>
       <link>https://${hostname}${post.path}</link>
       <guid>https://${hostname}${post.path}</guid>

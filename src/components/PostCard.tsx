@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FrontMatter } from "../lib/blog-engine";
 import { dateFormat } from "../lib/date-functions";
 import TagList from "../components/TagList";
@@ -8,18 +9,24 @@ type Props = {
 
 export default function PostCard({ post }: Props) {
   return (
-    <li className="flex flex-col md:flex-row border-green-300 bg-background-secondary border-l md:rounded mb-6 py-4 px-4">
-      <div className="mr-6 w-full mb-4 md:mb-0 md:w-2/12">
+    <li className="flex flex-col md:flex-row mb-6 py-4 px-4 hover:border rounded">
+      <div className="mr-6 w-full mb-1 md:mt-2 md:mb-0 md:w-2/12">
         {post.tags && <TagList tags={post.tags} />}
       </div>
       <div className="flex flex-col w-10/12">
-        <h2 className="text-2xl tracking-tight">{post.title}</h2>
         {post.date && (
-          <span className="inline text-foreground-secondary text-sm font-bold">
+          <span className="text-foreground-secondary text-sm">
             {dateFormat(new Date(post.date))}
           </span>
         )}
-        <p className="text-foreground-primary mt-4">{post.excerpt}</p>
+        <Link href={post.path || "/"}>
+          <a>
+            <h2 className="text-2xl text-foreground-primary font-bold tracking-tight hover:text-pink-500">
+              {post.title}
+            </h2>
+          </a>
+        </Link>
+        <p className="text-foreground-secondary text-lg mt-4">{post.excerpt}</p>
       </div>
     </li>
   );

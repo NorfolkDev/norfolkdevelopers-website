@@ -15,15 +15,16 @@ type Props = {
 };
 
 export default function WordsRoute({ posts }: Props) {
+  const sum = 1 + 1;
   return (
     <Layout location="words">
       <Head>
         <title>{siteConfig.siteName}/words </title>
       </Head>
-      <h1 className="inset mt-8 text-3xl font-extrabold pb-4 lg:max-w-3xl mr-auto ml-auto">
+      <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
         /words
       </h1>
-      <main className="inset mt-4 border-gray-600 important:mr-auto important:ml-auto block">
+      <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
         <ul className="-mx-4">
           {posts.map((post) => (
             <Link href={post.path || "/"}>

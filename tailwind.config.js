@@ -5,6 +5,7 @@ module.exports = {
         foreground: {
           primary: "var(--color-text-primary)",
           secondary: "var(--color-text-secondary)",
+          tertiary: "var(--color-text-tertiary)",
         },
         background: {
           primary: "var(--color-bg-primary)",

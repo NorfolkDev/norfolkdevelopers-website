@@ -23,80 +23,76 @@ export default function IndexRoute({ posts }: Props) {
       </Head>
       <main className="mt-12 md:mt-6">
         <p className="tracking-tight leading-tight text-2xl md:text-4xl">
-          Hello, this is the <strong>awkward introduction</strong> blurb on the
-          website.
+          Hello, I'm Shaun. I <strong>build software</strong> for a living and
+          pretend to have time to <strong>write music and words</strong>.
         </p>
 
         <p className="tracking-tight text-lg mt-6 mb-12 md:text-xl">
-          Some further explanation to clarify the poorly written sentence above,
-          maybe follow on{" "}
+          –{" "}
           <a
             className="text-blue-600 hover:text-pink-600"
-            href="https://twitter.com"
+            href="https://twitter.com/shaunchurch"
           >
-            @twitter
+            @shaunchurch
           </a>
-          .
         </p>
-
-        <header className="flex flex-row items-center">
-          <h2 className="text-base uppercase tracking-widest my-6 text-foreground-secondary">
-            Latest posts
-          </h2>
-          <Link href="/words">
-            <a className="ml-auto">All posts &raquo;</a>
-          </Link>
-        </header>
-        <ul className="-mx-4">
-          {posts.map((post) => (
-            <Link href={post.path || "/"}>
-              <a>
-                <PostCard post={post} />
-              </a>
-            </Link>
-          ))}
-        </ul>
-
         <header className="flex flex-row items-center">
           <h2 className="text-base uppercase tracking-widest my-6 text-foreground-secondary">
             Featured projects
           </h2>
-          <Link href="/words">
-            <a className="ml-auto">All projects &raquo;</a>
-          </Link>
+          {/* <Link href="/words">
+            <a className="ml-auto text-foreground-secondary">
+              All projects &raquo;
+            </a>
+          </Link> */}
         </header>
-        <div className="md:grid md:grid-cols-2 md:grid-rows-4 md:gap-4 -mx-4">
-          <div className="row-span-4">
+        <div className="md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4 -mx-4 mb-8">
+          <div className="row-span-2">
             <FeatureCard
               title="Songwriter's Notebook"
               description="Used by hundreds of songwriters all over the world to capture their creative ideas."
               imagePath="/static/images/pages/index/room1.jpg"
               buttonCTA="Buy app"
-              buttonLink="http://google.com"
-              color={FeatureThemes.orange}
+              buttonLink="https://play.google.com/store/apps/details?id=com.shaunchurch.songwriter.app"
+              color={FeatureThemes.blue}
             />
           </div>
           <div className="md:row-span-2">
             <FeatureCard
-              title="Featured app"
-              description="Awesome app used by people."
+              title="Lyric Sheet"
+              description="Shhh. Get live lyrics from last.fm to your desktop."
               imagePath="/static/images/pages/index/room2.jpg"
               buttonCTA="Get app"
               buttonLink="http://google.com"
               color={FeatureThemes.green}
             />
           </div>
-          <div className="md:row-span-2">
+          {/* <div className="md:row-span-2">
             <FeatureCard
               title="Featured app"
               description="Awesome app used by people."
               imagePath="/static/images/pages/index/snb-image.jpg"
               buttonCTA="Get app"
-              buttonLink="http://google.com"
+              buttonLink="https://github.com/shaunchurch/lastfm-lyricsheet/releases/tag/v0.1.0"
               color={FeatureThemes.pink}
             />
-          </div>
+          </div> */}
         </div>
+        <header className="flex flex-row items-center">
+          <h2 className="text-base uppercase tracking-widest my-6 text-foreground-secondary">
+            Latest posts
+          </h2>
+          <Link href="/words">
+            <a className="ml-auto text-foreground-secondary">
+              All posts &raquo;
+            </a>
+          </Link>
+        </header>
+        <ul className="-mx-4">
+          {posts.map((post) => (
+            <PostCard post={post} />
+          ))}
+        </ul>
       </main>
     </Layout>
   );

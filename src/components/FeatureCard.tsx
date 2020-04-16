@@ -73,7 +73,7 @@ export default function FeatureCard({
   const theme = getTheme(color);
   return (
     <div
-      className={`relative overflow-hidden md:rounded h-full ${theme.border}`}
+      className={`relative overflow-hidden md:rounded h-full ${theme.border} shadow-lg`}
     >
       {imagePath && (
         <img

@@ -6,9 +6,9 @@ import useDarkMode from "use-dark-mode";
 import { useRouter } from "next/router";
 
 const navLinks = [
+  // { url: "/apps", label: "apps" },
+  // { url: "/music", label: "music" },
   { url: `/${config.postsDirectory}`, label: "words" },
-  { url: "/apps", label: "apps" },
-  { url: "/music", label: "music" },
 ];
 
 type Props = {
@@ -19,6 +19,8 @@ type Props = {
 export default function Layout({ children, location }: Props) {
   const darkMode = useDarkMode(false);
   const router = useRouter();
+
+  console.log("router", router.pathname);
 
   return (
     <div
@@ -32,21 +34,27 @@ export default function Layout({ children, location }: Props) {
 
       <div className="flex flex-col min-h-screen ml-auto mr-auto w-full md:w-4/5 lg:max-w-3xl">
         <header className="mt-6 md:mt-16 md:mb-16 md:flex fade-out">
-          <h1 className="inset font-extrabold tracking-tight text-2xl md:text-3xl hover:text-pink-500">
+          <h1 className="font-extrabold tracking-tight text-2xl mr-4 md:text-3xl hover:text-pink-500">
             <Link href="/">
-              <a>{config.siteName}</a>
+              <a
+                className={
+                  router.pathname === "/" ? "border-b-4 border-pink-500" : ""
+                }
+              >
+                {config.siteName}
+              </a>
             </Link>
           </h1>
-          <nav className="inset text-lg font-normal align-middle justify-center self-center">
+          <nav className="text-lg font-normal align-middle justify-center self-center">
             {navLinks.map((navLink) => (
               <Link href={navLink.url} key={navLink.label}>
                 <a
                   className={
-                    "pr-2 pl-2 font-semibold " +
+                    "px-2 md:px-3 font-semibold " +
                     `${
-                      router.pathname === navLink.label
-                        ? "text-pink-500"
-                        : "text-teal-500"
+                      router.pathname.includes(navLink.url)
+                        ? "border-b-4 pb-2 border-pink-500"
+                        : "text-foreground-secondary hover:text-foreground-primary "
                     }`
                   }
                 >
@@ -54,14 +62,19 @@ export default function Layout({ children, location }: Props) {
                 </a>
               </Link>
             ))}
-            <button onClick={() => darkMode.toggle()}>
-              {darkMode.value ? "☀️" : "😎"}
-            </button>
           </nav>
+          <button
+            onClick={() => darkMode.toggle()}
+            id="toggleTheme"
+            aria-pressed={darkMode.value}
+            className="ml-auto"
+          >
+            {darkMode.value ? "☀️" : "😎"}
+          </button>
         </header>
         <main className="flex-grow">{children}</main>
-        <footer className="inset my-6 border-t border-border-primary py-4 text-base text-foreground-secondary text-center">
-          Made by 👽
+        <footer className="my-6 border-border-primary py-4 text-base text-foreground-secondary text-center">
+          👽
         </footer>
       </div>
     </div>
