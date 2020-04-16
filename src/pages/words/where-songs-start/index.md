@@ -2,7 +2,7 @@
 date: "2016-05-17T08:35:21+01:00"
 title: "Where songs start"
 path: "/words/where-songs-start"
-tags: thoughts
+tags: music, thoughts
 excerpt: I've not played many gigs this year, so I've not spent as much time practicing as I did last year.
 ---
 
