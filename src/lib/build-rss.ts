@@ -17,7 +17,7 @@ function generate(outputPath: string) {
   const feed = new RSS({
     title: siteConfig.siteName,
     site_url: siteConfig.rootUrl,
-    feed_url: siteConfig.rootUrl + "/feed.xml",
+    feed_url: siteConfig.rootUrl + "/rss.xml",
   });
 
   previewItems.map((post: any) => {
