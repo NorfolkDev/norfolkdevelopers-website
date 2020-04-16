@@ -28,6 +28,12 @@ export default function Layout({ children, location }: Props) {
         <title>{siteConfig.siteName}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={siteConfig.description} />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed for shaun.church"
+          href="/rss.xml"
+        />
       </Head>
 
       <div className="flex flex-col min-h-screen ml-auto mr-auto w-full md:w-4/5 lg:max-w-3xl">
