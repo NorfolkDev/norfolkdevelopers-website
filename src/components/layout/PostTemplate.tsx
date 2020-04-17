@@ -16,12 +16,16 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
     <Layout>
       <Head>
         <title>{post.title}</title>
+        <meta
+          name="description"
+          content={post.excerpt || siteConfig.description}
+        />
       </Head>
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
         <header className="inset mb-12">
           <TagList tags={post.tags} />
 
-          <h1 className="hashtag mt-2 mb-1 text-4xl md:text-5xl font-bold leading-tight">
+          <h1 className="hashtag mt-2 mb-1 text-4xl md:text-6xl font-bold leading-tight">
             {post.title}
           </h1>
           {post.date && (
