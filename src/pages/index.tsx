@@ -71,11 +71,11 @@ export default function IndexRoute({ posts }: Props) {
           </div>
           <div className="md:row-span-2">
             <FeatureCard
-              title="Lyric Sheet"
-              description="Shhh. Get live lyrics from last.fm to your desktop."
-              imagePath="/static/images/pages/index/room2.jpg"
-              buttonCTA="Get app"
-              buttonLink="https://github.com/shaunchurch/lastfm-lyricsheet"
+              title="Crypto Litmus"
+              description="Visual cryptocurrency market data at a glance."
+              imagePath="/static/images/pages/index/crypto.jpg"
+              buttonCTA="Visit website"
+              buttonLink="https://cryptolitmus.com"
               color={FeatureThemes.green}
             />
           </div>
