@@ -10,7 +10,7 @@ excerpt: It's hard to build cloud-synced collaborative apps if you genuinely car
 
 ## Making apps for making music
 
-I write songs. It's something I've done since I was a teenager. It's a theraputic process. The main benefit comes from the process itself. It's cathartic. Most of the time no one hears these songs but me (and maybe the guy who lives upstairs).
+I write songs. It's something I've done since I was a teenager. It's a theraputic process. The main benefit comes from the process itself. Most of the time no one hears these songs but me (and maybe the guy who lives upstairs).
 
 In 2014 I released an [Android app created to help capture ideas for songs](https://play.google.com/store/apps/details?id=com.shaunchurch.songwriter.app). It's for jotting down ideas for lyrics and recording snippets of audio to go with it: playing guitar, humming a melody, recording an improvisation to review later.
 
