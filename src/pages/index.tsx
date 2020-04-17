@@ -58,7 +58,7 @@ export default function IndexRoute({ posts }: Props) {
             </a>
           </Link> */}
         </header>
-        <div className="md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4 -mx-4 mb-8">
+        <div className="grid md:grid-cols-2 md:grid-rows-2 gap-4 -mx-4 mb-8">
           <div className="row-span-2">
             <FeatureCard
               title="Songwriter's Notebook"

@@ -13,7 +13,7 @@ export default function PostCard({ post }: Props) {
       <div className="mr-6 w-full mb-1 md:mt-2 md:mb-0 md:w-2/12">
         {post.tags && <TagList tags={post.tags} />}
       </div>
-      <div className="flex flex-col w-10/12">
+      <div className="flex flex-col md:w-10/12">
         {post.date && (
           <span className="text-foreground-secondary text-sm">
             {dateFormat(new Date(post.date))}

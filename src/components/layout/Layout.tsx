@@ -22,7 +22,7 @@ export default function Layout({ children, location }: Props) {
 
   return (
     <div
-      className={`text-foreground-primary px-4 bg-background-primary duration-200 border-t-0 border-pink-500`}
+      className={`text-foreground-primary px-8 bg-background-primary duration-200 border-t-0 border-pink-500`}
     >
       <Head>
         <title>{siteConfig.siteName}</title>
@@ -37,7 +37,7 @@ export default function Layout({ children, location }: Props) {
       </Head>
 
       <div className="flex flex-col min-h-screen ml-auto mr-auto w-full md:w-4/5 lg:max-w-3xl">
-        <header className="mt-6 md:mt-16 md:mb-16 md:flex fade-out">
+        <header className="mt-6 md:mt-16 md:mb-16 flex fade-out">
           <h1 className="font-extrabold tracking-tight text-2xl mr-4 md:text-3xl hover:text-pink-500">
             <Link href="/">
               <a
