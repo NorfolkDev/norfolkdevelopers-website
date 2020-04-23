@@ -25,7 +25,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
         <header className="inset mb-12">
           <TagList tags={post.tags} />
 
-          <h1 className="hashtag mt-2 mb-1 text-4xl md:text-6xl font-bold leading-tight">
+          <h1 className="hashtag mt-2 mb-1 text-4xl md:text-5xl font-bold leading-tight">
             {post.title}
           </h1>
           {post.date && (

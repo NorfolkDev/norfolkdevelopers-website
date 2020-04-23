@@ -1,11 +1,11 @@
 const siteConfig = {
-  siteName: "://shaun.church",
-  rootUrl: "https://next-blog.shaun.now.sh",
-  description: "This is a blog about things.",
-  postsDirectory: "words",
+  siteName: "nor(DEV):",
+  rootUrl: "",
+  description: "Norfolk Developers",
+  postsDirectory: "posts",
   features: {
-    authorPages: false,
-    tagPages: false,
+    authorPages: true,
+    tagPages: true,
   },
   settings: {
     numLatestPosts: 3, // the number of posts to show in latest posts

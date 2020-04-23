@@ -22,22 +22,15 @@ function isFile(path: string): boolean {
   return path.includes(".");
 }
 
+// File types to load
+const FILE_TYPE_REGEX = /\.(tsx|ts|js|jsx|DS_Store|jpeg|jpg|png)$/;
+
 // recursively load posts in directory
 function getPostPaths(dir: string = "/"): string[] {
   const files = fs
     .readdirSync(`${POSTS_DIRECTORY}${dir}`)
     .map((file) => `${dir}${dir !== "/" ? "/" : ""}${file}`)
-    .filter(
-      (file) =>
-        !file.endsWith(".tsx") &&
-        !file.endsWith(".ts") &&
-        !file.endsWith(".js") &&
-        !file.endsWith(".jsx") &&
-        !file.endsWith(".DS_Store") &&
-        !file.endsWith(".jpg") &&
-        !file.endsWith(".png") &&
-        !file.endsWith(".jpeg")
-    );
+    .filter((file) => !file.match(FILE_TYPE_REGEX));
 
   return [
     ...files.filter((file) => isFile(file)),
@@ -103,32 +96,43 @@ export function getPosts(useCache?: boolean) {
 }
 
 export function getTags() {
-  return getPosts(true).reduce((acc, current, index) => {
+  return getPosts(true).reduce((acc, current) => {
     if (!current.tags) {
       return acc;
     }
+
     current.tags.forEach((tag) => {
-      return {
-        ...acc,
-        [tag]: current,
-      };
+      const tagSlug = slugify(tag);
+      if (!acc.hasOwnProperty(tag)) {
+        // @ts-ignore
+        acc[tagSlug] = [];
+      }
+
+      // @ts-ignore
+      acc[tagSlug].push(current);
     });
+
     return acc;
-  }, []);
+  }, {});
 }
 
 export function getAuthors() {
-  return getPosts(true).reduce((acc, current, index) => {
+  return getPosts(true).reduce((acc, current) => {
     if (!current.author) {
       return acc;
     }
-    current.author.forEach((authorName) => {
-      const authorSlug = slugify(authorName);
-      return {
-        ...acc,
-        [authorSlug]: current,
-      };
+
+    current.author.forEach((author) => {
+      const authorSlug = slugify(author);
+      if (!acc.hasOwnProperty(author)) {
+        // @ts-ignore
+        acc[authorSlug] = [];
+      }
+
+      // @ts-ignore
+      acc[authorSlug].push(current);
     });
+
     return acc;
-  }, []);
+  }, {});
 }

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { GetStaticProps } from "next";
 import { slugify } from "../../lib/slugify";
-import { FrontMatter } from "../../lib/blog-engine";
+import { FrontMatter, getAuthors } from "../../lib/blog-engine";
 import Layout from "../../components/layout/Layout";
 import config from "../../../site.config";
 
@@ -15,6 +15,7 @@ export async function getStaticPaths() {
       fallback: false,
     };
   }
+  console.log(getAuthors());
 
   return {
     paths:
@@ -26,15 +27,12 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { getAuthors } = require("../../lib/blog-engine");
-  let authorSlug =
-    params && params.authorSlug[0]
-      ? params.authorSlug[0] || `${params.authorSlug}`
-      : "asd";
   return {
     props: {
-      posts: getAuthors()[authorSlug],
-      slug: authorSlug,
+      // @ts-ignore
+      posts: getAuthors()[params.authorSlug],
+      // @ts-ignore
+      slug: params.authorSlug,
     },
   };
 };

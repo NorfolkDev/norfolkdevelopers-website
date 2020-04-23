@@ -1,18 +1,8 @@
-.hashtag:before {
-  content: "#";
-  @apply mr-2 text-pink-500;
-}
-
 .typography {
   @apply text-xl;
 
   h1 {
     @apply font-extrabold text-4xl mb-2 inline-block;
-  }
-
-  h2:before {
-    content: "##";
-    @apply mr-2 text-pink-500;
   }
 
   h2 {

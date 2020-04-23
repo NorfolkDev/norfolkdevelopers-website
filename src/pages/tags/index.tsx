@@ -5,6 +5,7 @@ import { GetStaticProps } from "next";
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { getTags } = require("../../lib/blog-engine");
   const tags = Object.keys(getTags());
+  console.log("tags", tags);
 
   return {
     props: {

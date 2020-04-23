@@ -8,6 +8,7 @@ type Props = {
 };
 
 export default function PostCard({ post }: Props) {
+  console.log(post);
   return (
     <li className="flex flex-col md:flex-row mb-6 py-4 px-4 hover:border rounded">
       <div className="mr-6 w-full mb-1 md:mt-2 md:mb-0 md:w-2/12">
@@ -19,9 +20,9 @@ export default function PostCard({ post }: Props) {
             {dateFormat(new Date(post.date))}
           </span>
         )}
-        <Link href={post.path || "/"}>
+        <Link href={post.path || ""}>
           <a>
-            <h2 className="text-2xl text-foreground-primary font-bold tracking-tight hover:text-pink-500">
+            <h2 className="text-2xl text-foreground-primary font-bold tracking-tight hover:text-red-500">
               {post.title}
             </h2>
           </a>

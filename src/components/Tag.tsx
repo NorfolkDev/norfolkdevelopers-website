@@ -16,8 +16,8 @@ const TAG_COLOURS: { [key: string]: TagTheme } = {
     foreground: "text-pink-800",
   },
   dev: {
-    background: "bg-green-200",
-    foreground: "text-green-800",
+    background: "bg-orange-200",
+    foreground: "text-orange-800",
   },
   test: {
     background: "bg-blue-200",
@@ -52,7 +52,7 @@ export default function Tag(props: Props) {
           <a> #{tag} </a>
         </Link>
       ) : (
-        <a> #{tag} </a>
+        <span> #{tag} </span>
       )}
     </span>
   );

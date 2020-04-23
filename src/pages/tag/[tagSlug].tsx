@@ -13,7 +13,6 @@ export async function getStaticPaths() {
   const paths = Object.keys(getTags()).map((tag) => {
     return { params: { tagSlug: tag } };
   });
-  console.log("paths", paths);
 
   return {
     paths: paths,
@@ -22,16 +21,10 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log("params", params);
-  let tagSlug =
-    params && params.tagSlug[0]
-      ? params.tagSlug[0] || `${params.tagSlug}`
-      : "asd";
-  console.log("tagslug", tagSlug);
-
   return {
     props: {
-      posts: [], //getTags()[tagSlug],
+      // @ts-ignore
+      posts: getTags()[params.tagSlug],
     },
   };
 };
@@ -42,11 +35,9 @@ type Props = {
 export default function TagSlug({ posts }: Props) {
   return (
     <div>
-      yo
-      {/* Tagslug
       {posts.map((post) => (
-        <div>{post.title}</div>
-      ))} */}
+        <div key={post.title}>{post.title}</div>
+      ))}
     </div>
   );
 }
