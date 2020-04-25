@@ -68,6 +68,32 @@ export default function IndexRoute({ posts }: Props) {
           ))}
         </ul>
       </section>
+      <section>
+        <header className="flex flex-row items-center mt-8">
+          <h2 className="text-base uppercase border-b-4 border-background-secondary tracking-widest my-8 text-foreground-secondary"></h2>
+        </header>
+        <div className="grid grid-cols-2">
+          <div>
+            <img
+              src="/static/images/pages/index/magazine2020.jpg"
+              alt="nor dev magazine"
+              className="w-40 md:w-56 float-right rounded"
+            />
+          </div>
+          <div className="p-8">
+            <p className="text-2xl font-bold">Download the Magazine</p>
+            <p className="text-foreground-secondary">
+              Articles from across the tech scene.
+            </p>
+            <a
+              className=" text-green-700 bg-green-200 mt-2 rounded p-2 inline-block font-bold"
+              href="/"
+            >
+              Download PDF
+            </a>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
