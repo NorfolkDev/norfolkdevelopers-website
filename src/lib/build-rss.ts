@@ -2,14 +2,7 @@ import fs from "fs";
 import path from "path";
 import RSS from "rss";
 import { getPosts } from "./blog-engine";
-// @ts-ignore
 import siteConfig from "../../site.config";
-
-// const fs = require("fs");
-// const path = require("path");
-// const RSS = require("rss");
-// const { getPosts } = require("./blog-engine");
-// const siteConfig = require("../../site.config");
 
 const previewItems = getPosts(true);
 

@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { FrontMatter } from "../lib/blog-engine";
+import { PostData } from "../lib/blog-engine";
 import { dateFormat } from "../lib/date-functions";
 import TagList from "../components/TagList";
 
 type Props = {
-  post: FrontMatter;
+  post: PostData;
 };
 
 export default function PostCard({ post }: Props) {
-  console.log(post);
   return (
     <li className="flex flex-col md:flex-row mb-6 py-4 px-4 hover:border rounded">
       <div className="mr-6 w-full mb-1 md:mt-2 md:mb-0 md:w-2/12">

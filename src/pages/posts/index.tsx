@@ -2,7 +2,7 @@ import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "../../../site.config";
-import { FrontMatter } from "../../lib/blog-engine";
+import { PostData } from "../../lib/blog-engine";
 import PostCard from "../../components/PostCard";
 
 export async function getStaticProps() {
@@ -11,7 +11,7 @@ export async function getStaticProps() {
 }
 
 type Props = {
-  posts: FrontMatter[];
+  posts: PostData[];
 };
 
 export default function WordsRoute({ posts }: Props) {

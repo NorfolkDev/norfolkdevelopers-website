@@ -11,7 +11,7 @@ const POSTS_DIRECTORY = path.join(
 );
 
 type Cache = {
-  posts: FrontMatter[];
+  posts: PostData[];
   authors: any[];
   tags: any[];
 };
@@ -42,7 +42,7 @@ function getPostPaths(dir: string = "/"): string[] {
   ];
 }
 
-export type FrontMatter = {
+export type PostData = {
   title?: string;
   body: string;
   path: string;
@@ -54,7 +54,7 @@ export type FrontMatter = {
 };
 
 // load file contents and front matter
-function getPostData(posts: string[]): FrontMatter[] {
+function getPostData(posts: string[]): PostData[] {
   return posts.map((postPath) => {
     const filename = path.parse(postPath);
     const file: string = fs.readFileSync(
@@ -87,7 +87,7 @@ export function getPosts(useCache?: boolean) {
   const posts = getPostData(postPaths);
   posts
     .sort(
-      (a: FrontMatter, b: FrontMatter) =>
+      (a: PostData, b: PostData) =>
         new Date(b.date || "").getTime() - new Date(a.date).getTime()
     )
     .filter((post) => !post.draft);

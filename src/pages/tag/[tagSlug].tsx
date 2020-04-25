@@ -1,6 +1,6 @@
 import config from "../../../site.config";
 import { GetStaticProps } from "next";
-import { FrontMatter, getTags } from "../../lib/blog-engine";
+import { PostData, getTags } from "../../lib/blog-engine";
 
 export async function getStaticPaths() {
   if (!config.features.tagPages) {
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 type Props = {
-  posts: FrontMatter[];
+  posts: PostData[];
 };
 export default function TagSlug({ posts }: Props) {
   return (

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { GetStaticProps } from "next";
 import { slugify } from "../../lib/slugify";
-import { FrontMatter, getAuthors } from "../../lib/blog-engine";
+import { PostData, getAuthors } from "../../lib/blog-engine";
 import Layout from "../../components/layout/Layout";
 import config from "../../../site.config";
 
@@ -15,7 +15,6 @@ export async function getStaticPaths() {
       fallback: false,
     };
   }
-  console.log(getAuthors());
 
   return {
     paths:
@@ -38,7 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 type Props = {
-  posts: FrontMatter[];
+  posts: PostData[];
   slug: string;
 };
 export default function AuthorSlug({ posts, slug }: Props) {
@@ -57,7 +56,7 @@ export default function AuthorSlug({ posts, slug }: Props) {
     <Layout>
       <h1 className="inset">{findAuthorName(posts, slug)}</h1>
       <main className="inset">
-        {posts.map((post: FrontMatter) => (
+        {posts.map((post: PostData) => (
           <div key={post.title}>{post.title}</div>
         ))}
       </main>
