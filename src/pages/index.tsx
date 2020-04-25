@@ -87,7 +87,7 @@ export default function IndexRoute({ posts }: Props) {
             </p>
             <a
               className=" text-green-700 bg-green-200 mt-2 rounded p-2 inline-block font-bold"
-              href="/"
+              href="#"
             >
               Download PDF
             </a>
