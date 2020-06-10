@@ -1,20 +1,28 @@
 import Layout from "../components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "../../site.config";
-import { getPosts, PostData } from "@static-fns/blog";
+import { getPosts, PostData, fetcher } from "@static-fns/blog";
 import Link from "next/link";
 import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";
 
 type Props = {
   posts: PostData[];
+  initialEventData: any[];
 };
 
+const numberOfEvents = 10;
+const meetupAPIEndpoint = `https://cors-it-is.shaun.now.sh/?url=https://api.meetup.com/Norfolk-Developers-NorDev/events?&sign=true&photo-host=public&page=1&limit=${numberOfEvents}`;
+
 export async function getStaticProps() {
-  return { props: { posts: getPosts().slice(0, 3) } };
+  const initialEventData = await fetcher(meetupAPIEndpoint);
+  return {
+    props: { posts: getPosts().slice(0, 3), initialEventData },
+    unstable_revalidate: 1,
+  };
 }
 
-export default function IndexRoute({ posts }: Props) {
+export default function IndexRoute({ posts, initialEventData }: Props) {
   return (
     <Layout>
       <Head>
@@ -50,7 +58,10 @@ export default function IndexRoute({ posts }: Props) {
             All events &raquo;
           </a>
         </header>
-        <EventsList />
+        <EventsList
+          endpoint={meetupAPIEndpoint}
+          initialData={initialEventData}
+        />
       </section>
       <section>
         <header className="flex flex-row items-center mt-8">

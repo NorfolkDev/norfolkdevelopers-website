@@ -2,11 +2,15 @@ import useSWR from "swr";
 import { fetcher } from "@static-fns/blog";
 import { format } from "date-fns";
 
-export default function EventsList() {
-  const { data, error } = useSWR<MeetupEvent[]>(
-    "https://cors-it-is.shaun.now.sh/?url=https://api.meetup.com/Norfolk-Developers-NorDev/events?&sign=true&photo-host=public&page=1&limit=10",
-    fetcher
-  );
+type Props = {
+  endpoint: string; // endpoint to call for event info
+  initialData?: MeetupEvent[];
+};
+
+export default function EventsList({ initialData, endpoint }: Props) {
+  const { data, error } = useSWR<MeetupEvent[]>(endpoint, fetcher, {
+    initialData,
+  });
   if (error) return <div>Error loading events from meetup.com 🙁</div>;
   if (!data)
     return (
