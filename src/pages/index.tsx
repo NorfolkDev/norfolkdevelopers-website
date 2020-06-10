@@ -7,7 +7,7 @@ import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";
 
 type Props = {
-  posts: PostData[]; // TODO Type posts
+  posts: PostData[];
 };
 
 export async function getStaticProps() {
@@ -86,7 +86,7 @@ export default function IndexRoute({ posts }: Props) {
               Articles from across the tech scene.
             </p>
             <a
-              className=" text-green-700 bg-green-200 mt-2 rounded p-2 inline-block font-bold"
+              className="text-green-700 bg-green-200 mt-2 rounded p-2 inline-block font-bold"
               href="#"
             >
               Download PDF
