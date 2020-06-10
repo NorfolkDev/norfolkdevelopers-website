@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { PostData } from "../lib/blog-engine";
-import { dateFormat } from "../lib/date-functions";
+import { dateFormat, PostData } from "@static-fns/blog";
 import TagList from "../components/TagList";
 
 type Props = {

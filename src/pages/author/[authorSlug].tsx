@@ -1,13 +1,10 @@
 import { useCallback } from "react";
 import { GetStaticProps } from "next";
-import { slugify } from "../../lib/slugify";
-import { PostData, getAuthors } from "../../lib/blog-engine";
+import { PostData, getAuthors, slugify } from "@static-fns/blog";
 import Layout from "../../components/layout/Layout";
 import config from "../../../site.config";
 
 export async function getStaticPaths() {
-  const { getAuthors } = require("../../lib/blog-engine");
-
   // no pagesif disables
   if (!config.features.authorPages) {
     return {

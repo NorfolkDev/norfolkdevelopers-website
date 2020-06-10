@@ -1,7 +1,7 @@
 import Layout from "../components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "../../site.config";
-import { getPosts, PostData } from "../lib/blog-engine";
+import { getPosts, PostData } from "@static-fns/blog";
 import Link from "next/link";
 import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";

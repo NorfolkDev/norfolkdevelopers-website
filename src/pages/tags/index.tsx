@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 import { GetStaticProps } from "next";
-import { getTags } from "../../lib/blog-engine";
+import { getTags } from "@static-fns/blog";
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const tags = Object.keys(getTags());

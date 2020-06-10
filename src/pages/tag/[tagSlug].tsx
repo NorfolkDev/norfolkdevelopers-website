@@ -1,6 +1,6 @@
 import config from "../../../site.config";
 import { GetStaticProps } from "next";
-import { PostData, getTags } from "../../lib/blog-engine";
+import { PostData, getTags } from "@static-fns/blog";
 
 export async function getStaticPaths() {
   if (!config.features.tagPages) {

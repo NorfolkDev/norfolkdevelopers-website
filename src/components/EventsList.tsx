@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import fetcher from "../lib/fetcher";
+import { fetcher } from "@static-fns/blog";
 import { format } from "date-fns";
 
 export default function EventsList() {

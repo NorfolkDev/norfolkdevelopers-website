@@ -1,9 +1,8 @@
 import Layout from "./Layout";
 import Link from "next/link";
 import Head from "next/head";
+import { slugify, dateFormat } from "@static-fns/blog";
 import siteConfig from "../../../site.config";
-import { slugify } from "../../lib/slugify";
-import { dateFormat } from "../../lib/date-functions";
 import TagList from "../TagList";
 
 type Props = {
