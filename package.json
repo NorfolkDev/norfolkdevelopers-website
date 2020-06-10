@@ -16,10 +16,12 @@
   "dependencies": {
     "@mapbox/rehype-prism": "^0.4.0",
     "@mdx-js/loader": "^1.5.7",
+    "@static-fns/blog": "0.0.1-alpha.17",
+    "@static-fns/loader": "0.0.1-alpha.11",
     "@types/rss": "0.0.28",
     "date-fns": "^2.12.0",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.3.0",
+    "next": "^9.4.4",
     "postcss-nested": "^4.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
