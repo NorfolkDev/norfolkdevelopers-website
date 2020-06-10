@@ -25,9 +25,17 @@ const nextConfig = {
             rehypePlugins: [rehypePrism],
           },
         },
-        path.join(__dirname, "./src/lib/frontmatter-loader"),
+        {
+          loader: "@static-fns/loader",
+        },
       ],
     });
+
+    if (!options.isServer) {
+      config.node = {
+        fs: "empty",
+      };
+    }
 
     return config;
   },
