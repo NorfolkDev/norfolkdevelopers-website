@@ -25,7 +25,10 @@ export default function EventsList() {
   return (
     <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {data.slice(0, 9).map((event) => (
-        <li className="block bg-background-secondary rounded leading-tight tracking-tight">
+        <li
+          key={event.id}
+          className="block bg-background-secondary rounded leading-tight tracking-tight"
+        >
           <a href={event.link} className="p-4 block hover:outline">
             <h3 className="font-bold text-lg">📆 {event.name} </h3>
             <p className="text-foreground-secondary mt-2 font-bold">
