@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
     "start": "next start",
-    "build:rss": "npx tsc --project tsconfig.rss.json && node built/src/lib/build-rss.js",
+    "build:rss": "npx tsc --project tsconfig.rss.json && node ./built/src/rss/build-rss.js",
     "build": "next build && next export && npm run build:rss",
     "export": "next export"
   },
@@ -16,7 +16,7 @@
   "dependencies": {
     "@mapbox/rehype-prism": "^0.4.0",
     "@mdx-js/loader": "^1.5.7",
-    "@static-fns/blog": "0.0.1-alpha.17",
+    "@static-fns/blog": "0.0.1-alpha.19",
     "@static-fns/loader": "0.0.1-alpha.11",
     "@types/rss": "0.0.28",
     "date-fns": "^2.12.0",
