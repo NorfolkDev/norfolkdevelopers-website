@@ -2,8 +2,8 @@ import Layout from "./Layout";
 import Link from "next/link";
 import Head from "next/head";
 import { slugify, dateFormat } from "@static-fns/blog";
-import siteConfig from "../../../site.config";
-import TagList from "../TagList";
+import siteConfig from "site.config";
+import TagList from "src/components/TagList";
 
 type Props = {
   frontMatter: any;
@@ -37,7 +37,10 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
               by{[" "]}
               {post.author.map((author: string, i: number) => (
                 <span key={author}>
-                  <Link href={`/author/${slugify(author)}`}>
+                  <Link
+                    href="/author/[authorSlug]"
+                    as={`/author/${slugify(author)}`}
+                  >
                     <a className="underline">{author}</a>
                   </Link>
                   {i < post.author.length - 1 ? ", " : ""}
