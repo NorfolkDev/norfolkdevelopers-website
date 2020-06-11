@@ -17,8 +17,8 @@ const meetupAPIEndpoint = `https://cors-it-is.shaun.now.sh/?url=https://api.meet
 export async function getStaticProps() {
   const initialEventData = await fetcher(meetupAPIEndpoint);
   return {
-    props: { posts: getPosts().slice(0, 3), initialEventData },
-    unstable_revalidate: 1,
+    props: { posts: getPosts({ limit: 3 }), initialEventData },
+    unstable_revalidate: 60,
   };
 }
 
