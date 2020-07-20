@@ -1,7 +1,9 @@
 import { useCallback } from "react";
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import { PostData, getAuthors, slugify } from "@static-fns/blog";
 import Layout from "../../components/layout/Layout";
+import PostCard from "../../components/PostCard";
 import config from "../../../site.config";
 
 export async function getStaticPaths() {
@@ -51,11 +53,13 @@ export default function AuthorSlug({ posts, slug }: Props) {
 
   return (
     <Layout>
-      <h1 className="inset">{findAuthorName(posts, slug)}</h1>
-      <main className="inset">
-        {posts.map((post: PostData) => (
-          <div key={post.title}>{post.title}</div>
-        ))}
+      <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">Posts by: {findAuthorName(posts, slug)}</h1>
+      <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
+        <ol className="-mx-4">
+          {posts.map((post: PostData) => (
+            <PostCard key={post.path} post={post} />
+          ))}
+        </ol>
       </main>
     </Layout>
   );
