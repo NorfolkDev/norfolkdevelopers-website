@@ -5,6 +5,7 @@ import { getPosts, PostData, fetcher } from "@static-fns/blog";
 import Link from "next/link";
 import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";
+import MagazineCard from "../components/MagazineCard";
 
 type Props = {
   posts: PostData[];
@@ -81,29 +82,20 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
       </section>
       <section>
         <header className="flex flex-row items-center mt-8">
-          <h2 className="text-base uppercase border-b-4 border-background-secondary tracking-widest my-8 text-foreground-secondary"></h2>
+          <h2 className="text-base uppercase border-b-4 border-background-secondary tracking-widest my-8 text-foreground-secondary">
+            Latest Magazine
+          </h2>
+          <span className="inline-block "></span>
+          <Link href="nordev-magazine">
+            <a className="ml-auto text-foreground-primary">All magazines &raquo;</a>
+          </Link>
         </header>
-        <div className="grid grid-cols-2">
-          <div>
-            <img
-              src="/static/images/pages/index/magazine2020.jpg"
-              alt="nor dev magazine"
-              className="w-40 md:w-56 float-right rounded"
-            />
-          </div>
-          <div className="p-8">
-            <p className="text-2xl font-bold">Download the Magazine</p>
-            <p className="text-foreground-secondary">
-              Articles from across the tech scene.
+        <MagazineCard title="February 2020 Conference Edition" slug="nordevmag-02-2020">
+            <p>
+              Featuring; Interviews with the Ladies Hacking Society of Norwich. Articles on Train Wreck, Ramblings on
+              Micro services, Tom's Top Tips for 2020, &amp; What is design?
             </p>
-            <a
-              className="text-green-700 bg-green-200 mt-2 rounded p-2 inline-block font-bold"
-              href="#"
-            >
-              Download PDF
-            </a>
-          </div>
-        </div>
+          </MagazineCard>
       </section>
     </Layout>
   );
