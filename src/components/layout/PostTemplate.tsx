@@ -24,7 +24,6 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
         <header className="inset mb-12">
           <TagList tags={post.tags} />
 
-
           <h1 className="hashtag mt-2 mb-1 text-4xl md:text-5xl font-bold leading-tight">
             {post.title}
           </h1>
@@ -49,9 +48,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
               ))}
             </span>
           ) : null}
-          {post.hero && (
-            <img className="mt-12 mb-12" src={post.hero} />
-          )}
+          {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
         </header>
         <div className="typography">{children}</div>
       </article>
