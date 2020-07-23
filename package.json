@@ -16,8 +16,8 @@
   "dependencies": {
     "@mapbox/rehype-prism": "^0.4.0",
     "@mdx-js/loader": "^1.5.7",
-    "@static-fns/blog": "0.0.1-alpha.25",
-    "@static-fns/loader": "0.0.1-alpha.20",
+    "@static-fns/blog": "0.0.1-alpha.51",
+    "@static-fns/loader": "0.0.1-alpha.44",
     "@types/rss": "0.0.28",
     "date-fns": "^2.12.0",
     "isomorphic-unfetch": "^3.0.0",
