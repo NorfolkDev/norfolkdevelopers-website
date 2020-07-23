@@ -8,7 +8,7 @@
     "dev": "next dev",
     "start": "next start",
     "build:rss": "npx tsc --project tsconfig.rss.json && node ./built/src/rss/build-rss.js",
-    "build": "next build && next export && npm run build:rss",
+    "build": "next build && next export ",
     "export": "next export"
   },
   "author": "",

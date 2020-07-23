@@ -5,5 +5,5 @@ function PostTemp() {
 }
 
 export const MDXComponents = {
-  wrapper: PostTemp,
+  wrapper: PostTemplate,
 };

@@ -1,7 +1,6 @@
 import Layout from "./Layout";
 import Link from "next/link";
 import Head from "next/head";
-import { slugify, dateFormat } from "@static-fns/blog";
 import siteConfig from "site.config";
 import TagList from "src/components/TagList";
 
@@ -29,7 +28,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
           </h1>
           {post.date && (
             <p className="block text-foreground-secondary font-bold">
-              {dateFormat(new Date(post.date))}
+              {/* {dateFormat(new Date(post.date))} */}
             </p>
           )}
           {post.author && siteConfig.features.authorPages ? (
@@ -37,10 +36,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
               by{[" "]}
               {post.author.map((author: string, i: number) => (
                 <span key={author}>
-                  <Link
-                    href="/author/[authorSlug]"
-                    as={`/author/${slugify(author)}`}
-                  >
+                  <Link href="/author/[authorSlug]" as={`/author/${author}`}>
                     <a className="underline">{author}</a>
                   </Link>
                   {i < post.author.length - 1 ? ", " : ""}
