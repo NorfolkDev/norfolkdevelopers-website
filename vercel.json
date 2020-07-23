@@ -39,6 +39,12 @@
     { "source": "/nordevcon-2015-survey-results-and-winners/", "destination": "/posts/2015-04-28-nordevcon-2015-survey-results-and-winners" },
     { "source": "/bristow-holland-on-the-nordevcon-2015/", "destination": "/posts/2015-03-12-bristow-holland-on-the-nordevcon-2015" },
     { "source": "/qi-at-nordevcon/", "destination": "/posts/2015-03-12-qi-at-nordevcon" },
-    { "source": "/migsolv-hail-nordevcon-2015-a-sponsorship-success/", "destination": "/posts/2015-03-12-migsolv-hail-nordevcon-2015-a-sponsorship-success" }
+    { "source": "/migsolv-hail-nordevcon-2015-a-sponsorship-success/", "destination": "/posts/2015-03-12-migsolv-hail-nordevcon-2015-a-sponsorship-success" },
+    { "source": "/magazines/", "destination": "/nordev-magazine" },
+    { "source": "/nordev-magazine/03-ai-edition/", "destination": "/nordev-magazine" },
+    { "source": "/nordev-magazine/04-business-edition/", "destination": "/nordev-magazine" },
+    { "source": "/nordev-magazine/05-youth-in-tech/", "destination": "/nordev-magazine" },
+    { "source": "/nordev-magazine/advertising/", "destination": "/nordev-magazine" },
+    { "source": "/nordev-magazine/writing-for-the-magazine/", "destination": "/nordev-magazine" }
   ]
 }
