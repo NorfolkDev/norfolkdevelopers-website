@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
 export default function TagSlug({ posts, tagSlug }: Props) {
   return (
-    <Layout location="words" title={`Posts tagged #${tagSlug}`}>
+    <Layout location="words">
       <h1
         className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl ck
       mr-auto ml-auto"
