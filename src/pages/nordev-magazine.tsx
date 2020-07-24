@@ -6,7 +6,8 @@ function MagazineRoute() {
     <Layout>
       <section className="section" id="nordev-magazine">
         <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
-          /nordev-magazine
+          <span className="text-red-500 font-bold">/</span>
+          nordev-magazine
         </h1>
 
         <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">

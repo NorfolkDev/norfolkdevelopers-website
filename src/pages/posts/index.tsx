@@ -22,16 +22,19 @@ export default function WordsRoute({ posts }: Props) {
           {siteConfig.siteName}/{siteConfig.postsDirectory}
         </title>
       </Head>
-      <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
-        /{siteConfig.postsDirectory}
-      </h1>
-      <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
-        <ul className="-mx-4">
-          {posts.map((post) => (
-            <PostCard key={post.path} post={post} />
-          ))}
-        </ul>
-      </main>
+      <section className="section" id="posts">
+        <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
+          <span className="text-red-500 font-bold">/</span>
+          {siteConfig.postsDirectory}
+        </h1>
+        <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
+          <ul className="-mx-4">
+            {posts.map((post) => (
+              <PostCard key={post.path} post={post} />
+            ))}
+          </ul>
+        </main>
+      </section>
     </Layout>
   );
 }
