@@ -1,7 +1,6 @@
 import Layout from "./Layout";
 import Link from "next/link";
 import Head from "next/head";
-import { slugify, dateFormat } from "@static-fns/blog";
 import siteConfig from "site.config";
 import TagList from "src/components/TagList";
 
@@ -24,13 +23,12 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
         <header className="inset mb-12">
           <TagList tags={post.tags} />
 
-
           <h1 className="hashtag mt-2 mb-1 text-4xl md:text-5xl font-bold leading-tight">
             {post.title}
           </h1>
           {post.date && (
             <p className="block text-foreground-secondary font-bold">
-              {dateFormat(new Date(post.date))}
+              {/* {dateFormat(new Date(post.date))} */}
             </p>
           )}
           {post.author && siteConfig.features.authorPages ? (
@@ -38,10 +36,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
               by{[" "]}
               {post.author.map((author: string, i: number) => (
                 <span key={author}>
-                  <Link
-                    href="/author/[authorSlug]"
-                    as={`/author/${slugify(author)}`}
-                  >
+                  <Link href="/author/[authorSlug]" as={`/author/${author}`}>
                     <a className="underline">{author}</a>
                   </Link>
                   {i < post.author.length - 1 ? ", " : ""}
@@ -49,9 +44,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
               ))}
             </span>
           ) : null}
-          {post.hero && (
-            <img className="mt-12 mb-12" src={post.hero} />
-          )}
+          {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
         </header>
         <div className="typography">{children}</div>
       </article>
