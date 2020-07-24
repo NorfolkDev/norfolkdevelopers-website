@@ -9,6 +9,7 @@ const navLinks = [
   { url: `/${config.postsDirectory}`, label: "posts" },
   { url: "/code-of-conduct", label: "code of conduct" },
   { url: "/nordev-magazine", label: "magazine" },
+  { url: "/about", label: "about" },
 ];
 
 type Props = {
