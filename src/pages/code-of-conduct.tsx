@@ -2,8 +2,11 @@ import Layout from "../components/layout/Layout";
 function CodeOfConductRoute() {
   return (
     <Layout>
-      <section className="section pt-12" id="code-of-conduct">
-        <h1 className="headline">Code of Conduct</h1>
+      <section className="section" id="code-of-conduct">
+        <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
+          <span className="text-red-500 font-bold">/</span>
+          code-of-conduct
+        </h1>
 
         <div id="short-version" className="mt-8 text-lg">
           <h3 className="text-xl font-bold">The Short Version</h3>
