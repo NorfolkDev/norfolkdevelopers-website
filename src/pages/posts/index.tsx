@@ -2,16 +2,15 @@ import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "../../../site.config";
-import { FrontMatter } from "../../lib/blog-engine";
+import { getPosts, PostData } from "@static-fns/blog";
 import PostCard from "../../components/PostCard";
 
 export async function getStaticProps() {
-  const { getPosts } = require("../../lib/blog-engine");
   return { props: { posts: JSON.parse(JSON.stringify(getPosts())) } };
 }
 
 type Props = {
-  posts: FrontMatter[];
+  posts: PostData[];
 };
 
 export default function WordsRoute({ posts }: Props) {

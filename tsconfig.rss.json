@@ -6,5 +6,5 @@
     "esModuleInterop": true
   },
   "exclude": ["node_modules"],
-  "include": ["site.config.ts", "src/lib/build-rss.ts"]
+  "include": ["src/rss/build-rss.ts"]
 }

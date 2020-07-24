@@ -1,21 +1,20 @@
 import { useCallback } from "react";
 import { GetStaticProps } from "next";
-import { slugify } from "../../lib/slugify";
-import { FrontMatter, getAuthors } from "../../lib/blog-engine";
+import Head from "next/head";
+import Link from "next/link";
+import { PostData, getAuthors, slugify } from "@static-fns/blog";
 import Layout from "../../components/layout/Layout";
-import config from "../../../site.config";
+import PostCard from "../../components/PostCard";
+import siteConfig from "../../../site.config";
 
 export async function getStaticPaths() {
-  const { getAuthors } = require("../../lib/blog-engine");
-
   // no pagesif disables
-  if (!config.features.authorPages) {
+  if (!siteConfig.features.authorPages) {
     return {
       paths: [],
       fallback: false,
     };
   }
-  console.log(getAuthors());
 
   return {
     paths:
@@ -38,7 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 type Props = {
-  posts: FrontMatter[];
+  posts: PostData[];
   slug: string;
 };
 export default function AuthorSlug({ posts, slug }: Props) {
@@ -53,13 +52,22 @@ export default function AuthorSlug({ posts, slug }: Props) {
     [slug]
   );
 
+  let title = `Posts by: ${findAuthorName(posts, slug)}`;
+
   return (
     <Layout>
-      <h1 className="inset">{findAuthorName(posts, slug)}</h1>
-      <main className="inset">
-        {posts.map((post: FrontMatter) => (
-          <div key={post.title}>{post.title}</div>
-        ))}
+      <Head>
+        <title>
+          {siteConfig.siteName}/{title}
+        </title>
+      </Head>
+      <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">{title}</h1>
+      <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
+        <ol className="-mx-4">
+          {posts.map((post: PostData) => (
+            <PostCard key={post.path} post={post} />
+          ))}
+        </ol>
       </main>
     </Layout>
   );

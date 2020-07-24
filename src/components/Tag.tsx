@@ -1,5 +1,6 @@
 import Link from "next/link";
 import siteConfig from "../../site.config";
+// import { slugify } from "@static-fns/blog";
 
 type Props = {
   tag: string;
@@ -48,7 +49,7 @@ export default function Tag(props: Props) {
       key={tag}
     >
       {siteConfig.features.tagPages ? (
-        <Link href={`/tag/${tag}`}>
+        <Link href="/tag/[tagSlug]" as={`/tag/${tag}`}>
           <a> #{tag} </a>
         </Link>
       ) : (

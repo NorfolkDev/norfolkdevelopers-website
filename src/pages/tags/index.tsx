@@ -1,12 +1,10 @@
 import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 import { GetStaticProps } from "next";
+import { getTags } from "@static-fns/blog";
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { getTags } = require("../../lib/blog-engine");
   const tags = Object.keys(getTags());
-  console.log("tags", tags);
-
   return {
     props: {
       tags,

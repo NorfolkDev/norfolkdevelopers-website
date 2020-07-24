@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -15,5 +16,5 @@
     "jsx": "preserve"
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/lib/build-rss.ts"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
