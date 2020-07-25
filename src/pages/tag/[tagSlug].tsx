@@ -11,6 +11,7 @@ export async function getStaticPaths() {
       fallback: false,
     };
   }
+
   return {
     paths: getStaticTagPaths(),
     fallback: false,
