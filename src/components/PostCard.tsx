@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { dateFormat, PostData } from "@static-fns/blog";
-import TagList from "../components/TagList";
+import { PostData } from "@static-fns/blog";
+import { dateFormat } from "src/dateFormat";
+import TagList from "src/components/TagList";
 
 type Props = {
   post: PostData;
