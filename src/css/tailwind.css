@@ -11,6 +11,10 @@
   @apply mr-2 text-pink-500;
 } */
 
+path.logo-nor {
+  fill: theme("colors.gray.800");
+}
+
 .dark-mode {
   --color-bg-primary: theme("colors.gray.900");
   --color-bg-secondary: theme("colors.gray.800");
@@ -23,6 +27,10 @@
   --color-href-active: theme("colors.red.400");
 }
 
+.dark-mode path.logo-nor {
+  fill: theme("colors.gray.200");
+}
+
 .light-mode {
   --color-bg-primary: theme("colors.gray.100");
   --color-bg-secondary: theme("colors.gray.200");
@@ -33,6 +41,10 @@
   --color-href-base: theme("colors.red.400");
   --color-href-hover: theme("colors.red.800");
   --color-href-active: theme("colors.red.700");
+}
+
+.light-mode path.logo-nor {
+  fill: theme("colors.gray.800");
 }
 
 @media (prefers-color-scheme: dark) {
