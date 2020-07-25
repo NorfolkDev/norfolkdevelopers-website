@@ -21,7 +21,6 @@ type Props = {
 export default function Layout({ children, location }: Props) {
   const darkMode = useDarkMode(false);
   const router = useRouter();
-  const logoColor = darkMode.value ? "#e2e8f0" : "#1a202c";
 
   return (
     <div
@@ -45,7 +44,7 @@ export default function Layout({ children, location }: Props) {
             <Link href="/">
               <a className={router.pathname === "/" ? "border-b-4" : ""}>
                 {/* {config.siteName} */}
-                <Logo color={logoColor} />
+                <Logo />
               </a>
             </Link>
           </h1>
