@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetcher } from "@static-fns/blog";
+import { fetcher } from "src/fetcher";
 import { format } from "date-fns";
 
 type Props = {
