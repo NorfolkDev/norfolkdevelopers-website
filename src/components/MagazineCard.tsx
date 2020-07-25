@@ -1,4 +1,5 @@
-const s3bucket = "https://norfolkdevelopers.s3.eu-west-2.amazonaws.com/norfolkdevelopers-website";
+const s3bucket =
+  "https://norfolkdevelopers.s3.eu-west-2.amazonaws.com/norfolkdevelopers-website";
 
 type Props = {
   title: string;
@@ -28,5 +29,5 @@ export default function MagazineCard({ title, slug, children }: Props) {
         </a>
       </div>
     </div>
-  )
+  );
 }
