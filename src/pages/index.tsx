@@ -87,15 +87,21 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
           </h2>
           <span className="inline-block "></span>
           <Link href="nordev-magazine">
-            <a className="ml-auto text-foreground-primary">All magazines &raquo;</a>
+            <a className="ml-auto text-foreground-primary">
+              All magazines &raquo;
+            </a>
           </Link>
         </header>
-        <MagazineCard title="February 2020 Conference Edition" slug="nordevmag-02-2020">
-            <p>
-              Featuring; Interviews with the Ladies Hacking Society of Norwich. Articles on Train Wreck, Ramblings on
-              Micro services, Tom's Top Tips for 2020, &amp; What is design?
-            </p>
-          </MagazineCard>
+        <MagazineCard
+          title="February 2020 Conference Edition"
+          slug="nordevmag-02-2020"
+        >
+          <p>
+            Featuring; Interviews with the Ladies Hacking Society of Norwich.
+            Articles on Train Wreck, Ramblings on Micro services, Tom's Top Tips
+            for 2020, &amp; What is design?
+          </p>
+        </MagazineCard>
       </section>
     </Layout>
   );
