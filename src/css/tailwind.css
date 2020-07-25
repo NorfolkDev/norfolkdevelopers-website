@@ -11,6 +11,10 @@
   @apply mr-2 text-pink-500;
 } */
 
+path.logo-nor {
+  fill: theme("colors.gray.800");
+}
+
 .dark-mode {
   --color-bg-primary: theme("colors.gray.900");
   --color-bg-secondary: theme("colors.gray.800");
