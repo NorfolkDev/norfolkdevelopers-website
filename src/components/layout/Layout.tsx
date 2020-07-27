@@ -39,8 +39,8 @@ export default function Layout({ children, location }: Props) {
       </Head>
 
       <div className="flex flex-col min-h-screen ml-auto mr-auto w-full md:w-4/5 lg:max-w-3xl">
-        <header className="mt-6 flex fade-out">
-          <h1 className="font-extrabold tracking-tight text-2xl mr-4 md:text-3xl">
+        <header className="mt-6 flex flex-wrap fade-out">
+          <h1 className="order-1 font-extrabold tracking-tight text-2xl mr-4 md:text-3xl">
             <Link href="/">
               <a className={router.pathname === "/" ? "border-b-4" : ""}>
                 {/* {config.siteName} */}
@@ -48,15 +48,15 @@ export default function Layout({ children, location }: Props) {
               </a>
             </Link>
           </h1>
-          <nav className="text-xl font-normal align-middle justify-center self-center">
+          <nav className="order-3 md:order-2 w-full md:w-auto text-sm md:text-xl font-normal align-middle justify-center self-center">
             {navLinks.map((navLink) => (
               <Link href={navLink.url} key={navLink.label}>
                 <a
                   className={
-                    "px-2 md:px-3 py-2 font-semibold hover:text-red-500 " +
+                    "block md:inline -ml-2 mb-1 md:m-0 pl-1 p-0 md:px-3 md:py-2 border-l-4 md:border-l-0 border-transparent font-semibold hover:text-red-500 " +
                     `${
                       router.pathname.includes(navLink.url)
-                        ? "border-b-4 pb-2 border-red-500"
+                        ? "md:border-b-4 border-red-500"
                         : "text-foreground-primary"
                     }`
                   }
@@ -70,7 +70,7 @@ export default function Layout({ children, location }: Props) {
             onClick={() => darkMode.toggle()}
             id="toggleTheme"
             aria-pressed={darkMode.value}
-            className="ml-auto p-2 inline-block transform hover:-rotate-180 duration-300 ease-in-out "
+            className="order-2 md:order-3 ml-auto p-2 inline-block transform hover:-rotate-180 duration-300 ease-in-out "
           >
             {darkMode.value ? "☀️" : "😎"}
           </button>
