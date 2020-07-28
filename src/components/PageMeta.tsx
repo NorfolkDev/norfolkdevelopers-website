@@ -1,7 +1,12 @@
-import { NextSeo, NextSeoProps } from "next-seo";
+import { NextSeo } from "next-seo";
 import siteConfig from "site.config";
 
-export default function PageMeta(props: NextSeoProps) {
+type Props = {
+  title?: string;
+  image?: string;
+};
+
+export default function PageMeta(props: Props) {
   const title = props.title
     ? `${props.title} | ${ siteConfig.siteSEOName }`
     : `${ siteConfig.siteSEOName } | ${siteConfig.shortDescription}`;
