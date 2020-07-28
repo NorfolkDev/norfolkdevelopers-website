@@ -4,6 +4,7 @@ import Head from "next/head";
 import siteConfig from "site.config";
 import TagList from "src/components/TagList";
 import { slugify } from "src/slugify";
+import PageMeta from "../PageMeta";
 
 type Props = {
   frontMatter: any;
@@ -13,13 +14,8 @@ type Props = {
 export default function PostTemplate({ frontMatter: post, children }: Props) {
   return (
     <Layout>
-      <Head>
-        <title>{post.title}</title>
-        <meta
-          name="description"
-          content={post.excerpt || siteConfig.description}
-        />
-      </Head>
+      <PageMeta title={post.title} image={post.hero ? `${siteConfig.rootUrl}${post.hero}` : null} />
+
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
         <header className="inset mb-12">
           <TagList tags={post.tags} />

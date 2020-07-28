@@ -2,26 +2,30 @@ import { NextSeo, NextSeoProps } from "next-seo";
 import siteConfig from "site.config";
 
 export default function PageMeta(props: NextSeoProps) {
-  const formattedTitle = `${props.title ? `${props.title} | ` : ""} ${
-    siteConfig.siteSEOName
-  } | ${siteConfig.shortDescription}`;
+  const title = props.title
+    ? `${props.title} | ${ siteConfig.siteSEOName }`
+    : `${ siteConfig.siteSEOName } | ${siteConfig.shortDescription}`;
   const description = props.description || siteConfig.description;
 
   return (
     <NextSeo
       openGraph={{
-        title: formattedTitle,
+        title: props.title
+          ? props.title
+          : title,
         description,
         site_name: siteConfig.siteSEOName,
-        images: props.openGraph?.images || [],
+        images: props.image
+          ? [ { url: props.image } ]
+          : [ { url: `${siteConfig.rootUrl}/static/images/default-open-graph.jpg` } ],
       }}
       twitter={{
-        handle: "@shaunchurch",
-        site: "@shaunchurch",
+        handle: "@NorfolkDev",
+        site: "@NorfolkDev",
         cardType: "summary_large_image",
       }}
       {...props}
-      title={formattedTitle}
+      title={title}
       description={description}
     />
   );
