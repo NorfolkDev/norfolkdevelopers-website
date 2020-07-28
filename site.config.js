@@ -1,5 +1,6 @@
 const siteConfig = {
   siteName: "nor(DEV):",
+  siteSEOName: "Norfolk Developers",
   rootUrl: "",
   description: "Norfolk Developers",
   postsDirectory: "posts",
