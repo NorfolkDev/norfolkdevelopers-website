@@ -1,6 +1,7 @@
 import Layout from "./Layout";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import siteConfig from "site.config";
 import TagList from "src/components/TagList";
 import { slugify } from "src/slugify";
@@ -11,6 +12,9 @@ type Props = {
 };
 
 export default function PostTemplate({ frontMatter: post, children }: Props) {
+  const router = useRouter();
+  let editUrl = `${siteConfig.githubUrl}edit/master/src/pages/${router.pathname}/index.mdx`
+
   return (
     <Layout>
       <Head>
@@ -51,6 +55,11 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
           {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
         </header>
         <div className="typography">{children}</div>
+        <footer className="mt-6 py-4 text-base">
+          <a className="text-foreground-secondary hover:text-foreground-primary hover:underline" href={editUrl} target="_blank" rel="nofollow">
+            Edit this post on GitHub
+          </a>
+        </footer>
       </article>
     </Layout>
   );
