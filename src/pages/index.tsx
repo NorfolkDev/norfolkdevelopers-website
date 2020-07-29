@@ -19,7 +19,7 @@ export async function getStaticProps() {
   const initialEventData = await fetcher(meetupAPIEndpoint);
   return {
     props: { posts: getPosts({ limit: 3 }), initialEventData },
-    unstable_revalidate: 60,
+    revalidate: 60,
   };
 }
 
