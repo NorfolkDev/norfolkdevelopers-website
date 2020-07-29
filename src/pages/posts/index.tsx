@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Layout from "../../components/layout/Layout";
-import Head from "next/head";
 import siteConfig from "../../../site.config";
 import { getPosts, PostData } from "@static-fns/blog";
 import PostCard from "../../components/PostCard";
+import PageMeta from "../../components/PageMeta";
 
 export async function getStaticProps() {
   return { props: { posts: JSON.parse(JSON.stringify(getPosts())) } };
@@ -17,11 +17,8 @@ export default function WordsRoute({ posts }: Props) {
   const sum = 1 + 1;
   return (
     <Layout location="words">
-      <Head>
-        <title>
-          {siteConfig.siteName}/{siteConfig.postsDirectory}
-        </title>
-      </Head>
+      <PageMeta title="Posts" />
+
       <section className="section" id="posts">
         <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
           <span className="text-red-500 font-bold">/</span>
