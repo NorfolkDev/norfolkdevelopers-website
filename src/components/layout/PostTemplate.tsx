@@ -14,7 +14,11 @@ type Props = {
 export default function PostTemplate({ frontMatter: post, children }: Props) {
   return (
     <Layout>
-      <PageMeta title={post.title} image={post.hero ? `${siteConfig.rootUrl}${post.hero}` : undefined} />
+      <PageMeta
+        title={post.title}
+        image={post.hero ? `${siteConfig.rootUrl}${post.hero}` : undefined}
+        description={post.excerpt}
+      />
 
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
         <header className="inset mb-12">
