@@ -4,7 +4,10 @@ import PageMeta from "../components/PageMeta";
 function CodeOfConductRoute() {
   return (
     <Layout>
-      <PageMeta title="Code of Conduct" />
+      <PageMeta
+        title="Code of Conduct"
+        description="Norfolk Developers are dedicated to providing an harassment-free conference experience for everyone."
+      />
 
       <section className="section" id="code-of-conduct">
         <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
