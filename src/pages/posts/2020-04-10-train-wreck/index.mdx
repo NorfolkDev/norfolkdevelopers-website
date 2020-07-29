@@ -1,0 +1,92 @@
+---
+layout: post
+title: "Greater Train Wreck"
+date: "2020-04-10T10:00:00Z"
+author: Dom Davis
+tags: Article
+---
+
+The UK has had a long relationship with rail transport. It started in 1829 with Stephenson’s Rocket, and quickly expanded into a rail network that was the envy of the world. 190 years later you’d think any problems with our trains would be solved.. They’re not.
+
+> We live in a world where there are frequent failures on our rail network. This is, in part, due to the fast and huge, distributed electro-mechanical system that’s exposed to the elements, and, in part, due to chronic underfunding.
+
+## FLIRT
+
+The FLIRT 755 introduced something new onto my commute: software failure. I’m no stranger to software messing up my plans. The aviation industry long ago proved that software can be used to effectively and efficiently destroy the plans of tens of thousands of people at a time. While aviation has gone big, the failures tend to be relatively short lived and infrequent. The rail networks have gone for smaller scale impact, but over an impressive timeframe of nearly a year at the time of writing.
+
+At this point I need to stress that I’ve not yet managed to find any primary sources of data for the failures we’re seeing with the FLIRT 755. Getting to the truth of the matter is difficult. There is a lot of hearsay, conjecture, and speculation, meaning some of my assessment could be entirely wrong. I’ve already had to edit this article a few times as new information has come to light. If this sounds like how every bit of software ever has been designed then there may be some learning here for you.
+
+## When rolling stock doesn’t roll
+
+The rolling stock on my network was, until recently, formed of units from last millennium. The oldest being the Mark 3 intercity carriages that form the route from Norwich to London. Manufacture of these units started when I was born,over 4 decades ago, and despite refurbishment and modernisation the underlying chassis limits what can be done in some areas. It’s why these units still have the old fashioned “lean out and open” manual doors.
+
+The trains on my line were slightly newer than this, although some of them were still over 30 years old. Understandably they were showing signs of age. Being slightly more modern these units had some creature comforts, like automatic doors. Exactly how these doors worked is unknown to me, but given the age of the units I’m guessing they’re primarily electromechanical with little or no software involved.
+
+## Mind the gap
+
+Operation of the doors involved a large “key” which the guard would use to open a panel and then arm the door buttons. They could then make the passenger door buttons active, optionally locking out any doors behind them. This last feature was important for platforms that were shorter than the train. The guard would ensure only doors aligned with a platform would open.
+
+## Direction of travel
+
+This old-school technology was due to be replaced in January 2019 with the rollout of state-of-the-art FLIRT units. This did not happen, and it wasn’t long until rumours of software failure began to surface. There were unsubstantiated claims of the units going the wrong way, which is impressive since you have a choice of two directions on a train, but the persistent issue that kept cropping up was the doors didn’t work properly. Regardless of the actual cause, we’ve now got a delayed deployment to production due to software issues. This is a story I know well; I’ve seen it many times.
+
+The narrative actually begins well before this, with the decision by Greater Anglia to replace their entire ageing fleet with FLIRT units. This kicked off a project that had a number of moving parts, of which delivery of working software was only one. Given the amount of money involved, the pressure to deliver software on time will have been huge, and the desire to hear about problems non-existent. Deadlines had been set; delivery dates must be met.
+
+What this means is that any issues with the software will have been downplayed. Assurances would have been given that the deadlines were fine, despite the software developers knowing they’d be missed. Builds that the developers had little real confidence in will have been shipped. Obviously, I wasn’t there, so I can’t know this for a fact, but I’ve worked on large projects. To _not_ have this outcome would be atypical.
+
+Meanwhile the rest of the process will have gone ahead unabated. The first units were delivered on time, and since there was no indication of trouble, plans for divesting the old fleet continued apace. And then the trains didn’t work. Which meant there was nothing to replace the old rolling stock that was being offloaded. This actually made things worse than if the issue with the software had been brought to the fore earlier.
+
+Instead of months of simply continuing with the old rolling stock, which, while ageing, still actually mostly worked, we were faced with months of short formation trains as units were split to make up shortfalls. Trains were delayed. Trains were cancelled. Commuters were unhappy.  All thanks to software that hadn’t even entered service yet.
+
+And when the new rolling stock finally did make it out, we got different units to the ones we were expecting. 4 carriages, not 3. This has made for nice empty trains, so we’re definitely not complaining, but it also provides an interesting hint towards at least one of the problems
+
+## The Crux of the Matter.
+
+FLIRT 755 carriages has a single door on each side (as opposed to the more usual arrangement of two per side on older rolling stock). These doors are not in the middle, so formations with an odd number of carriages are asymmetric. This means the first 3 doors on the 4 carriage trains are closer together than the 3 doors on a 3 carriage train.
+
+So we have rumours of software problems, rumours the trains are too long, rumours the guards can’t lock out doors like they used to, and the eventual deployment of a new train type with a different door configuration. Perhaps the 4 carriage trains somehow fit with 3 of their doors, while the 3 carriage units don’t.
+
+Except I’m writing this on a 3-carriage train, and all 3 doors opened when I got on it. OK, so the nose of the train had to overshoot the platform a bit, but then the 4 carriage units had been doing that by even more when we had those. So, the issue with the doors is something else. There’s information here we’re not privy to that is making the solution less trivial than it might otherwise sound. This complexity could be regulatory, environmental, poor design, or all three. That the trains have been nicknamed Basil’s (as in Basil Fawlty - faulty) points to the latter.
+
+For example, there are rumours that one line can’t run its new units because they can’t make the trip on a single tank of fuel. This would seem like an oversight, until you learn that there may be issues with the software handling the pantographs so what was meant to be a bi-mode journey could now be entirely single mode, and that the trains have smaller fuel tanks than original design due to weight problems. Either one of those could mean a requirement that was originally met in the planning phase is no longer met in production.
+
+Thankfully, that issue doesn’t affect me, and once we had our shiny new, 4 carriage units with air-conditioning, wifi, and the ability to make up delays simply by accelerating harder and going faster, I thought that would be it for my interest in the new units.
+
+> And then a train blew through a level crossing that was still open and came within a gnat’s whisker of taking out a car.
+
+A situation I think we can all agree we’d like to avoid. Trains have right of way at level crossings - and I don’t care what the law says, physics has my back here. Wikipedia has this on the incident:
+
+“On 24 November 2019, a unit of the class was approaching a level crossing at Thorpe End, Norfolk at 45 miles per hour (72 km/h) when the barriers lifted as the train was 220 yards (200 m) from the crossing and cars started crossing in front of the train. Despite emergency braking, the train was unable to stop before the crossing. A collision was avoided by a quarter of a second.”
+
+The incident was blamed on contaminants on the wheels interfering with the track detection system. Which to my mind means that we’ve got a network wide problem with the entire replacement fleet.
+
+> Instead we had a problem on a single line which was solved by something straight out of the 19th century playbook: A person with a flag. At every crossing.
+
+The train approaches at 20mph, checks the person is waving the green flag to indicate the crossing is safe, and continues over the crossing. This has a knock-on effect. Every journey now takes 20 minutes longer. Trains are cancelled because units and staff are in the wrong place. And because the monitoring stations are not getting updates on where the trains are, the software doesn’t know where the trains are either. So, we end up in the situation where trains are listed as running on time, when they’re not.
+
+Not only are these trains not running on time, there is no way the train can run at all. The software happily goes through a fallback mechanism that just adds a minutes worth of delay as every minute ticks by, and eventually, when some hidden threshold is reached, silently drops the train off the information list. Not a problem at larger stations, staff can make tannoy announcements and keep everyone up to date. At my rural station, however, we only discover it is cancelled when the train running in the opposite direction on the single-track line turns up. And then we find out there was never a train to form the expected service in the first place. To my mind this train was cancelled, but the software defaults to running on time.
+
+We’ve also seen the train marked as cancelled, only to turn up at the station. Even the conductor of that service didn’t know it was running until he actually got on it, which doesn’t instil confidence. The latest in the saga appears to be having the train listed as on time in the app, but not listed at all on the information boards at the station. To go with our flag wielding people in place of signals, we’re also utilising a distinctly 19th century system of only knowing when and if the train is running by its presence in the station.
+
+But why only my line? Turns out there’s more to the story. Apparently, the signalling system on my line is different to those on other lines. If rumours are to be believed it is “5 times more complex than it needs to be”, although that is likely just hyperbole for “it could be simpler”.
+
+Great, but why wasn’t this picked up in testing? That may be as simple as leaves on the line. Testing of these units was done from early 2019 onwards when leaf fall wouldn’t have been an issue. The incident happened later in the year, where leaves, or the systems put in place to combat their effect, could have had an influence on the situation. Turns out production wasn’t the same as test, despite the tests running on the production hardware.
+
+And while this all may seem utterly bonkers, just consider that it’s a massively complex system cobbled together over 2 centuries and currently built and maintained by the lowest bidder. That it works at all is a miracle. Now consider what other important things in life are like this: air transport, the NHS, our nuclear deterrent. Sleep well…
+
+---
+
+### _This article was originally published in the nor(DEV): Magazine 2020, grab your copy below:_
+
+import MagazineCard from "../../../components/MagazineCard";
+
+<MagazineCard
+  title="February 2020 Conference Edition"
+  slug="nordevmag-02-2020"
+>
+  <p>
+    Featuring; Interviews with the Ladies Hacking Society of
+    Norwich. Articles on Train Wreck, Ramblings on Micro services,
+    Tom's Top Tips for 2020, &amp; What is design?
+  </p>
+</MagazineCard>

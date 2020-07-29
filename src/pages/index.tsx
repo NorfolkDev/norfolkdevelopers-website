@@ -1,5 +1,4 @@
 import Layout from "../components/layout/Layout";
-import Head from "next/head";
 import siteConfig from "../../site.config";
 import { getPosts, PostData, fetcher } from "@static-fns/blog";
 import Link from "next/link";
@@ -26,9 +25,6 @@ export async function getStaticProps() {
 export default function IndexRoute({ posts, initialEventData }: Props) {
   return (
     <Layout>
-      <Head>
-        <title>{siteConfig.siteName}</title>
-      </Head>
       <section className="mt-12 md:mt-6">
         <header className="py-6 md:py-8 lg:py-16">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">

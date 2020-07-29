@@ -6,6 +6,7 @@ import Layout from "../../components/layout/Layout";
 import PostCard from "../../components/PostCard";
 import siteConfig from "../../../site.config";
 import { slugify } from "src/slugify";
+import PageMeta from "../../components/PageMeta";
 
 export async function getStaticPaths() {
   // no pagesif disables
@@ -56,11 +57,8 @@ export default function AuthorSlug({ posts, slug }: Props) {
 
   return (
     <Layout>
-      <Head>
-        <title>
-          {siteConfig.siteName}/{title}
-        </title>
-      </Head>
+      <PageMeta title={title} />
+
       <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
         {title}
       </h1>
