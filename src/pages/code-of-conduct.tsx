@@ -57,7 +57,7 @@ function CodeOfConductRoute() {
             discretion of the conference organizers.
           </p>
 
-          <p className="mt-2">
+          <span className="mt-2">
             Harassment includes, but is not limited to:
             <ul className="my-2 mx-6 list-disc">
               <li>
@@ -76,7 +76,7 @@ function CodeOfConductRoute() {
                 Advocating for, or encouraging, any of the above behaviour
               </li>
             </ul>
-          </p>
+          </span>
 
           <p className="mt-2">
             Participants asked to stop any harassing behavior are expected to
@@ -144,7 +144,7 @@ function CodeOfConductRoute() {
 
           <h4 className="mt-4 text-md font-bold">Personal Report</h4>
 
-          <p className="mt-2">
+          <span className="mt-2">
             You can make a personal report by:
             <ul className="my-2 mx-6 list-disc">
               <li>
@@ -163,7 +163,7 @@ function CodeOfConductRoute() {
                 t-shirts.
               </li>
             </ul>
-          </p>
+          </span>
 
           <p className="mt-2">
             When taking a personal report, our staff will ensure you are safe
