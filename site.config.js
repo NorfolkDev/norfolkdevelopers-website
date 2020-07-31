@@ -3,6 +3,7 @@ const siteConfig = {
   rootUrl: "",
   description: "Norfolk Developers",
   postsDirectory: "posts",
+  jobsDirectory: "jobs",
   githubUrl: "https://github.com/NorfolkDev/norfolkdevelopers-website/",
   features: {
     authorPages: true,
