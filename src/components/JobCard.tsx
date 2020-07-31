@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { PostData } from "@static-fns/blog";
 import { dateFormat } from "src/dateFormat";
 import TagList from "src/components/TagList";
+import { Job } from "src/pages/jobs";
+import { formatDistanceToNow } from "date-fns";
 
 type Props = {
-  job: PostData;
+  job: Job;
 };
 
 export default function JobCard({ job }: Props) {
@@ -14,9 +15,12 @@ export default function JobCard({ job }: Props) {
         {job.tags && <TagList tags={job.tags} />}
       </div>
       <div className="flex flex-col md:w-10/12">
+        <span className="text-foreground-secondary text-sm">
+          Posted {formatDistanceToNow(new Date(job.date))} ago
+        </span>
         {job.date && (
           <span className="text-foreground-secondary text-sm">
-            Closing date: {dateFormat(new Date(job.date))}
+            {job.expiryDate ? `Closing date: ${dateFormat(new Date(job.expiryDate))}` : 'This job has no expiry date.'}
           </span>
         )}
         <Link href={job.path || ""}>

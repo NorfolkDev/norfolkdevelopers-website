@@ -4,6 +4,7 @@ import { slugify } from "src/slugify";
 
 type Props = {
   tag: string;
+  isLink?: boolean;
 };
 
 type TagTheme = {
@@ -38,7 +39,7 @@ function getClasses(key: string): string {
 }
 
 export default function Tag(props: Props) {
-  const { tag } = props;
+  const { tag, isLink = true } = props;
 
   return (
     <span
@@ -48,7 +49,7 @@ export default function Tag(props: Props) {
       }
       key={tag}
     >
-      {siteConfig.features.tagPages ? (
+      {siteConfig.features.tagPages && isLink ? (
         <Link href="/tag/[tagSlug]" as={`/tag/${slugify(tag)}`}>
           <a> #{tag} </a>
         </Link>

@@ -3,21 +3,38 @@ import Head from "next/head";
 import siteConfig from "site.config";
 import { getPosts, PostData } from "@static-fns/blog";
 import JobCard from "src/components/JobCard";
-import getConfig from 'next/config';
+import getConfig from "next/config";
 const { serverRuntimeConfig } = getConfig();
+import { isAfter as isAfterDate } from "date-fns";
 
 export async function getStaticProps() {
-  return { props: { posts: JSON.parse(JSON.stringify(
-      // TODO: Filter archived
-      getPosts({ directory: `${serverRuntimeConfig.PROJECT_ROOT}/pages/jobs` })
-    )) } };
+  return {
+    props: {
+      jobs: JSON.parse(
+        JSON.stringify(
+          getPosts({
+            directory: `${serverRuntimeConfig.PROJECT_ROOT}/pages/jobs`,
+          }) as Job[]
+        )
+      ),
+    },
+  };
 }
 
-type Props = {
-  posts: PostData[];
+export type Job = PostData & {
+  expiryDate?: string;
 };
 
-export default function JobsRoute({ posts }: Props) {
+type Props = {
+  jobs: Job[];
+};
+
+export default function JobsRoute({ jobs }: Props) {
+  const activeJobs = jobs.filter(
+    (job) =>
+      job.expiryDate && isAfterDate(new Date(job.expiryDate), new Date())
+  );
+
   return (
     <Layout location="jobs">
       <Head>
@@ -31,12 +48,15 @@ export default function JobsRoute({ posts }: Props) {
           {siteConfig.jobsDirectory}
         </h1>
         <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
-          {posts.length === 0 && <h2>There doesn't seem to be anything here.</h2>}
-          <ul className="-mx-4">
-            {posts.map((post) => (
-              <JobCard key={post.path} job={post} />
-            ))}
-          </ul>
+          {activeJobs.length === 0 ? (
+            <h2>There doesn't seem to be anything here.</h2>
+          ) : (
+            <ul className="-mx-4">
+              {activeJobs.map((post) => (
+                <JobCard key={post.path} job={post} />
+              ))}
+            </ul>
+          )}
         </main>
       </section>
     </Layout>
