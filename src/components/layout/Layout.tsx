@@ -8,6 +8,7 @@ import Logo from "../Logo";
 
 const navLinks = [
   { url: `/${config.postsDirectory}`, label: "posts" },
+  { url: `/${config.jobsDirectory}`, label: "jobs" },
   { url: "/code-of-conduct", label: "code of conduct" },
   { url: "/nordev-magazine", label: "magazine" },
   { url: "/about", label: "about" },
