@@ -1,7 +1,9 @@
 const siteConfig = {
   siteName: "nor(DEV):",
-  rootUrl: "",
-  description: "Norfolk Developers",
+  siteSEOName: "Norfolk Developers",
+  rootUrl: "https://www.norfolkdevelopers.com",
+  shortDescription: "Going straight to the ♥️ of software development practice and process",
+  description: "Local, national and international speakers and workshops for Norfolk Developers",
   postsDirectory: "posts",
   jobsDirectory: "jobs",
   githubUrl: "https://github.com/NorfolkDev/norfolkdevelopers-website/",

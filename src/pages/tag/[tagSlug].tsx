@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import { PostData, getTags, getStaticTagPaths } from "@static-fns/blog";
 import Layout from "src/components/layout/Layout";
 import PostCard from "src/components/PostCard";
+import PageMeta from "../../components/PageMeta";
 
 export async function getStaticPaths() {
   if (!siteConfig.features.tagPages) {
@@ -39,6 +40,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 export default function TagSlug({ posts, tagSlug }: Props) {
   return (
     <Layout location="words">
+      <PageMeta title={`Posts Tagged: ${tagSlug}`} />
+
       <h1
         className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl ck
       mr-auto ml-auto"

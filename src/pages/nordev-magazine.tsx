@@ -1,9 +1,16 @@
 import Layout from "../components/layout/Layout";
 import MagazineCard from "../components/MagazineCard";
+import PageMeta from "../components/PageMeta";
+
 
 function MagazineRoute() {
   return (
     <Layout>
+      <PageMeta
+        title="Magazine"
+        description="The nor(DEV): magazine was started back in 2016 to accompany our annual conference, nor(DEV):con. Our last edition was in Feb 2020"
+      />
+
       <section className="section" id="nordev-magazine">
         <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
           <span className="text-red-500 font-bold">/</span>

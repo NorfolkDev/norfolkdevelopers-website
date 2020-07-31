@@ -1,7 +1,14 @@
 import Layout from "../components/layout/Layout";
+import PageMeta from "../components/PageMeta";
+
 function CodeOfConductRoute() {
   return (
     <Layout>
+      <PageMeta
+        title="Code of Conduct"
+        description="Norfolk Developers are dedicated to providing an harassment-free conference experience for everyone."
+      />
+
       <section className="section" id="code-of-conduct">
         <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
           <span className="text-red-500 font-bold">/</span>
@@ -50,7 +57,7 @@ function CodeOfConductRoute() {
             discretion of the conference organizers.
           </p>
 
-          <p className="mt-2">
+          <div className="mt-2">
             Harassment includes, but is not limited to:
             <ul className="my-2 mx-6 list-disc">
               <li>
@@ -69,7 +76,7 @@ function CodeOfConductRoute() {
                 Advocating for, or encouraging, any of the above behaviour
               </li>
             </ul>
-          </p>
+          </div>
 
           <p className="mt-2">
             Participants asked to stop any harassing behavior are expected to
@@ -137,7 +144,7 @@ function CodeOfConductRoute() {
 
           <h4 className="mt-4 text-md font-bold">Personal Report</h4>
 
-          <p className="mt-2">
+          <div className="mt-2">
             You can make a personal report by:
             <ul className="my-2 mx-6 list-disc">
               <li>
@@ -156,7 +163,7 @@ function CodeOfConductRoute() {
                 t-shirts.
               </li>
             </ul>
-          </p>
+          </div>
 
           <p className="mt-2">
             When taking a personal report, our staff will ensure you are safe

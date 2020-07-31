@@ -1,8 +1,14 @@
 import Layout from "../components/layout/Layout";
+import PageMeta from "../components/PageMeta";
 
 export default function AboutRoute() {
   return (
     <Layout>
+      <PageMeta
+        title="About"
+        description="We are very lucky in Norwich to have a thriving and highly active tech community. We want to make it easy for you to access knowledge, progress and prosper in the highly specialised and valuable field of software engineering."
+      />
+
       <section className="section" id="about">
         <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
           <span className="text-red-500 font-bold">/</span>

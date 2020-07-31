@@ -1,4 +1,4 @@
-.typography {
+.typography > {
   @apply text-xl;
 
   h1 {
