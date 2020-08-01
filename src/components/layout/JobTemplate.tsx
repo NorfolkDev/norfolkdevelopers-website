@@ -46,10 +46,10 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
                     <a className="underline">{author}</a>
                   </Link>
                   {i < post.author.length - 1 ? ", " : ""}
-                  {' - '}
-                  Posted {formatDistanceToNow(new Date(post.date))} ago
                 </span>
               ))}
+              {' - '}
+              Posted {formatDistanceToNow(new Date(post.date))} ago
             </span>
           ) : null}
           <p className="my-2">Closes {dateFormat(new Date(post.expiryDate))}</p>
