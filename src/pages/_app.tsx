@@ -10,7 +10,6 @@ export function reportWebVitals(metric: any) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log('tomlog', Component)
   return (
     <MDXProvider components={MDXComponents}>
       <Component {...pageProps} />
