@@ -6,7 +6,6 @@ import siteConfig from "site.config";
 import TagList from "src/components/TagList";
 import { slugify } from "src/slugify";
 import PageMeta from "../PageMeta";
-import Tag from "../Tag";
 import { formatDistanceToNow } from "date-fns";
 import { dateFormat } from "src/dateFormat";
 
