@@ -38,7 +38,9 @@
     @apply mt-6;
   }
 
-  a {
+  a,
+  p > a,
+  ul > li > a {
     @apply text-href-base underline;
   }
 

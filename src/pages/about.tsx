@@ -81,10 +81,9 @@ export default function AboutRoute() {
 
           <h3>Our YouTube Channel</h3>
           <p>
-            Recently we've been investing heavily into our YouTube Channel
-            &mdash;
+            Recently we've been investing heavily into our&nbsp;
             <a href="https://www.youtube.com/c/NorfolkDevelopers/">
-              https://www.youtube.com/c/NorfolkDevelopers/
+              YouTube Channel
             </a>
             .&nbsp; We record or stream most of our events and welcome you to
             subscribe and turn on notifications so you get those alerts when we
