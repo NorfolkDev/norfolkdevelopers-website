@@ -41,8 +41,6 @@ export default function AboutRoute() {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="652"
-              height="253"
               viewBox="0 0 652 253"
               fill="none"
             >
