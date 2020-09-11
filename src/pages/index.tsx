@@ -37,7 +37,7 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
             Developers.
           </h2>
           <p className="text-foreground-tertiary">
-            (🕸 over the interweb until further notice)
+            (<span role="img" aria-label="web">🕸</span> over the interweb until further notice)
           </p>
         </header>
       </section>
