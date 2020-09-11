@@ -63,7 +63,15 @@ export default function Layout({ children, location }: Props) {
               aria-pressed={darkMode.value}
               className="order-2 lg:order-3 ml-auto p-2 inline-block transform hover:-rotate-180 duration-300 ease-in-out "
             >
-              {darkMode.value ? "☀️" : "😎"}
+              {darkMode.value ? (
+                <span role="img" aria-label="sun">
+                  ☀️
+                </span>
+              ) : (
+                <span role="img" aria-label="sunglasses face">
+                  😎
+                </span>
+              )}
             </button>
           </header>
           <main className="flex-grow">{children}</main>

@@ -11,7 +11,7 @@ export default function EventsList({ initialData, endpoint }: Props) {
   const { data, error } = useSWR<MeetupEvent[]>(endpoint, fetcher, {
     initialData,
   });
-  if (error) return <div>Error loading events from meetup.com 🙁</div>;
+  if (error) return <div>Error loading events from meetup.com <span role="img" aria-label="sad face">🙁</span></div>;
   if (!data)
     return (
       <div>
@@ -34,7 +34,10 @@ export default function EventsList({ initialData, endpoint }: Props) {
           className="block bg-background-secondary rounded leading-tight tracking-tight"
         >
           <a href={event.link} className="p-4 block hover:outline">
-            <h3 className="font-bold text-lg">📆 {event.name} </h3>
+            <h3 className="font-bold text-lg">
+              <span role="img" aria-label="calendar">📆</span>
+              &nbsp;{event.name}
+            </h3>
             <p className="text-foreground-secondary mt-2 font-bold">
               {format(new Date(event.time), "eeee, do LLL, yyyy ")}
             </p>
