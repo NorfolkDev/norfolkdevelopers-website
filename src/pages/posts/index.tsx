@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 import siteConfig from "../../../site.config";
-import { getPosts, PostData } from "@static-fns/blog";
+import { getPosts } from "@static-fns/blog";
 import PostCard from "../../components/PostCard";
 import PageMeta from "../../components/PageMeta";
+import { PostData } from "src/PostData";
 
 export async function getStaticProps() {
   return { props: { posts: JSON.parse(JSON.stringify(getPosts())) } };

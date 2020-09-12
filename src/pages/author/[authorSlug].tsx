@@ -1,12 +1,13 @@
 import { useCallback } from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { PostData, getAuthors } from "@static-fns/blog";
+import { getAuthors } from "@static-fns/blog";
 import Layout from "../../components/layout/Layout";
 import PostCard from "../../components/PostCard";
 import siteConfig from "../../../site.config";
 import { slugify } from "src/slugify";
 import PageMeta from "../../components/PageMeta";
+import { PostData } from "src/PostData";
 
 export async function getStaticPaths() {
   // no pagesif disables
