@@ -1,9 +1,10 @@
 import siteConfig from "site.config";
 import { GetStaticProps } from "next";
-import { PostData, getTags, getStaticTagPaths } from "@static-fns/blog";
+import { getTags, getStaticTagPaths } from "@static-fns/blog";
 import Layout from "src/components/layout/Layout";
 import PostCard from "src/components/PostCard";
 import PageMeta from "../../components/PageMeta";
+import { PostData } from "src/PostData";
 
 export async function getStaticPaths() {
   if (!siteConfig.features.tagPages) {
