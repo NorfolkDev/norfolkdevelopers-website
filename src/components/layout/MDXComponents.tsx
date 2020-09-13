@@ -1,5 +1,24 @@
+import React from 'react';
 import PostTemplate from "./PostTemplate";
+import JobTemplate from "./JobTemplate";
+
+const layouts = {
+  post: PostTemplate,
+  job: JobTemplate,
+}
+
+type Props = {
+  frontMatter: {
+    layout: 'job' | 'post';
+  }
+}
+
+const Wrapper: React.FC<Props> = ({ frontMatter, ...props }) => {
+  const Layout = layouts[frontMatter.layout];
+
+  return <Layout {...props} frontMatter={frontMatter} />
+}
 
 export const MDXComponents = {
-  wrapper: PostTemplate,
+  wrapper: Wrapper,
 };
