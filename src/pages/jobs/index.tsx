@@ -1,32 +1,21 @@
 import Layout from "src/components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "site.config";
-import { getPosts, PostData } from "@static-fns/blog";
+import { getPosts } from "@static-fns/blog";
+import { JobData } from "src/DataTypes";
 import JobCard from "src/components/JobCard";
 import getConfig from "next/config";
 const { serverRuntimeConfig } = getConfig();
 import { isAfter as isAfterDate } from "date-fns";
 
 export async function getStaticProps() {
-  return {
-    props: {
-      jobs: JSON.parse(
-        JSON.stringify(
-          getPosts({
-            directory: `${serverRuntimeConfig.PROJECT_ROOT}/pages/jobs`,
-          }) as Job[]
-        )
-      ),
-    },
-  };
+  let directory = `${serverRuntimeConfig.PROJECT_ROOT}/pages/jobs`;
+
+  return { props: { jobs: JSON.parse(JSON.stringify(getPosts({ directory }))) } };
 }
 
-export type Job = PostData & {
-  expiryDate?: string;
-};
-
 type Props = {
-  jobs: Job[];
+  jobs: JobData[];
 };
 
 export default function JobsRoute({ jobs }: Props) {

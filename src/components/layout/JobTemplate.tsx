@@ -28,30 +28,46 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
 
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
         <header className="inset mb-12">
-          <TagList tags={post.tags} />
-
           <h1 className="hashtag mt-2 mb-1 text-4xl md:text-5xl font-bold leading-tight">
             {post.title}
           </h1>
-          {post.author && siteConfig.features.authorPages ? (
-            <span className="block text-base text-gray-600">
-              by{[" "]}
-              {post.author.map((author: string, i: number) => (
-                <span key={author}>
-                  <Link
-                    href="/author/[authorSlug]"
-                    as={`/author/${slugify(author)}`}
-                  >
-                    <a className="underline">{author}</a>
-                  </Link>
-                  {i < post.author.length - 1 ? ", " : ""}
-                </span>
-              ))}
-              {' - '}
-              Posted {formatDistanceToNow(new Date(post.date))} ago
-            </span>
-          ) : null}
-          <p className="my-2">Closes {dateFormat(new Date(post.expiryDate))}</p>
+          <p className="my-2 text-lg font-bold">Closing {dateFormat(new Date(post.expiryDate))}</p>
+
+          <ul className="my-2">
+            <li>
+              <label className="font-bold text-foreground-primary">Role:&nbsp;</label>
+              {post.role}
+            </li>
+            <li>
+              <label className="font-bold text-foreground-primary">Salary:&nbsp;</label>
+              {post.salary}
+            </li>
+            {post.company &&
+              <li>
+                <label className="font-bold text-foreground-primary">Company:&nbsp;</label>
+                {post.company}
+              </li>
+            }
+            {post.location &&
+              <li>
+                <label className="font-bold text-foreground-primary">Location:&nbsp;</label>
+                {post.location}
+              </li>
+            }
+            {post.seniority &&
+              <li>
+                <label className="font-bold text-foreground-primary">Seniority:&nbsp;</label>
+                {post.seniority}
+              </li>
+            }
+          </ul>
+
+          {post.apply &&
+            <a href={post.apply} className="block md:inline-block p-4 text-xl white bg-orange-600 border-orange-900">
+              Apply Now
+            </a>
+          }
+
           {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
         </header>
         <div className="typography">{children}</div>

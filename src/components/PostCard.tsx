@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { dateFormat } from "src/dateFormat";
 import TagList from "src/components/TagList";
-import { PostData } from "src/PostData";
+import { PostData } from "src/DataTypes";
 
 type Props = {
   post: PostData;
