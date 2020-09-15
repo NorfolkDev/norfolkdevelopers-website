@@ -12,6 +12,7 @@ const siteConfig = {
   },
   settings: {
     numLatestPosts: 3, // the number of posts to show in latest posts
+    postsPerPage: 10, // the number of posts to show per page
   },
 };
 
