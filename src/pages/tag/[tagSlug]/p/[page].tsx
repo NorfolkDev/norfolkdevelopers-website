@@ -3,8 +3,8 @@ import { GetStaticProps } from "next";
 import { getTags, getStaticTagPaths } from "@static-fns/blog";
 import Layout from "src/components/layout/Layout";
 import PostCard from "src/components/PostCard";
-import PageMeta from "../../components/PageMeta";
-import Pagination from "../../components/Pagination";
+import PageMeta from "src/components/PageMeta";
+import Pagination from "src/components/Pagination";
 import { PostData } from "src/PostData";
 
 export async function getStaticPaths() {
@@ -15,8 +15,28 @@ export async function getStaticPaths() {
     };
   }
 
+  const posts = getTags();
+  const paths = Object.keys(posts)
+    .map(tagSlug => ({
+      tagSlug,
+      posts: posts[tagSlug]
+    }))
+    .filter(tag => tag.posts.length > siteConfig.settings.postsPerPage)
+    .map(tag => {
+      let totalPages = Math.ceil(tag.posts.length / siteConfig.settings.postsPerPage);
+      let paginator = new Array(totalPages - 1).fill(null);
+
+      return paginator.map((_, i) => ({
+        params: {
+          tagSlug: tag.tagSlug,
+          page: (i + 2).toString()
+        }
+      }));
+    })
+    .flat();
+
   return {
-    paths: getStaticTagPaths(),
+    paths,
     fallback: false,
   };
 }
@@ -29,17 +49,18 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const tagSlug = params?.tagSlug as string;
   const posts = getTags();
-  const tagPosts = posts[tagSlug];
+  const tagSlug = params?.tagSlug as string;
+  const page: number = Number(params?.page || "2");
+  const pointer: number = (page - 1) * siteConfig.settings.postsPerPage;
 
   return {
     props: {
-      page: 1,
-      posts: tagPosts.slice(0, siteConfig.settings.postsPerPage),
-      total: tagPosts.length,
+      posts: posts[tagSlug].slice(pointer, pointer + siteConfig.settings.postsPerPage),
+      total: posts[tagSlug].length,
+      page,
       tagSlug
-    },
+    }
   };
 };
 
@@ -52,10 +73,7 @@ export default function TagSlug({ posts, page, total, tagSlug }: Props) {
         className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl ck
       mr-auto ml-auto"
       >
-        <span className="text-red-500 font-bold">/</span>
-        tag
-        <span className="text-red-500 font-bold">/</span>
-        {tagSlug}
+        /tag/{tagSlug}
       </h1>
       <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
         <ul className="-mx-4">
@@ -65,7 +83,7 @@ export default function TagSlug({ posts, page, total, tagSlug }: Props) {
         </ul>
 
         <Pagination
-          root="/tag"
+          root={`/tag/${tagSlug}`}
           seperator={`${tagSlug}/p`}
           page={page}
           total={total}
