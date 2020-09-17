@@ -44,7 +44,7 @@ export default function Pagination({ root, seperator, page, total, perPage }: Pr
         <ol className="flex">
           {previous && (
             <li key="pagination_previous" className="flex border-t-2 border-transparent">
-              <Link href={previous}>
+              <Link href={previous} as={previous}>
                 <a className="py-4 px-2" aria-label="Previous">
                   &laquo;
                 </a>
@@ -61,7 +61,7 @@ export default function Pagination({ root, seperator, page, total, perPage }: Pr
               </li>
             ) : (
               <li key={`pagination_${i}`} className="flex border-t-2 border-transparent">
-                <Link href={href}>
+                <Link href={href} as={href}>
                   <a className="py-4 px-2">
                     {i + 1}
                   </a>
@@ -72,7 +72,7 @@ export default function Pagination({ root, seperator, page, total, perPage }: Pr
 
           {next && (
             <li key="pagination_next" className="flex border-t-2 border-transparent">
-              <Link href={next}>
+              <Link href={next} as={next}>
                 <a className="py-4 px-2" aria-label="Next">
                   &raquo;
                 </a>
