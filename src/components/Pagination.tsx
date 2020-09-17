@@ -2,6 +2,7 @@ import Link from "next/link";
 
 type Props = {
   root: string;
+  seperator: string;
   page: number;
   total: number;
   perPage: number;
