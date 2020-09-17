@@ -67,13 +67,18 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 export default function TagSlug({ posts, page, total, tagSlug }: Props) {
   return (
     <Layout location="words">
-      <PageMeta title={`Posts Tagged: ${tagSlug}`} />
+      <PageMeta title={`Posts Tagged: ${tagSlug} (Page: ${page})`} />
 
       <h1
         className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl ck
       mr-auto ml-auto"
       >
-        /tag/{tagSlug}
+        <span className="text-red-500 font-bold">/</span>
+        tag
+        <span className="mx-2 text-red-500 font-bold">/</span>
+        {tagSlug}
+        <span className="mx-2 text-red-500 font-bold">/</span>
+        {page}
       </h1>
       <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
         <ul className="-mx-4">
