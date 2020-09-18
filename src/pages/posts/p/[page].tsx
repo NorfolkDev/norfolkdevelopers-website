@@ -5,7 +5,7 @@ import PageMeta from "../../../components/PageMeta";
 import PostCard from "../../../components/PostCard";
 import Pagination from "../../../components/Pagination";
 import { getPosts } from "@static-fns/blog";
-import { PostData } from "src/PostData";
+import { PostData } from "src/DataTypes";
 
 export async function getStaticPaths() {
   const posts = getPosts();

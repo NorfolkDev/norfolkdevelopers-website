@@ -4,7 +4,7 @@ import { getPosts } from "@static-fns/blog";
 import PostCard from "../../components/PostCard";
 import PageMeta from "../../components/PageMeta";
 import Pagination from "../../components/Pagination";
-import { PostData } from "src/PostData";
+import { PostData } from "src/DataTypes";
 
 export async function getStaticProps() {
   const posts = getPosts();

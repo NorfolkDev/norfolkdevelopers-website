@@ -5,7 +5,7 @@ import Layout from "src/components/layout/Layout";
 import PostCard from "src/components/PostCard";
 import PageMeta from "src/components/PageMeta";
 import Pagination from "src/components/Pagination";
-import { PostData } from "src/PostData";
+import { PostData } from "src/DataTypes";
 
 export async function getStaticPaths() {
   if (!siteConfig.features.tagPages) {
