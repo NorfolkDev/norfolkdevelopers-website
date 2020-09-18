@@ -9,7 +9,7 @@ import PageMeta from "../PageMeta";
 
 type Props = {
   frontMatter: any;
-  children: any;
+  children?: any;
 };
 
 export default function PostTemplate({ frontMatter: post, children }: Props) {

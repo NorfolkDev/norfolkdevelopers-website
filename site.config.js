@@ -5,6 +5,7 @@ const siteConfig = {
   shortDescription: "Going straight to the ♥️ of software development practice and process",
   description: "Local, national and international speakers and workshops for Norfolk Developers",
   postsDirectory: "posts",
+  jobsDirectory: "jobs",
   githubUrl: "https://github.com/NorfolkDev/norfolkdevelopers-website/",
   features: {
     authorPages: true,

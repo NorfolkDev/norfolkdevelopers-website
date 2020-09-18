@@ -5,7 +5,7 @@ import Link from "next/link";
 import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";
 import MagazineCard from "../components/MagazineCard";
-import { PostData } from "src/PostData";
+import { PostData } from "src/DataTypes";
 
 type Props = {
   posts: PostData[];

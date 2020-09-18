@@ -7,7 +7,7 @@ import PostCard from "../../components/PostCard";
 import siteConfig from "../../../site.config";
 import { slugify } from "src/slugify";
 import PageMeta from "../../components/PageMeta";
-import { PostData } from "src/PostData";
+import { PostData } from "src/DataTypes";
 
 export async function getStaticPaths() {
   // no pagesif disables
