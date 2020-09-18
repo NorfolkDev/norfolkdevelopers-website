@@ -24,4 +24,10 @@ module.exports = {
   },
   variants: {},
   plugins: [],
+  purge: [
+    './src/components/*.tsx',
+    './src/components/**/*.tsx',
+    './src/pages/*.tsx',
+    './src/pages/**/*.tsx',
+  ],
 };
