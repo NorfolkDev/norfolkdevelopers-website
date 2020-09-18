@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import siteConfig from "site.config";
 import TagList from "src/components/TagList";
+import JobDetails from "src/components/JobDetails";
 import { slugify } from "src/slugify";
 import PageMeta from "../PageMeta";
 import { formatDistanceToNow } from "date-fns";
@@ -16,7 +17,7 @@ type Props = {
 
 export default function PostTemplate({ frontMatter: post, children }: Props) {
   const router = useRouter();
-  let editUrl = `${siteConfig.githubUrl}edit/master/src/pages/${router.pathname}/index.mdx`
+  let editUrl = `${siteConfig.githubUrl}edit/master/src/pages${router.pathname}/index.mdx`
 
   return (
     <Layout>
@@ -28,52 +29,53 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
 
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
         <header className="inset mb-12">
-          <h1 className="hashtag mt-2 mb-1 text-4xl md:text-5xl font-bold leading-tight">
+          <h1 className="hashtag mb-4 text-4xl md:text-5xl font-bold leading-tight">
             {post.title}
           </h1>
-          <p className="my-2 text-lg font-bold">Closing {dateFormat(new Date(post.expiryDate))}</p>
 
-          <ul className="my-2">
-            <li>
-              <label className="font-bold text-foreground-primary">Role:&nbsp;</label>
-              {post.role}
-            </li>
-            <li>
-              <label className="font-bold text-foreground-primary">Salary:&nbsp;</label>
-              {post.salary}
-            </li>
+          <JobDetails job={post} />
+
+          <ul className="mt-2 text-foreground-secondary text-sm">
             {post.company &&
               <li>
-                <label className="font-bold text-foreground-primary">Company:&nbsp;</label>
+                <label className="font-bold">With:&nbsp;</label>
                 {post.company}
               </li>
             }
             {post.location &&
               <li>
-                <label className="font-bold text-foreground-primary">Location:&nbsp;</label>
+                <label className="font-bold">Location:&nbsp;</label>
                 {post.location}
               </li>
             }
             {post.seniority &&
               <li>
-                <label className="font-bold text-foreground-primary">Seniority:&nbsp;</label>
+                <label className="font-bold">Seniority:&nbsp;</label>
                 {post.seniority}
               </li>
             }
           </ul>
 
           {post.apply &&
-            <a href={post.apply} className="block md:inline-block p-4 text-xl white bg-orange-600 border-orange-900">
+            <a
+              href={post.apply}
+              className="block md:inline-block mt-4 p-4 text-xl white bg-orange-600 border-orange-900 rounded"
+            >
               Apply Now
             </a>
           }
 
-          {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
+          {post.hero && <img className="my-12" src={post.hero} />}
         </header>
         <div className="typography">{children}</div>
         <footer className="mt-6 py-4 text-base">
-          <a className="text-foreground-secondary hover:text-foreground-primary hover:underline" href={editUrl} target="_blank" rel="nofollow">
-            Edit this post on GitHub
+          <a
+            className="text-foreground-secondary hover:text-foreground-primary hover:underline"
+            href={editUrl}
+            target="_blank"
+            rel="nofollow"
+          >
+            Edit this job on GitHub
           </a>
         </footer>
       </article>
