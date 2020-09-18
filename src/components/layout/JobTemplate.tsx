@@ -15,7 +15,7 @@ type Props = {
   children?: any;
 };
 
-export default function PostTemplate({ frontMatter: post, children }: Props) {
+export default function JobTemplate({ frontMatter: post, children }: Props) {
   const router = useRouter();
   let editUrl = `${siteConfig.githubUrl}edit/master/src/pages${router.pathname}/index.mdx`
 
