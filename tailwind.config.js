@@ -13,6 +13,7 @@ module.exports = {
         },
         border: {
           primary: "var(--color-border-primary)",
+          active: "var(--color-href-hover)",
         },
         href: {
           base: "var(--color-href-base)",
