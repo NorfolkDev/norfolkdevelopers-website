@@ -5,12 +5,11 @@ type Props = {
 };
 
 export default function JobSubtitle({ job }: Props) {
-    const hasSubtitle = job.location || job.salary || job.seniority;
-    return (hasSubtitle ? <span className="text-foreground-secondary">
+    return <span className="text-foreground-secondary">
         (
-            {job.location || ''}
+            {job.location}
             {job.salary ? ` / ${job.salary}` : ''}
             {job.seniority ? ` / ${job.seniority}` : ''}
         )
-    </span> : null)
+    </span>
 }

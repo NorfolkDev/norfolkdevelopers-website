@@ -17,7 +17,7 @@ export type JobData = BaseData & {
   salary: string;
   expiryDate: string;
   company?: string;
-  location?: string;
+  location: string;
   seniority?: string;
   apply?: string;
 };
