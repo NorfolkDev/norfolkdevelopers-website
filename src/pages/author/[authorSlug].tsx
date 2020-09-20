@@ -1,10 +1,12 @@
 import { useCallback } from "react";
 import { GetStaticProps } from "next";
+import getConfig from "next/config";
 import Head from "next/head";
-import { getAuthors } from "@static-fns/blog";
+import { getPosts, getAuthors } from "@static-fns/blog";
 import Layout from "../../components/layout/Layout";
 import PostCard from "../../components/PostCard";
 import siteConfig from "../../../site.config";
+const { serverRuntimeConfig } = getConfig();
 import { slugify } from "src/slugify";
 import PageMeta from "../../components/PageMeta";
 import { PostData } from "src/DataTypes";
@@ -18,11 +20,16 @@ export async function getStaticPaths() {
     };
   }
 
+  // Load Authors from this directory, and then only return this plain view
+  // for Authors that have not got a definition
+  let directory = `${serverRuntimeConfig.PROJECT_ROOT}/pages/author`;
+  let overrides = getPosts({ directory }).map(author => author.path.replace("/author/", ""));
+  let paths = Object.keys(getAuthors())
+    .filter(authorSlug => !~overrides.indexOf(authorSlug))
+    .map(authorSlug => ({ params: { authorSlug }}));
+
   return {
-    paths:
-      Object.keys(getAuthors()).map((author) => {
-        return { params: { authorSlug: author } };
-      }) || [],
+    paths,
     fallback: false,
   };
 }
@@ -38,11 +45,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-type Props = {
+type AuthorProps = {
   posts: PostData[];
   slug: string;
 };
-export default function AuthorSlug({ posts, slug }: Props) {
+
+export default function AuthorSlug({ posts, slug }: AuthorProps) {
   const findAuthorName = useCallback(
     (posts, slug) => {
       let thisAuthor = "";
