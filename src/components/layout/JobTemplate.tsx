@@ -1,14 +1,9 @@
 import Layout from "./Layout";
-import Link from "next/link";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import siteConfig from "site.config";
-import TagList from "src/components/TagList";
 import JobDetails from "src/components/JobDetails";
-import { slugify } from "src/slugify";
-import PageMeta from "../PageMeta";
-import { formatDistanceToNow } from "date-fns";
-import { dateFormat } from "src/dateFormat";
+import PageMeta from "src/components/PageMeta";
+import JobSubtitle from "src/components/JobSubtitle";
 
 type Props = {
   frontMatter: any;
@@ -17,7 +12,7 @@ type Props = {
 
 export default function JobTemplate({ frontMatter: post, children }: Props) {
   const router = useRouter();
-  let editUrl = `${siteConfig.githubUrl}edit/master/src/pages${router.pathname}/index.mdx`
+  let editUrl = `${siteConfig.githubUrl}edit/master/src/pages${router.pathname}/index.mdx`;
 
   return (
     <Layout>
@@ -30,31 +25,11 @@ export default function JobTemplate({ frontMatter: post, children }: Props) {
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
         <header className="inset mb-12">
           <h1 className="hashtag mb-4 text-4xl md:text-5xl font-bold leading-tight">
-            {post.title}
+            {post.title}&nbsp;
+            <JobSubtitle job={post} />
           </h1>
 
           <JobDetails job={post} />
-
-          <ul className="mt-2 text-foreground-secondary text-sm">
-            {post.company &&
-              <li>
-                <label className="font-bold">With:&nbsp;</label>
-                {post.company}
-              </li>
-            }
-            {post.location &&
-              <li>
-                <label className="font-bold">Location:&nbsp;</label>
-                {post.location}
-              </li>
-            }
-            {post.seniority &&
-              <li>
-                <label className="font-bold">Seniority:&nbsp;</label>
-                {post.seniority}
-              </li>
-            }
-          </ul>
 
           {post.apply &&
             <a
