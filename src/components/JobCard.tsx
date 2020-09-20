@@ -1,7 +1,7 @@
 import Link from "next/link";
-import TagList from "src/components/TagList";
+import { JobData } from "src/DataTypes";
 import JobDetails from "src/components/JobDetails";
-import { JobData } from "../DataTypes";
+import JobSubtitle from "src/components/JobSubtitle";
 
 type Props = {
   job: JobData;
@@ -14,7 +14,8 @@ export default function JobCard({ job }: Props) {
         <Link href={job.path || ""}>
           <a>
             <h2 className="text-2xl text-foreground-primary font-bold tracking-tight hover:text-red-500">
-              {job.title}
+              {job.title}&nbsp;
+              <JobSubtitle job={job} />
             </h2>
           </a>
         </Link>

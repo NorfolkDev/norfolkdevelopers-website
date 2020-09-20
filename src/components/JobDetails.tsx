@@ -21,10 +21,6 @@ export default function JobDetails({ job }: Props) {
         <span className="mr-2" role="img" aria-label="Job Role">💼</span>
         {job.role}
       </li>
-      <li className="mb-2 md:mb-0 md:mr-2">
-        <span className="mr-2" role="img" aria-label="Salary">👛</span>
-        {job.salary}
-      </li>
     </ol>
   );
 }
