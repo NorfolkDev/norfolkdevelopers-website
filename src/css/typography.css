@@ -1,4 +1,4 @@
-.typography > {
+.typography {
   @apply text-xl;
 
   h1 {
@@ -41,7 +41,7 @@
   a,
   p > a,
   ul > li > a {
-    @apply text-href-base underline;
+    @apply text-red-700 underline;
   }
 
   a:hover,
@@ -86,7 +86,7 @@
   }
 
   pre {
-    @apply -mx-4 p-4 bg-background-secondary;
+    @apply -mx-4 p-4 bg-gray-800;
   }
   @screen md {
     pre {
@@ -99,12 +99,12 @@
   }
 
   blockquote {
-    @apply bg-background-secondary border-l-8 border-border-primary my-6 py-4 px-4 rounded italic -mx-4;
+    @apply bg-gray-800 border-l-8 border-border-primary my-6 py-4 px-4 rounded italic -mx-4;
     quotes: "\201C""\201D";
   }
 
   blockquote cite {
-    @apply text-lg text-foreground-secondary;
+    @apply text-lg text-gray-500;
   }
 
   blockquote:before {
