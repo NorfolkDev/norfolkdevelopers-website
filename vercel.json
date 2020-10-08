@@ -1,5 +1,8 @@
 {
   "redirects": [
+    { "source": "/discord", "destination": "https://discord.gg/WQwrYrS", "permanent": false },
+    { "source": "/patreon", "destination": "https://www.patreon.com/NorfolkDev", "permanent": false },
+
     { "source": "/blog", "destination": "/posts" },
     {
       "source": "/join-us-for-the-nordevcon-2019-business-sessions-running-a-business-is-hard/",
