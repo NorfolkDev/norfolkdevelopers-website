@@ -19,11 +19,12 @@
     @apply font-bold mt-6 mb-2;
   }
 
-  p {
+  p, ul {
     @apply text-lg;
   }
+
   @screen md {
-    p {
+    p, ul {
       @apply text-xl;
     }
   }
