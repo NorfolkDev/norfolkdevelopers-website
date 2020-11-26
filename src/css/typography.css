@@ -41,12 +41,16 @@
   a,
   p > a,
   ul > li > a {
-    @apply text-href-base underline;
-  }
+    background-image: linear-gradient(0deg, #f56565, #f56565);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    transition: background-size 0.4s;
 
-  a:hover,
-  a:active {
-    @apply text-href-hover;
+    &:hover,
+    &:active {
+      background-size: 100% 40%;
+    }
   }
 
   ul {
