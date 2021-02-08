@@ -3,6 +3,7 @@
     { "source": "/2020", "destination": "/posts/2020-12-21-2020-retrospective-and-thanks" },
     { "source": "/discord", "destination": "https://discord.gg/WQwrYrS", "permanent": false },
     { "source": "/patreon", "destination": "https://www.patreon.com/NorfolkDev", "permanent": false },
+    { "source": "/youtube", "destination": "https://www.youtube.com/user/NorfolkDevelopers", "permanent": false },
 
     { "source": "/blog", "destination": "/posts" },
     {
