@@ -7,6 +7,7 @@ import TagList from "src/components/TagList";
 import { slugify } from "src/slugify";
 import PageMeta from "../PageMeta";
 import { dateFormat } from "src/dateFormat";
+import { Fragment } from "react";
 
 type Props = {
   frontMatter: any;
@@ -36,7 +37,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
             <span className="block text-base text-gray-600">
               by{" "}
               {post.author.map((author: string, i: number) => (
-                <span key={author}>
+                <Fragment key={author}>
                   <Link
                     href="/author/[authorSlug]"
                     as={`/author/${slugify(author)}`}
@@ -44,7 +45,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
                     <a className="underline">{author}</a>
                   </Link>
                   {i < post.author.length - 1 ? ", " : ""}
-                </span>
+                </Fragment>
               ))}
               {post.date && ` on ${dateFormat(new Date(post.date))}`}
             </span>
