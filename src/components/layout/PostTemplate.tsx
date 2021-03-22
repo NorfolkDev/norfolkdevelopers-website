@@ -6,6 +6,7 @@ import siteConfig from "site.config";
 import TagList from "src/components/TagList";
 import { slugify } from "src/slugify";
 import PageMeta from "../PageMeta";
+import { dateFormat } from "src/dateFormat";
 
 type Props = {
   frontMatter: any;
@@ -31,14 +32,9 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
           <h1 className="hashtag mt-2 mb-1 text-4xl md:text-5xl font-bold leading-tight">
             {post.title}
           </h1>
-          {post.date && (
-            <p className="block text-foreground-secondary font-bold">
-              {/* {dateFormat(new Date(post.date))} */}
-            </p>
-          )}
           {post.author && siteConfig.features.authorPages ? (
             <span className="block text-base text-gray-600">
-              by{[" "]}
+              by{" "}
               {post.author.map((author: string, i: number) => (
                 <span key={author}>
                   <Link
@@ -50,6 +46,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
                   {i < post.author.length - 1 ? ", " : ""}
                 </span>
               ))}
+              {post.date && ` on ${dateFormat(new Date(post.date))}`}
             </span>
           ) : null}
           {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
