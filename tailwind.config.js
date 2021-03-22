@@ -24,7 +24,9 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
   purge: [
     './src/components/*.tsx',
     './src/components/**/*.tsx',
