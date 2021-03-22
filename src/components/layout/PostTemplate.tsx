@@ -8,6 +8,7 @@ import { slugify } from "src/slugify";
 import PageMeta from "../PageMeta";
 import { dateFormat } from "src/dateFormat";
 import { Fragment } from "react";
+import { differenceInCalendarDays, formatDistance } from "date-fns";
 
 type Props = {
   frontMatter: any;
@@ -47,7 +48,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
                   {i < post.author.length - 1 ? ", " : ""}
                 </Fragment>
               ))}
-              {post.date && ` on ${dateFormat(new Date(post.date))}`}
+              {post.date && <>{' '}<PostDate date={new Date(post.date)} /></>}
             </span>
           ) : null}
           {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
@@ -61,4 +62,18 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
       </article>
     </Layout>
   );
+}
+
+interface PostDateProps {
+  date: Date;
+}
+
+function PostDate({ date }: PostDateProps) {
+  const daysSincePosted = differenceInCalendarDays(new Date(), date);
+
+  if (daysSincePosted > 7 || !Intl.RelativeTimeFormat) {
+    return <>on {dateFormat(date)}</>
+  }
+
+  return <span title={dateFormat(date)}>{formatDistance(date, new Date())} ago</span>
 }
