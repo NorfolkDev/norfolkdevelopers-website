@@ -13,7 +13,7 @@ type Props = {
 };
 
 const numberOfEvents = 10;
-const meetupAPIEndpoint = `https://cors-it-is.shaun.now.sh/?url=https://api.meetup.com/Norfolk-Developers-NorDev/events?&sign=true&photo-host=public&page=1&limit=${numberOfEvents}`;
+const meetupAPIEndpoint = `https://cors-it-is.shaun.vercel.app/?url=https://api.meetup.com/Norfolk-Developers-NorDev/events?&sign=true&photo-host=public&page=1&limit=${numberOfEvents}`;
 
 export async function getStaticProps() {
   const initialEventData = await fetcher(meetupAPIEndpoint);
@@ -38,7 +38,11 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
             Developers.
           </h2>
           <p className="text-foreground-tertiary">
-            (<span role="img" aria-label="web">🕸</span> over the interweb until further notice)
+            (
+            <span role="img" aria-label="web">
+              🕸
+            </span>{" "}
+            over the interweb until further notice)
           </p>
         </header>
       </section>
