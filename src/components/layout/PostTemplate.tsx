@@ -71,7 +71,7 @@ interface PostDateProps {
 function PostDate({ date }: PostDateProps) {
   const daysSincePosted = differenceInCalendarDays(new Date(), date);
 
-  if (daysSincePosted > 7 || !Intl.RelativeTimeFormat) {
+  if (daysSincePosted > 7) {
     return <>on {dateFormat(date)}</>
   }
 
