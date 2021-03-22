@@ -1,6 +1,5 @@
 import Layout from "./Layout";
 import Link from "next/link";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import siteConfig from "site.config";
 import TagList from "src/components/TagList";
