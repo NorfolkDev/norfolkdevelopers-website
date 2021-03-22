@@ -6,9 +6,13 @@ import siteConfig from "site.config";
 import TagList from "src/components/TagList";
 import { slugify } from "src/slugify";
 import PageMeta from "../PageMeta";
-import { dateFormat } from "src/dateFormat";
 import { Fragment } from "react";
-import { differenceInCalendarDays, formatDistance } from "date-fns";
+import dynamic from "next/dynamic";
+
+// Lazy load the PostDate component so that relative times show relative to the user's TZ
+const PostDate = dynamic(() => import('../PostDate'), {
+  ssr: false
+});
 
 type Props = {
   frontMatter: any;
@@ -62,18 +66,4 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
       </article>
     </Layout>
   );
-}
-
-interface PostDateProps {
-  date: Date;
-}
-
-function PostDate({ date }: PostDateProps) {
-  const daysSincePosted = differenceInCalendarDays(new Date(), date);
-
-  if (daysSincePosted > 7) {
-    return <>on {dateFormat(date)}</>
-  }
-
-  return <span title={dateFormat(date)}>{formatDistance(date, new Date())} ago</span>
 }
