@@ -1,10 +1,13 @@
 import Link from "next/link";
+import dynamic from 'next/dynamic'
 import config from "../../../site.config";
-import siteConfig from "../../../site.config";
-import useDarkMode from "use-dark-mode";
 import { useRouter } from "next/router";
 import Logo from "../Logo";
 import PageMeta from "../PageMeta";
+
+const DarkModeToggle = dynamic(() => import('../DarkModeToggle'), {
+  ssr: false
+});
 
 const navLinks = [
   { url: `/${config.postsDirectory}`, label: "posts" },
@@ -20,7 +23,6 @@ type Props = {
 };
 
 export default function Layout({ children, location }: Props) {
-  const darkMode = useDarkMode(false);
   const router = useRouter();
 
   return (
@@ -58,22 +60,7 @@ export default function Layout({ children, location }: Props) {
                 </Link>
               ))}
             </nav>
-            <button
-              onClick={() => darkMode.toggle()}
-              id="toggleTheme"
-              aria-pressed={darkMode.value}
-              className="order-2 lg:order-3 ml-auto p-2 inline-block transform hover:-rotate-180 duration-300 ease-in-out "
-            >
-              {darkMode.value ? (
-                <span role="img" aria-label="sun">
-                  ☀️
-                </span>
-              ) : (
-                <span role="img" aria-label="sunglasses face">
-                  😎
-                </span>
-              )}
-            </button>
+            <DarkModeToggle />
           </header>
           <main className="flex-grow">{children}</main>
           <footer className="my-6 border-border-primary py-4 text-base text-foreground-secondary text-center">
