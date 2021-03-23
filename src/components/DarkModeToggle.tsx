@@ -5,7 +5,7 @@ import useDarkMode from "use-dark-mode";
  */
 export default function DarkModeToggle() {
   const darkMode = useDarkMode(
-    // @ts-ignore
+    // @ts-ignore use-dark-mode is passing this value directly to useState, so the types are actually wrong here it should accept a lazy initial state
     getPrefersDarkMode
   );
 
