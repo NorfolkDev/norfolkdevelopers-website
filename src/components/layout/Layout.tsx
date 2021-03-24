@@ -4,6 +4,7 @@ import config from "../../../site.config";
 import { useRouter } from "next/router";
 import Logo from "../Logo";
 import PageMeta from "../PageMeta";
+import { useEffect, useState } from "react";
 
 const DarkModeToggle = dynamic(() => import('../DarkModeToggle'), {
   ssr: false
@@ -24,13 +25,21 @@ type Props = {
 
 export default function Layout({ children, location }: Props) {
   const router = useRouter();
+  const [transitionDurationClass, setTransitionDurationClass] = useState('');
+
+  useEffect(() => {
+    // This little maneuver ~~is gonna~~ cost us 51 years...
+    // Chrome seems to apply a transition on the background sometimes on initial load from white (no content) -> dark when in darkmode.
+    // Applying the duration style only on the client side render fixes it.
+    setTransitionDurationClass('duration-1000');
+  }, []);
 
   return (
     <>
       <PageMeta />
 
       <div
-        className={`text-foreground-primary px-8 bg-background-primary duration-200 border-t-0 border-red-500`}
+        className={`text-foreground-primary px-8 bg-background-primary ${transitionDurationClass} border-t-0 border-red-500`}
       >
         <div className="flex flex-col min-h-screen ml-auto mr-auto w-full md:w-4/5 lg:max-w-3xl">
           <header className="mt-6 md:mb-3 flex flex-wrap fade-out">
