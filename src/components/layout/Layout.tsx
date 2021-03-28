@@ -1,10 +1,14 @@
 import Link from "next/link";
+import dynamic from 'next/dynamic'
 import config from "../../../site.config";
-import siteConfig from "../../../site.config";
-import useDarkMode from "use-dark-mode";
 import { useRouter } from "next/router";
 import Logo from "../Logo";
 import PageMeta from "../PageMeta";
+import { useEffect, useState } from "react";
+
+const DarkModeToggle = dynamic(() => import('../DarkModeToggle'), {
+  ssr: false
+});
 
 const navLinks = [
   { url: `/${config.postsDirectory}`, label: "posts" },
@@ -20,15 +24,22 @@ type Props = {
 };
 
 export default function Layout({ children, location }: Props) {
-  const darkMode = useDarkMode(false);
   const router = useRouter();
+  const [transitionDurationClass, setTransitionDurationClass] = useState('');
+
+  useEffect(() => {
+    // This little maneuver ~~is gonna~~ cost us 51 years...
+    // Chrome seems to apply a transition on the background sometimes on initial load from white (no content) -> dark when in darkmode.
+    // Applying the duration style only on the client side render fixes it.
+    setTransitionDurationClass('duration-1000');
+  }, []);
 
   return (
     <>
       <PageMeta />
 
       <div
-        className={`text-foreground-primary px-8 bg-background-primary duration-200 border-t-0 border-red-500`}
+        className={`text-foreground-primary px-8 bg-background-primary ${transitionDurationClass} border-t-0 border-red-500`}
       >
         <div className="flex flex-col min-h-screen ml-auto mr-auto w-full md:w-4/5 lg:max-w-3xl">
           <header className="mt-6 md:mb-3 flex flex-wrap fade-out">
@@ -58,22 +69,7 @@ export default function Layout({ children, location }: Props) {
                 </Link>
               ))}
             </nav>
-            <button
-              onClick={() => darkMode.toggle()}
-              id="toggleTheme"
-              aria-pressed={darkMode.value}
-              className="order-2 lg:order-3 ml-auto p-2 inline-block transform hover:-rotate-180 duration-300 ease-in-out "
-            >
-              {darkMode.value ? (
-                <span role="img" aria-label="sun">
-                  ☀️
-                </span>
-              ) : (
-                <span role="img" aria-label="sunglasses face">
-                  😎
-                </span>
-              )}
-            </button>
+            <DarkModeToggle />
           </header>
           <main className="flex-grow">{children}</main>
           <footer className="my-6 border-border-primary py-4 text-base text-foreground-secondary text-center">
