@@ -31,7 +31,7 @@ export default function Layout({ children, location }: Props) {
     // This little maneuver ~~is gonna~~ cost us 51 years...
     // Chrome seems to apply a transition on the background sometimes on initial load from white (no content) -> dark when in darkmode.
     // Applying the duration style only on the client side render fixes it.
-    setTransitionDurationClass('duration-1000');
+    setTransitionDurationClass('duration-200');
   }, []);
 
   return (
