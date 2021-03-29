@@ -7,11 +7,26 @@ type Props = {
   initialData?: MeetupEvent[];
 };
 
+const baseUrl = process.env.VERCEL_URL || "http://localhost:3000";
+
 export default function EventsList({ initialData, endpoint }: Props) {
-  const { data, error } = useSWR<MeetupEvent[]>(endpoint, fetcher, {
-    initialData,
-  });
-  if (error) return <div>Error loading events from meetup.com <span role="img" aria-label="sad face">🙁</span></div>;
+  const { data, error } = useSWR<MeetupEvent[]>(
+    `${baseUrl}/api/proxy?url=${endpoint}`,
+    fetcher,
+    {
+      initialData,
+    }
+  );
+
+  if (error)
+    return (
+      <div>
+        Error loading events from meetup.com{" "}
+        <span role="img" aria-label="sad face">
+          🙁
+        </span>
+      </div>
+    );
   if (!data)
     return (
       <div>
@@ -29,33 +44,49 @@ export default function EventsList({ initialData, endpoint }: Props) {
   return (
     <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {data.slice(0, 9).map((event) => {
-
         const currentDate = new Date();
         const dateOfEvent = new Date(event.time);
-        const dateDifference = differenceInDays(dateOfEvent, currentDate)
+        const dateDifference = differenceInDays(dateOfEvent, currentDate);
 
         let formattedDateOfEvent;
 
         if (dateDifference < 1) {
-          formattedDateOfEvent = `Today, ${format(new Date(event.time), "do LLL ")}`;
+          formattedDateOfEvent = `Today, ${format(
+            new Date(event.time),
+            "do LLL "
+          )}`;
         } else if (dateDifference < 2) {
-          formattedDateOfEvent = `Tomorrow, ${format(new Date(event.time), "do LLL")}`;
+          formattedDateOfEvent = `Tomorrow, ${format(
+            new Date(event.time),
+            "do LLL"
+          )}`;
         } else if (dateDifference < 7) {
-          formattedDateOfEvent = `This ${format(new Date(event.time), "eeee, do LLL")}`;
+          formattedDateOfEvent = `This ${format(
+            new Date(event.time),
+            "eeee, do LLL"
+          )}`;
         } else if (dateDifference < 14) {
-          formattedDateOfEvent = `Next ${format(new Date(event.time), "eeee, do LLL ")}`;
+          formattedDateOfEvent = `Next ${format(
+            new Date(event.time),
+            "eeee, do LLL "
+          )}`;
         } else {
-          formattedDateOfEvent = format(new Date(event.time), "eeee, do LLL yyyy");
+          formattedDateOfEvent = format(
+            new Date(event.time),
+            "eeee, do LLL yyyy"
+          );
         }
-        
+
         return (
-            <li
-              key={event.id}
-              className="block bg-background-secondary rounded leading-tight tracking-tight"
-            >
-              <a href={event.link} className="p-4 block hover:outline">
+          <li
+            key={event.id}
+            className="block bg-background-secondary rounded leading-tight tracking-tight"
+          >
+            <a href={event.link} className="p-4 block hover:outline">
               <h3 className="font-bold text-lg">
-                <span role="img" aria-label="calendar">📆</span>
+                <span role="img" aria-label="calendar">
+                  📆
+                </span>
                 &nbsp;{event.name}
               </h3>
               <p className="text-foreground-secondary mt-2 font-bold">
@@ -74,7 +105,7 @@ export default function EventsList({ initialData, endpoint }: Props) {
               </p>
             </a>
           </li>
-        )
+        );
       })}
     </ul>
   );
