@@ -6,17 +6,20 @@ import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";
 import MagazineCard from "../components/MagazineCard";
 import { PostData } from "src/DataTypes";
+import { fetchData } from "./api/proxy";
 
 type Props = {
   posts: PostData[];
   initialEventData: any[];
 };
 
-const numberOfEvents = 10;
-const meetupAPIEndpoint = `https://cors-it-is.shaun.vercel.app/?url=https://api.meetup.com/Norfolk-Developers-NorDev/events?&sign=true&photo-host=public&page=1&limit=${numberOfEvents}`;
+const numberOfEvents = 9;
+const meetupAPIEndpoint = `https://api.meetup.com/Norfolk-Developers-NorDev/events?photo-host=public&page=${numberOfEvents}`;
 
 export async function getStaticProps() {
-  const initialEventData = await fetcher(meetupAPIEndpoint);
+  const meetupResponse = await fetchData(meetupAPIEndpoint);
+  // 🤮
+  const initialEventData = JSON.parse(JSON.stringify(meetupResponse));
   return {
     props: { posts: getPosts({ limit: 3 }), initialEventData },
     revalidate: 60,
