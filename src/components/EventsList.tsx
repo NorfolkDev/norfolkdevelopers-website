@@ -7,7 +7,7 @@ type Props = {
   initialData?: MeetupEvent[];
 };
 
-const baseUrl = process.env.VERCEL_URL || "http://localhost:3000";
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
 
 export default function EventsList({ initialData, endpoint }: Props) {
   const { data, error } = useSWR<MeetupEvent[]>(
