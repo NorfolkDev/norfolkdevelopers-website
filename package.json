@@ -8,7 +8,7 @@
     "dev": "next dev",
     "start": "next start",
     "build:rss": "npx tsc --project tsconfig.rss.json && node ./built/src/rss/build-rss.js",
-    "build": "next build && next export ",
+    "build": "next build",
     "export": "next export",
     "precommit": "npm run prettier",
     "format": " prettier \"**/*.+(js|jsx|ts|tsx|json)\" --write --ignore-path .gitignore"
