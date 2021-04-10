@@ -21,7 +21,7 @@ export default async function handler(
     constants.GITHUB_AUTH_TOKEN
   );
 
-  const branchName = `jobs/${new Date().toISOString()}`;
+  const branchName = `jobs/${new Date().toISOString().replace(/[:\.]/g, "_")}`;
 
   const repo = {
     owner: constants.GITHUB_OWNER,
@@ -42,7 +42,7 @@ export default async function handler(
 
   const createFileResult = await gh.createFile({
     ...repo,
-    content: new Buffer(getJobMarkdownContent(bodyParsedResult.data)).toString(
+    content: Buffer.from(getJobMarkdownContent(bodyParsedResult.data)).toString(
       "base64"
     ),
     message: "Add job",
@@ -133,7 +133,9 @@ namespace GithubAPI {
     private async fetch(url: string, options?: RequestInit) {
       const headers = new ImmutableHeaders({
         Accept: "application/vnd.github.v3+json",
-        Authorization: `${this.username}:${this.token}`,
+        Authorization: `Basic ${Buffer.from(
+          `${this.username}:${this.token}`
+        ).toString("base64")}`,
       });
 
       return fetch(url, { headers, ...options });
