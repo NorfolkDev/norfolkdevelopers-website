@@ -177,10 +177,12 @@ namespace GithubAPI {
         `/repos/${owner}/${repo}/pulls`
       );
 
-      return this.fetch(url.toString(), {
-        method: "POST",
-        body: JSON.stringify(body),
-      });
+      return (
+        await this.fetch(url.toString(), {
+          method: "POST",
+          body: JSON.stringify(body),
+        })
+      ).json();
     }
 
     async createFile({
