@@ -5,7 +5,7 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "mdx", "md"],
 
   serverRuntimeConfig: {
-    PROJECT_ROOT: path.join(__dirname, 'src'),
+    PROJECT_ROOT: path.join(__dirname, "src"),
   },
 
   webpack(config, options) {
@@ -20,7 +20,7 @@ const nextConfig = {
           },
         },
         {
-          loader: "@static-fns/loader",
+          loader: "./src/lib/frontmatter/loader",
         },
       ],
     });

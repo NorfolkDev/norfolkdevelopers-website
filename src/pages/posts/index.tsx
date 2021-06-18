@@ -1,6 +1,6 @@
 import Layout from "../../components/layout/Layout";
 import siteConfig from "../../../site.config";
-import { getPosts } from "@static-fns/blog";
+import { getPosts } from "src/lib/blog/blog-fns";
 import PostCard from "../../components/PostCard";
 import PageMeta from "../../components/PageMeta";
 import Pagination from "../../components/Pagination";
@@ -13,8 +13,8 @@ export async function getStaticProps() {
     props: {
       page: 1,
       posts: posts.slice(0, siteConfig.settings.postsPerPage),
-      total: posts.length
-    }
+      total: posts.length,
+    },
   };
 }
 

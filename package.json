@@ -11,7 +11,7 @@
     "build": "next build",
     "export": "next export",
     "precommit": "npm run prettier",
-    "format": " prettier \"**/*.+(js|jsx|ts|tsx|json)\" --write --ignore-path .gitignore"
+    "format": "prettier \"**/*.+(js|jsx|ts|tsx|json)\" --write --ignore-path .gitignore"
   },
   "author": "",
   "license": "ISC",
@@ -44,6 +44,7 @@
     "prettier": "^2.0.5",
     "rss": "^1.2.2",
     "sass": "^1.26.10",
+    "showdown": "^1.9.1",
     "stringify-object": "^3.3.0",
     "typescript": "^3.9.7"
   }

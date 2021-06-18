@@ -1,6 +1,6 @@
 import siteConfig from "site.config";
 import { GetStaticProps } from "next";
-import { getTags, getStaticTagPaths } from "@static-fns/blog";
+import { getTags, getStaticTagPaths } from "src/lib/blog/blog-fns";
 import Layout from "src/components/layout/Layout";
 import PostCard from "src/components/PostCard";
 import PageMeta from "../../components/PageMeta";
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       page: 1,
       posts: tagPosts.slice(0, siteConfig.settings.postsPerPage),
       total: tagPosts.length,
-      tagSlug
+      tagSlug,
     },
   };
 };

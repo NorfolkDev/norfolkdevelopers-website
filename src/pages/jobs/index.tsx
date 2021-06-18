@@ -1,7 +1,7 @@
 import Layout from "src/components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "site.config";
-import { getPosts } from "@static-fns/blog";
+import { getPosts } from "src/lib/blog/blog-fns";
 import { JobData } from "src/DataTypes";
 import JobCard from "src/components/JobCard";
 import getConfig from "next/config";
@@ -11,7 +11,9 @@ import { isAfter as isAfterDate } from "date-fns";
 export async function getStaticProps() {
   let directory = `${serverRuntimeConfig.PROJECT_ROOT}/pages/jobs`;
 
-  return { props: { jobs: JSON.parse(JSON.stringify(getPosts({ directory }))) } };
+  return {
+    props: { jobs: JSON.parse(JSON.stringify(getPosts({ directory }))) },
+  };
 }
 
 type Props = {
@@ -20,8 +22,7 @@ type Props = {
 
 export default function JobsRoute({ jobs }: Props) {
   const activeJobs = jobs.filter(
-    (job) =>
-      job.expiryDate && isAfterDate(new Date(job.expiryDate), new Date())
+    (job) => job.expiryDate && isAfterDate(new Date(job.expiryDate), new Date())
   );
 
   return (

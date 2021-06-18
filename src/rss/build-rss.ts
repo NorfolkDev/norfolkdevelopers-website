@@ -1,4 +1,4 @@
-import { generateRSS } from "@static-fns/blog";
+import { generateRSS } from "../lib/blog/build-rss";
 import siteConfig from "../../site.config";
 
 try {

@@ -4,16 +4,20 @@ import Layout from "../../../components/layout/Layout";
 import PageMeta from "../../../components/PageMeta";
 import PostCard from "../../../components/PostCard";
 import Pagination from "../../../components/Pagination";
-import { getPosts } from "@static-fns/blog";
+import { getPosts } from "src/lib/blog/blog-fns";
 import { PostData } from "src/DataTypes";
 
 export async function getStaticPaths() {
   const posts = getPosts();
-  const paths = new Array(Math.floor(posts.length / siteConfig.settings.postsPerPage)).fill(null);
+  const paths = new Array(
+    Math.floor(posts.length / siteConfig.settings.postsPerPage)
+  ).fill(null);
 
   return {
-    paths: paths.map((_, page) => ({ params: { page: (page + 2).toString() }})),
-    fallback: false
+    paths: paths.map((_, page) => ({
+      params: { page: (page + 2).toString() },
+    })),
+    fallback: false,
   };
 }
 
@@ -26,10 +30,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       posts: posts.slice(pointer, pointer + siteConfig.settings.postsPerPage),
       page,
-      total: posts.length
-    }
+      total: posts.length,
+    },
   };
-}
+};
 
 type Props = {
   posts: PostData[];

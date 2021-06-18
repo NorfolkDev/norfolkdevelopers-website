@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 import { GetStaticProps } from "next";
-import Head from "next/head";
-import { getAuthors } from "@static-fns/blog";
+import { getAuthors } from "src/lib/blog/blog-fns";
 import Layout from "../../components/layout/Layout";
 import PostCard from "../../components/PostCard";
 import siteConfig from "../../../site.config";

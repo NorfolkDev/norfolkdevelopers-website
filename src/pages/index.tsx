@@ -1,6 +1,6 @@
 import Layout from "../components/layout/Layout";
 import siteConfig from "../../site.config";
-import { getPosts, fetcher } from "@static-fns/blog";
+import { getPosts } from "src/lib/blog/blog-fns";
 import Link from "next/link";
 import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";

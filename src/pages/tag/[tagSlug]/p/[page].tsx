@@ -1,6 +1,6 @@
 import siteConfig from "site.config";
 import { GetStaticProps } from "next";
-import { getTags, getStaticTagPaths } from "@static-fns/blog";
+import { getTags, getStaticTagPaths } from "src/lib/blog/blog-fns";
 import Layout from "src/components/layout/Layout";
 import PostCard from "src/components/PostCard";
 import PageMeta from "src/components/PageMeta";
@@ -17,20 +17,22 @@ export async function getStaticPaths() {
 
   const posts = getTags();
   const paths = Object.keys(posts)
-    .map(tagSlug => ({
+    .map((tagSlug) => ({
       tagSlug,
-      posts: posts[tagSlug]
+      posts: posts[tagSlug],
     }))
-    .filter(tag => tag.posts.length > siteConfig.settings.postsPerPage)
-    .map(tag => {
-      let totalPages = Math.ceil(tag.posts.length / siteConfig.settings.postsPerPage);
+    .filter((tag) => tag.posts.length > siteConfig.settings.postsPerPage)
+    .map((tag) => {
+      let totalPages = Math.ceil(
+        tag.posts.length / siteConfig.settings.postsPerPage
+      );
       let paginator = new Array(totalPages - 1).fill(null);
 
       return paginator.map((_, i) => ({
         params: {
           tagSlug: tag.tagSlug,
-          page: (i + 2).toString()
-        }
+          page: (i + 2).toString(),
+        },
       }));
     })
     .flat();
@@ -56,11 +58,14 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   return {
     props: {
-      posts: posts[tagSlug].slice(pointer, pointer + siteConfig.settings.postsPerPage),
+      posts: posts[tagSlug].slice(
+        pointer,
+        pointer + siteConfig.settings.postsPerPage
+      ),
       total: posts[tagSlug].length,
       page,
-      tagSlug
-    }
+      tagSlug,
+    },
   };
 };
 
