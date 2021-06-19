@@ -103,6 +103,7 @@ function getPostData<T extends PostDataInterface>(
     const filename = path.parse(postPath);
     const file: string = fs.readFileSync(`${directory}/${postPath}`, "utf-8");
     const { content, data } = parseFrontMatter(file);
+    // @ts-ignore
     const parseDir = path.parse(directory);
     return {
       date: "",
@@ -135,6 +136,7 @@ export function getPosts<T extends PostDataInterface>(
 
   verbose ? console.log(`${TAG} scanning for posts`, `${directory}/**`) : null;
 
+  // @ts-ignore
   const postPaths = getPostPaths("/", { directory });
   verbose ? postPaths.forEach((path) => console.log(`${TAG} -`, path)) : null;
 

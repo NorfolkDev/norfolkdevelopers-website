@@ -4,17 +4,17 @@ import cleanse from "./remove-markdown";
 // TODO: Allow excerpt length to be configurable
 const EXCERPT_LENGTH = 280;
 
-function parseFrontMatter(file) {
+function parseFrontMatter(file: any) {
   const { content, data, excerpt } = matter(file, { excerpt: true });
 
   // TODO: validate date for frontmatter and give a nice error message
 
   if (typeof data.tags === "string") {
-    data.tags = data.tags.split(",").map((tag) => tag.trim());
+    data.tags = data.tags.split(",").map((tag: string) => tag.trim());
   }
 
   if (typeof data.author === "string") {
-    data.author = data.author.split(",").map((author) => author.trim());
+    data.author = data.author.split(",").map((author: string) => author.trim());
   }
 
   if (!data.excerpt && excerpt) {
