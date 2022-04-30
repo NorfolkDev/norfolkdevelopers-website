@@ -4,6 +4,8 @@
     { "source": "/discord", "destination": "https://discord.gg/WQwrYrS", "permanent": false },
     { "source": "/patreon", "destination": "https://www.patreon.com/NorfolkDev", "permanent": false },
     { "source": "/youtube", "destination": "https://www.youtube.com/user/NorfolkDevelopers", "permanent": false },
+    { "source": "/con", "destination": "https://www.nordevcon.com/", "permanent": false },
+    { "source": "/tickets", "destination": "https://ti.to/norfolkdevelopers/nordevcon-22/", "permanent": false },
 
     { "source": "/blog", "destination": "/posts" },
     {
