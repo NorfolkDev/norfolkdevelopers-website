@@ -40,20 +40,20 @@ Looks good! Now to parse the data.
 
 ## Parsing the HTML
 The first step in parsing the HTML is knowing what we’re looking for. For this exercise I’m happy with just getting all the individual programming languages held on the page. 
-Inspecting the programming names in the chrome dev tools shows us that each name is contained in an <li> element. 
+Inspecting the programming names in the chrome dev tools shows us that each name is contained in an `<Li>` element. 
 ![👀 Inspecting the HTML 👀](/static/images/pages/posts/2022-05-18-scraping-static-web-pages/inspecting.png)
  
-Let’s grab all the <li>’s on the page and see what we get.
+Let’s grab all the `<Li>` elements on the page and see what we get.
 First I’m going to create a new method to parse the HTML.
 ![Getting all the Li elements](/static/images/pages/posts/2022-05-18-scraping-static-web-pages/gimmeSomeLis.png)
  
 While writing the method I used breakpoints to see the structure of the list items, the InnerText property appears to contain the data I want.
 ![Getting the correct data from the innerText property](/static/images/pages/posts/2022-05-18-scraping-static-web-pages/innerText.png)
  
-The problem with this approach is that there are a lot of other <li> elements on the page and I’m getting their values as well, like this.
+The problem with this approach is that there are a lot of other `<Li>` elements on the page and I’m getting their values as well, like this.
 ![Get these Li's out of my face](/static/images/pages/posts/2022-05-18-scraping-static-web-pages/thatsALotOfLis.png)
  
-By poking around in the HTML source I was able to get values from the elements, or their parent nodes that I could start using to fiter out some of the unwanted data.
+By poking around in the HTML source I was able to get values from the elements, or their parent nodes that I could start using to filter out some of the unwanted data.
 ![Filtering the results](/static/images/pages/posts/2022-05-18-scraping-static-web-pages/filtering.png)
  
 I didn’t sanitize the whole list since I don’t really have any plans for the data here, but you can see the method I used and see how that could be incorporated in your own code.
