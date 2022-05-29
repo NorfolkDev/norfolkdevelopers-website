@@ -6,8 +6,7 @@ author: Damien Sedgwick
 tags: Golang, Go, TDD, Test Driven Development, Coding Challenge
 ---
 
-Today we are going to take a look at solving "Make The Dead Fish Swim" - A Codewars challenge ranked '6 kyu' and we are going to do it using Test Driven 
-Development.
+Today we are going to take a look at solving "Make The Dead Fish Swim" - A Codewars challenge ranked '6 kyu' and we are going to do it using Test Driven Development.
 
 First of all, let us look at the challenge we are going to tackle:
 
@@ -26,16 +25,13 @@ Invalid characters should be ignored.
 Parse("iiisdoso") == []int{8, 64} // example output
 ```
 
-A quick disclaimer, there is a good chance that there is a very concise and clever solution to this challenge, and I will share it at the end of this post.
-However my goal here is to practice taking a problem, and breaking it down into small testable pieces of functionality that could be used elsewhere (if we
-were building something in real life).
+A quick disclaimer, there is a good chance that there is a very concise and clever solution to this challenge, and I will share it at the end of this post. However my goal here is to practice taking a problem, and breaking it down into small testable pieces of functionality that could be used elsewhere (if we were building something in real life).
 
 We are going to be working in two different files, main.go and main_test.go
 
-I will also be using a package that I like to use when writing tests and that package is `https://github.com/stretchr/testify`.
+I will also be using a package that I like to use when writing tests and that package is https://github.com/stretchr/testify
 
-For me, a good starting point is to write out some test functions for the bits of the challenge that are repeated throughout the program, increment one,
-decrement one, square and outputs to the array. Although for now, I will start with the first three.
+For me, a good starting point is to write out some test functions for the bits of the challenge that are repeated throughout the program, increment one, decrement one, square and outputs to the array. Although for now, I will start with the first three.
 
 ```go
 func TestIncrementOne(t *testing.T) {
@@ -57,16 +53,15 @@ func TestSquare(t *testing.T) {
 }
 ```
 
-Each of these functions will provide us with a specific piece of functionality that we will later need when parsing the input for the challenge. Let us run
-the tests.
+Each of these functions will provide us with a specific piece of functionality that we will later need when parsing the input for the challenge. Let us run the tests.
 
-```
+```go
 // go test
 
 ./main_test.go:23:21: undefined: IncrementOne
-./main_test.go:27:21: undefined: DecrementOne
+./main_test.go:27:21: undefined DecrementOne
 ./main_test.go:31:21: undefined: Square
-FAIL	github.com/damiensedgwick/codewars/makeTheDeadFishSwim [build failed]
+FAIL github.com/damiensedgwick/codewars/makeTheDeadFishSwim [build failed]
 ```
 
 Pretty simple, they all fail because none of the functions actually exist yet, so let us create them.
@@ -89,17 +84,16 @@ These functions are very simple and may seem in fact trivial however they are go
 
 Let us run the tests again.
 
-```
+```go
 // go test
 
 PASS
-ok  	github.com/damiensedgwick/codewars/makeTheDeadFishSwim	0.195s
+ok github.com/damiensedgwick/codewars/makeTheDeadFishSwim 0.195s
 ```
 
 Much better, so what is next.
 
-I think a good step would be to take the input string we are going to receive, and turn it in to an array of strings so that we can loop through it and
-decide what we would like to happen for each element of that array.
+I think a good step would be to take the input string we are going to receive, and turn it in to an array of strings so that we can loop through it and decide what we would like to happen for each element of that array.
 
 The test
 
@@ -164,12 +158,11 @@ func Parse(input string) []int {
 
 So now we have our parse function, we can run the tests again and they should all be happy.
 
-The tests are happy so I am going to take my code and paste it in to the codewars challenge, making sure to tweak variables names I used for the ones they
-specified and importing any packages that I used.
+The tests are happy so I am going to take my code and paste it in to the codewars challenge, making sure to tweak variables names I used for the ones they specified and importing any packages that I used.
 
 Let us take a look at the results
 
-```
+```go
 Test Results:
 Random tests
 random test #1 (`ossrshsbzotsdkpvuisekvcci`)
@@ -188,8 +181,7 @@ random test #99 (`diioidooooisssmdiiisiiosossiiohivvowud`)
 random test #100 (`odooszoatitdwdibkdko`)
 ```
 
-All test cases have passed and the challenge is complete! Now as mentioned, there is probably a very short and concise answer to this challenge which I will
-share below however I hope this post has given you an insight to how powerful test driven development can be.
+All test cases have passed and the challenge is complete! Now as mentioned, there is probably a very short and concise answer to this challenge which I will share below however I hope this post has given you an insight to how powerful test driven development can be.
 
 ```go
 package kata
@@ -214,5 +206,4 @@ func Parse(data string) []int{
 }
 ```
 
-So in fact the solution is very similar to the one we implemented in this post. The only difference is we have the backing of our tests to give us absolute
-confidence in our programs functionality.
+So in fact the solution is very similar to the one we implemented in this post. The only difference is we have the backing of our tests to give us absolute confidence in our programs functionality.
