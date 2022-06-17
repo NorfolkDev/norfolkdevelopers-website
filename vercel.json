@@ -7,6 +7,7 @@
     { "source": "/con", "destination": "https://www.nordevcon.com/", "permanent": false },
     { "source": "/tickets", "destination": "https://ti.to/norfolkdevelopers/nordevcon-22/", "permanent": false },
     { "source": "/meetup", "destination": "https://www.meetup.com/Norfolk-Developers-NorDev/", "permanent": false },
+    { "source": "/t-shirt", "destination": "https://buy.stripe.com/28oaI40J84v70ak28c", "permanent": false },
     { "source": "/blog", "destination": "/posts" },
     {
       "source": "/join-us-for-the-nordevcon-2019-business-sessions-running-a-business-is-hard/",
