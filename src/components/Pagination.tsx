@@ -28,8 +28,8 @@ export default function Pagination({ root, seperator, page, total, perPage }: Pr
     end = total;
   }
   return (
-    <nav className="flex items-center justify-between border-t-2 border-primary">
-      <div className="py-4">
+    <nav className="flex items-center justify-center border-t-2 sm:justify-between border-primary">
+      <div className="hidden py-4 sm:block">
         <p className="text-sm leading-5">
           Showing&nbsp;
           <span className="font-bold">{ start }</span>
