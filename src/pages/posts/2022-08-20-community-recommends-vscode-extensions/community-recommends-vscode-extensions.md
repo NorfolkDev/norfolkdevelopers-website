@@ -27,3 +27,15 @@ In their own words:
 I can't put it much better than that really, long story short, if you need a friend to help you with your code or you intend to pair programme, work collaboratively and want to work in real time then this the one for you.  
 A strong choice from the community.   
 
+## GitLens
+![GitLens](GitLens.jpg)
+[GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) is an extension that adds extra features to Git.   
+To quote the experts:
+> Supercharge Git within VS Code — Visualize code authorship at a glance via Git blame annotations and CodeLens, seamlessly navigate and explore Git repositories, gain valuable insights via rich visualizations and powerful comparison commands, and so much more.   
+
+Pretty self explanatory, not sure how else I can elaborate on that other than saying that it sure is a popular option and it comes from the trusty people at GitKraken, a little more from them below.
+
+> GitLens supercharges Git inside VS Code and unlocks untapped knowledge within each repository. It helps you to visualize code authorship at a glance via Git blame annotations and CodeLens, seamlessly navigate and explore Git repositories, gain valuable insights via rich visualizations and powerful comparison commands, and so much more.   
+
+That's all I'm saying other than check it out!   
+
