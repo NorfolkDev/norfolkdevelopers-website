@@ -13,8 +13,17 @@ That said, the main reason this was chosen as a popular option by the community 
 If you need to get in the zone and simply write the code without little worry or regard to formatting and other nuances then this is a great recommendation.  
 
 ## Live Server
-![Live Server](Live_Server.jpg)
+![Live Server](Live_Server_Logo.jpg)
 [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) is a fanstatic tool when you are working on sites that are comprised of nothing more than HTML, CSS and Javascript.   
 Live Server provides you with a way to view your code as you would on, well, a live server. It auto updates as you save your code and is a great companion for a second screen (or split screen) set up so you can see the changes as you make them.   
 As a new coder I found this to be really useful, I knew almost instantly that the changes I were making were either working or not. It's great for experimental learning.   
+
+## Live Share
+![Live Share](Live_Share.jpg)
+[Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack) is the definitive extension for sharing your projects and pair programming and working collaboratively remotely, all provided by Microsoft themselves.   
+In their own words:
+> This extension pack includes everything you need to start collaboratively editing and debugging in real time, including integrated audio and text chat. This provides you and your team/class with a one-click installation, in order to begin pair programming, performing remote code reviews, driving interactive lectures, and more, without needing to leave Visual Studio Code.   
+
+I can't put it much better than that really, long story short, if you need a friend to help you with your code or you intend to pair programme, work collaboratively and want to work in real time then this the one for you.  
+A strong choice from the community.   
 
