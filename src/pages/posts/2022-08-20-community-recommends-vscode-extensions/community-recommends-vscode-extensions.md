@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Community Recommends: VSCode Extensions"
+date: "2022-08-20"
+author: Rich Saunders
+tags: VSCode, Extensions, Recommendations, Community
+---
+
 # Community Recommends: VSCode Extensions
 
 Recently, I reached out to our community on the [NorDev Discord Server](https://discord.com/invite/WQwrYrS) to get some recommendations on extensions for VSCode. I already had a few in mind but I figured there's no better place to get some solid opions so here are the community recommendations.
