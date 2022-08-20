@@ -39,3 +39,10 @@ Pretty self explanatory, not sure how else I can elaborate on that other than sa
 
 That's all I'm saying other than check it out!   
 
+## Power Mode
+![Power Mode](Power_Mode.jpg)
+[Power Mode](https://marketplace.visualstudio.com/items?itemName=hoovercj.vscode-power-mode) is the point at which we remember that the NorDev community has a good sense of humour.   
+Power Mode has a number of features to add flair and meme's to your coding experience.   
+There is a combo meter (keep those fingers tapping) as well as a variety of built-in effects including explosions, interdeminsional portals, and clippy (for the meme's) and over 20 customisable settings.   
+I can't do it justice in text along, just click the link and prepare to have your mind blown!   
+
