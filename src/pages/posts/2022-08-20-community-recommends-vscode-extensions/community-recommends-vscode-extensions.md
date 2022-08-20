@@ -46,6 +46,10 @@ CSS Peek allows you to, well, peek at your CSS. You can use it one a `class` in 
 When you're first applying classes it's great if you can remember exactly what your class does, when editing in future it's fantastic for those quick edits. It also lets you jump straight to the relevant part in the CSS file from your HTML document too.   
 
 ## JavaScript (ES6) code snippets
+![JS Snippets](JS_Snippets.jpg)
+[JS Snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets) does exactly what it says on the tin.   
+This extension providers you with snippets of ES6 code, it also supports Typescript as well as Javascript and React too.  
+A very handy little morsel!   
 
 ## Power Mode
 ![Power Mode](Power_Mode.jpg)
@@ -54,3 +58,6 @@ Power Mode has a number of features to add flair and meme's to your coding exper
 There is a combo meter (keep those fingers tapping) as well as a variety of built-in effects including explosions, interdeminsional portals, and clippy (for the meme's) and over 20 customisable settings.   
 I can't do it justice in text along, just click the link and prepare to have your mind blown!   
 
+## And that's a wrap!
+That is the list of all extensions that were recommended to me by the NorDev community.   
+We'd love to hear any suggestions you have to please feel free to drop in, say Hi and let us know your favourites on the [NorDev Discord Server](https://discord.com/invite/WQwrYrS)!
