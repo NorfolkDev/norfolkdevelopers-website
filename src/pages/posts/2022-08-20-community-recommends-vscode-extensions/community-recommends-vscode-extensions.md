@@ -39,6 +39,14 @@ Pretty self explanatory, not sure how else I can elaborate on that other than sa
 
 That's all I'm saying other than check it out!   
 
+## CSS Peek
+![CSS Peek](CSS_Peek.jpg)
+[CSS Peek](https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek) is a favourite of mine beacuse I am a very ~lazy~ efficient person.   
+CSS Peek allows you to, well, peek at your CSS. You can use it one a `class` in your HTML to see the CSS that it is appying. It does go one step further though and will allow you to edit the CSS from your peek without even opening your CSS file.   
+When you're first applying classes it's great if you can remember exactly what your class does, when editing in future it's fantastic for those quick edits. It also lets you jump straight to the relevant part in the CSS file from your HTML document too.   
+
+## JavaScript (ES6) code snippets
+
 ## Power Mode
 ![Power Mode](Power_Mode.jpg)
 [Power Mode](https://marketplace.visualstudio.com/items?itemName=hoovercj.vscode-power-mode) is the point at which we remember that the NorDev community has a good sense of humour.   
