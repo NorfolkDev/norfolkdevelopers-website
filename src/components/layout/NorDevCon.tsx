@@ -1,8 +1,8 @@
 export default function NorDevCon({
   title = "The eastern region's biggest tech conference",
-  tagline = "Join us for the incredible line-up on the 16th & 17th June 2022",
+  tagline = "Join us for the incredible line-up on the 23rd & 24th 2023",
   cta = "Get your ticket",
-  href = "https://ti.to/norfolkdevelopers/nordevcon-22",
+  href = "https://ti.to/norfolkdevelopers/nordevcon-23",
   website = "https://nordevcon.com",
 }) {
   return (
@@ -15,7 +15,7 @@ export default function NorDevCon({
                 <img
                   className="mb-4"
                   src="/static/images/nordevcon-logo.png"
-                  alt="App screenshot"
+                  alt={title}
                 />
                 <span className="block">{title}</span>
               </h2>
