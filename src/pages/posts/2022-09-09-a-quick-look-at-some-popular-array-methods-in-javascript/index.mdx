@@ -1,209 +1,114 @@
 ---
 layout: post
-title: "Make The Dead Fish Swim - Test Driven Golang"
-date: "2022-05-29T12:00:00Z"
+title: "A Quick Look At Some Popular Array Methods In JavaScript"
+date: "2022-09-09T12:00:00Z"
 author: Damien Sedgwick
-tags: Golang, Go, TDD, Test Driven Development, Coding Challenge
+tags: JavaScript, Programming, Beginners, Tutorial
 ---
 
-Today we are going to take a look at solving "Make The Dead Fish Swim" - A Codewars challenge ranked '6 kyu' and we are going to do it using Test Driven Development.
+Today is going to be a quick look at some of the more popular array methods in JavaScript.
 
-First of all, let us look at the challenge we are going to tackle:
+Each example will use the same set of data, an array of pet objects with different types of animal, their breed and their name.
 
-```go
-Write a simple parser that will parse and run Deadfish.
+So lets dive in.
 
-Deadfish has 4 commands, each 1 character long:
+### Array.prototype.map()
+`.map()` Creates a new array which is populated with the results of calling a provided function on every element in the calling array.
 
-    i increments the value (initially 0)
-    d decrements the value
-    s squares the value
-    o outputs the value into the return array
+This is helpful for many reasons but in our example below, we have used `.map()` to create a new array to store all of our pet names in and we have stored them in a new variable `names`.
 
-Invalid characters should be ignored.
+```js
+const pets = [
+  {type: 'dog', name: 'Bruno', breed: 'Border Collie'},
+  {type: 'cat', name: 'Bruce', breed: 'Maine Coon'},
+  {type: 'dog', name: 'Tyson', breed: 'Bulldog'},
+  {type: 'dog', name: 'Bobby', breed: 'English Bull Terrier'},
+  {type: 'parrot', name: 'Paulie', breed: 'Macaw'}
+];
 
-Parse("iiisdoso") == []int{8, 64} // example output
+const names = pets.map((pet) => pet.name);
+
+console.log(names); // ['Bruno', 'Bruce', 'Tyson', 'Bobby', 'Paulie']
 ```
 
-A quick disclaimer, there is a good chance that there is a very concise and clever solution to this challenge, and I will share it at the end of this post. However my goal here is to practice taking a problem, and breaking it down into small testable pieces of functionality that could be used elsewhere (if we were building something in real life).
+### Array.prototype.filter()
+`.filter()` Creates a [shallow copy](https://developer.mozilla.org/en-US/docs/Glossary/Shallow_copy) of a portion of a given array, filtered down to just the elements from the given array that pass the test implemented by the provided function.
 
-We are going to be working in two different files, main.go and main_test.go
+If we imagine that we have just fetched all of our pets from our database. `.filter()` is useful because in the scenerio where we only want to read the data of dogs, as in our example, it allows us to do exactly that. We can also store that data in a new variable such as `dogs` just as we have below.
 
-I will also be using a package that I like to use when writing tests and that package is https://github.com/stretchr/testify
+```js
+const pets = [
+  {type: 'dog', name: 'Bruno', breed: 'Border Collie'},
+  {type: 'cat', name: 'Bruce', breed: 'Maine Coon'},
+  {type: 'dog', name: 'Tyson', breed: 'Bulldog'},
+  {type: 'dog', name: 'Bobby', breed: 'English Bull Terrier'},
+  {type: 'parrot', name: 'Paulie', breed: 'Macaw'}
+];
 
-For me, a good starting point is to write out some test functions for the bits of the challenge that are repeated throughout the program, increment one, decrement one, square and outputs to the array. Although for now, I will start with the first three.
+const dogs = pets.filter((pet) => pet.type === 'dog');
 
-```go
-func TestIncrementOne(t *testing.T) {
-	assert.Equal(t, 1, IncrementOne(0))
-	assert.Equal(t, 5, IncrementOne(4))
-	assert.Equal(t, 100, IncrementOne(99))
-}
-
-func TestDecrementOne(t *testing.T) {
-	assert.Equal(t, 0, DecrementOne(1))
-	assert.Equal(t, 4, DecrementOne(5))
-	assert.Equal(t, 99, DecrementOne(100))
-}
-
-func TestSquare(t *testing.T) {
-	assert.Equal(t, 1, Square(1))
-	assert.Equal(t, 25, Square(5))
-	assert.Equal(t, 64, Square(8))
-}
+console.log(dogs); // [{type: 'dog', name: 'Bruno', breed: 'Border Collie'}, {type: 'dog', name: 'Tyson', breed: 'Bulldog'}, {type: 'dog', name: 'Bobby', breed: 'English Bull Terrier'}]
 ```
 
-Each of these functions will provide us with a specific piece of functionality that we will later need when parsing the input for the challenge. Let us run the tests.
+### Array.prototype.forEach()
+`.forEach` Executes a provided function once for each array element.
 
-```go
-// go test
+In our example below, our provided function is a rather trivial one that simply logs out a string to the console. However in a more real world situation (still using our pets), our function might return the last time a pet received a checkup (not currently in our data).
 
-./main_test.go:23:21: undefined: IncrementOne
-./main_test.go:27:21: undefined DecrementOne
-./main_test.go:31:21: undefined: Square
-FAIL github.com/damiensedgwick/codewars/makeTheDeadFishSwim [build failed]
-```
+```js
+const pets = [
+  {type: 'dog', name: 'Bruno', breed: 'Border Collie'},
+  {type: 'cat', name: 'Bruce', breed: 'Maine Coon'},
+  {type: 'dog', name: 'Tyson', breed: 'Bulldog'},
+  {type: 'dog', name: 'Bobby', breed: 'English Bull Terrier'},
+  {type: 'parrot', name: 'Paulie', breed: 'Macaw'}
+];
 
-Pretty simple, they all fail because none of the functions actually exist yet, so let us create them.
-
-```go
-func IncrementOne(n int) int {
-	return n + 1
+function introducePet(pet) {
+  console.log(`${pet.name} is a ${pet.breed} (${pet.type})`)
 }
 
-func DecrementOne(n int) int {
-	return n - 1
-}
-
-func Square(n int) int {
-	return n * n
-}
+pets.forEach((pet) => introducePet(pet)); // Bruno is a Border Collie (dog)...
 ```
 
-These functions are very simple and may seem in fact trivial however they are going to give us the foundations we need to solve the challenge. 
+### Array.prototype.slice()
+`.slice()` Also returns a [shallow copy](https://developer.mozilla.org/en-US/docs/Glossary/Shallow_copy) of a portion of an array into a new array object selected from start to end (end not included) where start and end represent the index of items in that array. **The original array will not be modified**.
 
-Let us run the tests again.
+In our example we are using `.slice()` to simply return the first element of array and store it in a new variable `firstPet`. We could also use it to return the first 3 or the last 3. The world is our oyster here.
 
-```go
-// go test
+```js
+const pets = [
+  {type: 'dog', name: 'Bruno', breed: 'Border Collie'},
+  {type: 'cat', name: 'Bruce', breed: 'Maine Coon'},
+  {type: 'dog', name: 'Tyson', breed: 'Bulldog'},
+  {type: 'dog', name: 'Bobby', breed: 'English Bull Terrier'},
+  {type: 'parrot', name: 'Paulie', breed: 'Macaw'}
+];
 
-PASS
-ok github.com/damiensedgwick/codewars/makeTheDeadFishSwim 0.195s
+const firstPet = pets.slice(0, 1);
+
+console.log(tyson); // [{type: 'dog', name: 'Bruno', breed: 'Border Collie'}]
 ```
 
-Much better, so what is next.
+### Array.prototype.sort()
+`.sort()` As the name suggests, sorts the elements of an array in place and returns the reference to the same array, now sorted. The default sort order is ascending, built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values.
 
-I think a good step would be to take the input string we are going to receive, and turn it in to an array of strings so that we can loop through it and decide what we would like to happen for each element of that array.
+We may want to sort our data for various reasons, in our example we simply want to order our pets data alphabetically by their name.
 
-The test
+It is worth noting that whilst the majority of array methods with create a new array or a shallow copy, `.sort()` will actually change the order of the array (mutation) so a handy trick if you want to prevent this from happening, is to use slice beforehand to create a copy of the original array order.
 
-```go
-func TestSplitString(t *testing.T) {
-	assert.Equal(t, []string{
-		"i",
-		"i",
-		"i",
-		"s",
-		"d",
-		"o",
-		"s",
-		"o",
-	}, SplitString("iiisdoso"))
-}
+```js
+const pets = [
+  {type: 'dog', name: 'Bruno', breed: 'Border Collie'},
+  {type: 'cat', name: 'Bruce', breed: 'Maine Coon'},
+  {type: 'dog', name: 'Tyson', breed: 'Bulldog'},
+  {type: 'dog', name: 'Bobby', breed: 'English Bull Terrier'},
+  {type: 'parrot', name: 'Paulie', breed: 'Macaw'}
+];
+
+pets.sort((a, b) => a.name.localeCompare(b.name)) // mutated array
+pets.slice().sort((a, b) => a.name.localeCompare(b.name)) // copied array
+
+console.log(pets); // [{ type: 'dog', name: 'Bobby', breed: 'English Bull Terrier' }, { type: 'cat', name: 'Bruce', breed: 'Maine Coon' }, { type: 'dog', name: 'Bruno', breed: 'Border Collie' }, { type: 'parrot', name: 'Paulie', breed: 'Macaw' }, { type: 'dog', name: 'Tyson', breed: 'Bulldog' }]
 ```
-
-If we run `go test` it will fail because this function does not yet exist, so let us create it.
-
-```go
-func SplitString(s string) []string {
-	return strings.Split(s, "")
-}
-```
-
-Now our tests are happy again, we can proceed to the next step which could in fact be parsing the input. Let us write a test and see how we get on.
-
-```go
-func TestParse(t *testing.T) {
-	assert.Equal(t, []int{8, 64}, Parse("iiisdoso"))
-}
-```
-
-The challenge is kind enough to give us a test case so we have used that to write the test and now we can try to create the function and make the test pass.
-
-```go
-func Parse(input string) []int {
-	var output = []int{}
-
-	count := 0
-
-	s := SplitString(input)
-	for _, v := range s {
-		switch v {
-		case "i":
-			count = IncrementOne(count)
-		case "d":
-			count = DecrementOne(count)
-		case "s":
-			count = Square(count)
-		case "o":
-			output = append(output, count)
-		default:
-			continue
-		}
-	}
-
-	return output
-}
-```
-
-So now we have our parse function, we can run the tests again and they should all be happy.
-
-The tests are happy so I am going to take my code and paste it in to the codewars challenge, making sure to tweak variables names I used for the ones they specified and importing any packages that I used.
-
-Let us take a look at the results
-
-```go
-Test Results:
-Random tests
-random test #1 (`ossrshsbzotsdkpvuisekvcci`)
-random test #2 (`odzosiqdshbiikiisiiyigdlzyd`)
-random test #3 (`sokssndofoimuqbqipsedfodticuotosdso`)
-random test #4 (`siiooisdisijoilusdshqddzosiotdoio`)
-random test #5 (`oiiswwmaisdosisooitio`)
-random test #6 (`sdhhidyoioimsoidioooodsiddoio`)
-...
-random test #94 (`dssdbiddoskuoondgirikdeuolspdjtsjkisido`)
-random test #95 (`rsoboobssixzzoudfiinbddgm`)
-random test #96 (`iooeioyoyviwsoqsisdhaixxl`)
-random test #97 (`idsdodsfsdbxdismiskdsis`)
-random test #98 (`icdzdsissuigoijvopdddpiddgsw`)
-random test #99 (`diioidooooisssmdiiisiiosossiiohivvowud`)
-random test #100 (`odooszoatitdwdibkdko`)
-```
-
-All test cases have passed and the challenge is complete! Now as mentioned, there is probably a very short and concise answer to this challenge which I will share below however I hope this post has given you an insight to how powerful test driven development can be.
-
-```go
-package kata
-
-func Parse(data string) []int{
-  output := []int{}
-  var val int
-  for _, s := range data {
-    switch string(s) {
-      case "i":
-        val++
-      case "d":
-        val--
-      case "s":
-        val = val * val
-      case "o":
-        output = append(output, val)
-    }
-  }
-  
-  return output
-}
-```
-
-So in fact the solution is very similar to the one we implemented in this post. The only difference is we have the backing of our tests to give us absolute confidence in our programs functionality.
+That is it for this article and JavaScript array methods. I would highly recommend taking a look at [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) as there is a mountain of knowledge there, waiting to be digested. It is also where I got my array method descriptions from.
