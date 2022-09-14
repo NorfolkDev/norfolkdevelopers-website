@@ -6,20 +6,17 @@ import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";
 import MagazineCard from "../components/MagazineCard";
 import { PostData } from "src/DataTypes";
-import { fetchData } from "./api/proxy";
 
 type Props = {
   posts: PostData[];
   initialEventData: any[];
 };
 
-const numberOfEvents = 9;
-const meetupAPIEndpoint = `https://api.meetup.com/Norfolk-Developers-NorDev/events?photo-host=public&page=${numberOfEvents}`;
+const meetupAPIEndpoint = `${siteConfig.meetupSrc}?limit=${siteConfig.meetupEventCount}`;
 
 export async function getStaticProps() {
-  const meetupResponse = await fetchData(meetupAPIEndpoint);
-  // 🤮
-  const initialEventData = JSON.parse(JSON.stringify(meetupResponse));
+  const initialEventData = await fetcher(meetupAPIEndpoint);
+
   return {
     props: { posts: getPosts({ limit: 3 }), initialEventData },
     revalidate: 60,

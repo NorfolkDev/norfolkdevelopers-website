@@ -1,20 +1,19 @@
 import useSWR from "swr";
 import { fetcher } from "src/fetcher";
 import { differenceInDays, format } from "date-fns";
+import siteConfig from "site.config";
 
 type Props = {
   endpoint: string; // endpoint to call for event info
   initialData?: MeetupEvent[];
 };
 
+const meetupAPIEndpoint = `${siteConfig.meetupSrc}?limit=${siteConfig.meetupEventCount}`;
+
 export default function EventsList({ initialData, endpoint }: Props) {
-  const { data, error } = useSWR<MeetupEvent[]>(
-    `/api/proxy?url=${endpoint}`,
-    fetcher,
-    {
-      initialData,
-    }
-  );
+  const { data, error } = useSWR<MeetupEvent[]>(meetupAPIEndpoint, fetcher, {
+    initialData,
+  });
 
   if (error)
     return (
