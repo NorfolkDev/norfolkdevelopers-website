@@ -7,6 +7,8 @@ const siteConfig = {
   postsDirectory: "posts",
   jobsDirectory: "jobs",
   githubUrl: "https://github.com/NorfolkDev/norfolkdevelopers-website/",
+  meetupSrc: "https://norfolkdevelopers-meetup-proxy.norfolk-developers.workers.dev/",
+  meetupEventCount: 9,
   features: {
     authorPages: true,
     tagPages: true,
