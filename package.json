@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mapbox/rehype-prism": "^0.4.0",
+    "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/loader": "^1.6.15",
     "@static-fns/blog": "0.0.1-alpha.60",
     "@static-fns/loader": "0.0.1-alpha.56",
