@@ -1,0 +1,127 @@
+---
+layout: post
+title: "useReducer > useState"
+date: "2022-09-18T12:00:00Z"
+author: Damien Sedgwick
+tags: React, TypeScript, Beginners, Tutorial
+---
+
+Today I want to talk a little bit about [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) and how it can be used as a fantastic way to manage complex state requirements without reaching for a library or peppering your codebase with multiple [useState](https://reactjs.org/docs/hooks-reference.html#usestate) calls.
+
+In the following example, we are going to look at a users profile card which in the real world, would allow a user to update their first name, last name, email and phone.
+
+We are also going to do this with TypeScript so that we get that sweet sweet type safety that it brings to the table.
+
+All of the code for this example will be available [here](https://github.com/damiensedgwick/useref-demo).
+
+Lets crack on.
+
+To use `useReducer` we must first call it and pass it a reducer function, and an initial state object:
+
+```tsx
+const [state, dispatch] = useReducer(handleFormInputChange, {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  submitted: false
+});
+```
+The `state` here is pretty self-explanatory, but what is `dispatch` and what does `handleFormInputChange` actually handle?
+
+If we take a look at the latter, `handleFormInputChange` is our reducer function that takes in the current state and an action.
+
+Lets take a look at the code:
+
+```ts
+export type Data = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  submitted: boolean;
+}
+
+export type Action =
+  { type: "UPDATE_FIRST_NAME", value: string }
+  | { type: "UPDATE_LAST_NAME", value: string }
+  | { type: "UPDATE_EMAIL", value: string }
+  | { type: "UPDATE_PHONE", value: string }
+  | { type: "RESET_FORM" }
+  | { type: "SUBMIT_FORM" }
+
+export const handleFormInputChange = (state: Data, action: Action) => {
+  switch (action.type) {
+    case "UPDATE_FIRST_NAME":
+      return { ...state, firstName: action.value, submitted: false };
+    case "UPDATE_LAST_NAME":
+      return { ...state, lastName: action.value, submitted: false };
+    case "UPDATE_EMAIL":
+      return { ...state, email: action.value, submitted: false };
+    case "UPDATE_PHONE":
+      return { ...state, phone: action.value, submitted: false };
+    case "SUBMIT_FORM":
+      return { ...state, submitted: true };
+    case "RESET_FORM":
+      return { firstName: "", lastName: "", email: "", phone: "", submitted: false };
+    default:
+      throw new Error("Unhandled form input action");
+  }
+};
+```
+So our `state` takes the shape of `Data` which is the first part we have declared here, the second part is our `Action` type which will help us when it comes to dispatching events a little later.
+
+Lastly, we have declared our function, this is simply a switch statement that checks the action type, and handles it accordingly. If we were to send an action that we had not declared, it would throw a new error.
+
+So for example, if we send the action type `UPDATE_FIRST_NAME`, the function would return all state that has not been modified, as well as the new state for the input element that has been modified, like so:
+
+```tsx
+...
+case "UPDATE_FIRST_NAME":
+    return { ...state, firstName: action.value, submitted: false };
+...
+```
+Now that we have looked at our reducer function, lets look at `dispatch`.
+
+`dispatch` allows us to use our reducer function to send events and values. In the case of our first name input field, it looks like this:
+
+```tsx
+<Input placeholder="First Name" value={state.firstName} onChange={(e) => dispatch({ type: "UPDATE_FIRST_NAME", value: e.target.value })} />
+```
+So as we can see, whenever `onChange` is called for this input element, we send the action type and the value using dispatch, and our reducer function handles updating the correct piece of state.
+
+If we take a step back and look at our users profile component, it lets us see the whole picture for the component.
+
+```tsx
+<ProfileCard>
+  <UserDetailsForm>
+    <Avatar src={avatar} alt="the users avatar" />
+    <FormGroup>
+      <Input placeholder="First Name" value={state.firstName} onChange={(e) => dispatch({ type: "UPDATE_FIRST_NAME", value: e.target.value })} />
+      <Input placeholder="Last Name" value={state.lastName} onChange={(e) => dispatch({ type: "UPDATE_LAST_NAME", value: e.target.value })} />
+      <Input placeholder="Email" value={state.email} onChange={(e) => dispatch({ type: "UPDATE_EMAIL", value: e.target.value })} />
+      <Input placeholder="Phone" value={state.phone} onChange={(e) => dispatch({ type: "UPDATE_PHONE", value: e.target.value })} />
+    </FormGroup>
+    <Button type="button" onClick={() => state.submitted ? dispatch({ type: "RESET_FORM" }) : dispatch({ type: "SUBMIT_FORM" })}>{state.submitted ? "RESET" : "SAVE"}</Button>
+  </UserDetailsForm>
+</ProfileCard>
+```
+As you can see, all of the `onChange` handlers and the `onClick` handler are very simple. All we are doing is using `dispatch` to send an action type and a potential value should one be required.
+
+No more tracking multiple input fields with useState and declaring different call handlers for different elements.
+
+The entire form can be handled using one function and one state object.
+
+I also mentioned the use of TypeScript here, but I didn't really explain why it was beneficial.
+
+The reason it is beneficial in this example, is that we would get an error should we try and pass a value along with an event, that did not accept a value.
+
+So if we tried to do:
+```tsx
+onClick={() => dispatch({type: SUBMIT_FORM, value: "some value"})
+```
+It would error because the action `SUBMIT_FORM` is not expecting any other value to be sent with the event.
+
+You can visit the demo using this link [useRef demo](https://magenta-raindrop-52445e.netlify.app/)
+
+For further reading, you can check out how `useState` and useReducer` behave differently here: [useState vs useReducer](https://twitter.com/dai_shi/status/1534170089981100032)
