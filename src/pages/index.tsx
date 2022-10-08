@@ -17,6 +17,7 @@ const meetupAPIEndpoint = `${siteConfig.meetupSrc}?limit=${siteConfig.meetupEven
 
 export async function getStaticProps() {
   const initialEventData = await fetcher(meetupAPIEndpoint);
+  // @TODO: Refactor this out, into a data provider
   const posts = allPosts
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
     .slice(0, siteConfig.settings.postsPerPage);

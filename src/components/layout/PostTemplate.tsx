@@ -55,7 +55,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
               ))}
               {post.date && <>{' '}<PostDate date={new Date(post.date)} /></>}
             </span>
-          ) : null}
+          )}
           {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
         </header>
         <div className="typography">{children}</div>
