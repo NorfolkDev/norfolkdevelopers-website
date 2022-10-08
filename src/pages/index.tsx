@@ -6,6 +6,8 @@ import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";
 import MagazineCard from "../components/MagazineCard";
 import { PostData } from "src/DataTypes";
+import { allPosts } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
 
 type Props = {
   posts: PostData[];
@@ -16,9 +18,12 @@ const meetupAPIEndpoint = `${siteConfig.meetupSrc}?limit=${siteConfig.meetupEven
 
 export async function getStaticProps() {
   const initialEventData = await fetcher(meetupAPIEndpoint);
+  const posts = allPosts.sort((a, b) => {
+    return compareDesc(new Date(a.date), new Date(b.date));
+  });
 
   return {
-    props: { posts: getPosts({ limit: 3 }), initialEventData },
+    props: { posts, initialEventData },
     revalidate: 60,
   };
 }
