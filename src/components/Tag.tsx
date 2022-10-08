@@ -1,5 +1,4 @@
 import Link from "next/link";
-import siteConfig from "../../site.config";
 import { slugify } from "src/slugify";
 
 type Props = {
@@ -48,13 +47,9 @@ export default function Tag(props: Props) {
       }
       key={tag}
     >
-      {siteConfig.features.tagPages ? (
-        <Link href="/tag/[tagSlug]" as={`/tag/${slugify(tag)}`}>
-          <a> #{tag} </a>
-        </Link>
-      ) : (
-        <span> #{tag} </span>
-      )}
+      <Link href="/tag/[tagSlug]" as={`/tag/${slugify(tag)}`}>
+        <a>#{tag}</a>
+      </Link>
     </span>
   );
 }

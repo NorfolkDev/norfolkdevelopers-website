@@ -20,14 +20,16 @@ type Props = {
 
 export default function PostTemplate({ frontMatter: post, children }: Props) {
   const router = useRouter();
-  let editUrl = `${siteConfig.githubUrl}edit/master/src/pages/${router.pathname}/index.mdx`
+  // @TODO: Refactor into a computed field
+  let editUrl = `${siteConfig.githubUrl}edit/master/src/pages/${router.pathname}/index.mdx`;
 
   return (
     <Layout>
       <PageMeta
         title={post.title}
         image={post.hero ? `${siteConfig.rootUrl}${post.hero}` : undefined}
-        description={post.excerpt}
+        // @TODO: Add excerpt as a computed field
+        // description={post.excerpt}
       />
 
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
@@ -37,7 +39,7 @@ export default function PostTemplate({ frontMatter: post, children }: Props) {
           <h1 className="hashtag mt-2 mb-1 text-4xl md:text-5xl font-bold leading-tight">
             {post.title}
           </h1>
-          {post.author && siteConfig.features.authorPages ? (
+          {post.author ?? (
             <span className="block text-base text-gray-600">
               by{" "}
               {post.author.map((author: string, i: number) => (

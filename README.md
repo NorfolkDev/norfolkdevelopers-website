@@ -1,4 +1,5 @@
 <!-- PROJECT SHIELDS -->
+
 [![GitHub Contributors][contributors-shield]][contributors-url]
 [![GitHub Forks][forks-shield]][forks-url]
 [![GitHub Stargazers][stars-shield]][stars-url]
@@ -21,21 +22,23 @@
 </p>
 
 <!-- TABLE OF CONTENTS -->
+
 ## Table of Contents
 
-* [Introduction](#introduction)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
+- [Introduction](#introduction)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
 
 <!-- ABOUT THE PROJECT -->
+
 ## Introduction
 
 Hi! We're Norfolk Developers and you're awesome for just being here. We're a community of Developers based in and around
@@ -49,13 +52,13 @@ If you'd like to get involved and are unsure how to then reach out to us, we'd b
 
 ### Built With
 
-* [Typescript](https://www.typescriptlang.org/)
-* [React](https://reactjs.org/)
-* [NextJS](https://nextjs.org/) & Hosted with [Vercel](https://vercel.com/)
-* [@static-fns](https://github.com/shaunchurch/static-fns)
-* [TailwindCSS](https://tailwindcss.com/)
+- [Typescript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+- [NextJS](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 Getting started is fairly simple, you just need NodeJS >= 14.x
@@ -64,7 +67,8 @@ Getting started is fairly simple, you just need NodeJS >= 14.x
 
 Install NodeJS 14.x, we recommend using [Node Version Manager](https://github.com/nvm-sh/nvm) to do this:
 
-* NodeJS 14.x
+- NodeJS 14.x
+
 ```sh
 nvm use 14
 ```
@@ -72,11 +76,14 @@ nvm use 14
 ### Installation
 
 1. Clone the repo
+
 ```sh
 git clone git@github.com:NorfolkDev/norfolkdevelopers-website.git
 cd norfolkdevelopers-website/
 ```
+
 2. Install NPM packages
+
 ```sh
 npm install
 ```
@@ -92,11 +99,13 @@ npm run dev
 Now visit <http://localhost:3000> in your browser
 
 <!-- ROADMAP -->
+
 ## Roadmap
 
 See the [open issues](https://github.com/NorfolkDev/norfolkdevelopers-website/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -109,16 +118,19 @@ Contributions are what make the open source community such an amazing place to l
 6. Give yourself a high five, or seek one from an unexpecting colleague<br /><img src="https://media.giphy.com/media/3oEjHV0z8S7WM4MwnK/giphy.gif" />
 
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
 
 <!-- CONTACT -->
+
 ## Contact
 
 Norfolk Developers - [@NorfolkDev](https://twitter.com/NorfolkDev) - info@norfolkdevelopers.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/NorfolkDev/norfolkdevelopers-website.svg?style=flat-square
 [contributors-url]: https://github.com/NorfolkDev/norfolkdevelopers-website/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/NorfolkDev/norfolkdevelopers-website.svg?style=flat-square

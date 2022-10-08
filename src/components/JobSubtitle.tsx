@@ -1,7 +1,7 @@
-import { JobData } from "src/DataTypes";
+import { Job } from "contentlayer/generated";
 
 type Props = {
-    job: JobData
+  job: Job;
 };
 
 export default function JobSubtitle({ job }: Props) {

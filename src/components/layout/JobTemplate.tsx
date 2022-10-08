@@ -19,7 +19,8 @@ export default function JobTemplate({ frontMatter: post, children }: Props) {
       <PageMeta
         title={post.title}
         image={post.hero ? `${siteConfig.rootUrl}${post.hero}` : undefined}
-        description={post.excerpt}
+        // @TODO: Add excerpt as a computed field
+        // description={post.excerpt}
       />
 
       <article className="article mt-8 lg:max-w-3xl mr-auto ml-auto">
