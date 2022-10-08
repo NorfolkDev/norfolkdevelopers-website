@@ -17,6 +17,8 @@ const purgecss = [
 module.exports = {
   plugins: [
     "postcss-import",
+    // @TODO: Fix TailwindCSS nesting, remove warning with the following plugin - breaks build!?
+    // "tailwindcss/nesting",
     "tailwindcss",
     "postcss-nested",
     "autoprefixer",
