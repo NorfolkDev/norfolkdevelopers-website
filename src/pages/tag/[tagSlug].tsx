@@ -1,28 +1,21 @@
 import siteConfig from "site.config";
 import { GetStaticProps } from "next";
-import { getTags, getStaticTagPaths } from "@static-fns/blog";
 import Layout from "src/components/layout/Layout";
 import PostCard from "src/components/PostCard";
 import PageMeta from "../../components/PageMeta";
 import Pagination from "../../components/Pagination";
-import { PostData } from "src/DataTypes";
+import { Post } from "contentlayer/generated";
 
 export async function getStaticPaths() {
-  if (!siteConfig.features.tagPages) {
-    return {
-      paths: [],
-      fallback: false,
-    };
-  }
-
+  // @TODO: Actually import the available tags
   return {
-    paths: getStaticTagPaths(),
+    paths: [],
     fallback: false,
   };
 }
 
 type Props = {
-  posts: PostData[];
+  posts: Post[];
   page: number;
   total: number;
   tagSlug: string;
@@ -30,15 +23,15 @@ type Props = {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const tagSlug = params?.tagSlug as string;
-  const posts = getTags();
-  const tagPosts = posts[tagSlug];
+  // @TODO: Actually import the tags
+  const tagPosts: Post[] = [];
 
   return {
     props: {
       page: 1,
       posts: tagPosts.slice(0, siteConfig.settings.postsPerPage),
       total: tagPosts.length,
-      tagSlug
+      tagSlug,
     },
   };
 };
@@ -60,7 +53,7 @@ export default function TagSlug({ posts, page, total, tagSlug }: Props) {
       <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
         <ul className="-mx-4">
           {posts.map((post) => (
-            <PostCard key={post.path} post={post} />
+            <PostCard key={post.url} post={post} />
           ))}
         </ul>
 

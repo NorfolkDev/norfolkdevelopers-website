@@ -1,16 +1,12 @@
 import Layout from "src/components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "site.config";
-import { getPosts } from "@static-fns/blog";
-import { JobData } from "src/DataTypes";
 import JobCard from "src/components/JobCard";
 import getConfig from "next/config";
 // const { serverRuntimeConfig } = getConfig();
 import { isAfter as isAfterDate } from "date-fns";
 
 export async function getStaticProps() {
-  // let directory = `${serverRuntimeConfig.PROJECT_ROOT}/pages/jobs`;
-
   return {
     props: { jobs: [] },
     // props: { jobs: JSON.parse(JSON.stringify(getPosts({ directory }))) },
@@ -24,6 +20,7 @@ type Props = {
 export default function JobsRoute({ jobs }: Props) {
   return (
     <div>
+      {/* @TODO: Make not "broken" :S */}
       <p>Broken</p>
     </div>
   );

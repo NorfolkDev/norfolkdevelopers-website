@@ -1,28 +1,17 @@
 import { useCallback } from "react";
 import { GetStaticProps } from "next";
-import Head from "next/head";
-import { getAuthors } from "@static-fns/blog";
 import Layout from "../../components/layout/Layout";
 import PostCard from "../../components/PostCard";
-import siteConfig from "../../../site.config";
 import { slugify } from "src/slugify";
 import PageMeta from "../../components/PageMeta";
-import { PostData } from "src/DataTypes";
+import { Post } from "contentlayer/generated";
 
 export async function getStaticPaths() {
-  // no pagesif disables
-  if (!siteConfig.features.authorPages) {
-    return {
-      paths: [],
-      fallback: false,
-    };
-  }
-
   return {
-    paths:
-      Object.keys(getAuthors()).map((author) => {
-        return { params: { authorSlug: author } };
-      }) || [],
+    paths: [],
+    // Object.keys(getAuthors()).map((author) => {
+    //   return { params: { authorSlug: author } };
+    // }) || [],
     fallback: false,
   };
 }
@@ -30,18 +19,17 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
-      // @ts-ignore
-      posts: getAuthors()[params.authorSlug],
-      // @ts-ignore
-      slug: params.authorSlug,
+      posts: [],
+      slug: params?.authorSlug,
     },
   };
 };
 
 type Props = {
-  posts: PostData[];
+  posts: Post[];
   slug: string;
 };
+
 export default function AuthorSlug({ posts, slug }: Props) {
   const findAuthorName = useCallback(
     (posts, slug) => {
@@ -65,8 +53,8 @@ export default function AuthorSlug({ posts, slug }: Props) {
       </h1>
       <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
         <ol className="-mx-4">
-          {posts.map((post: PostData) => (
-            <PostCard key={post.path} post={post} />
+          {posts.map((post: Post) => (
+            <PostCard key={post.url} post={post} />
           ))}
         </ol>
       </main>

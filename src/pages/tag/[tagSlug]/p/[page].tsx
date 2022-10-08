@@ -1,25 +1,19 @@
 import siteConfig from "site.config";
 import { GetStaticProps } from "next";
-import { getTags, getStaticTagPaths } from "@static-fns/blog";
 import Layout from "src/components/layout/Layout";
 import PostCard from "src/components/PostCard";
 import PageMeta from "src/components/PageMeta";
 import Pagination from "src/components/Pagination";
-import { PostData } from "src/DataTypes";
+import { Post } from "contentlayer/generated";
 
 export async function getStaticPaths() {
-  if (!siteConfig.features.tagPages) {
-    return {
-      paths: [],
-      fallback: false,
-    };
-  }
-
-  const posts = getTags();
+  // @TODO: Fix all of this stuff :S
+  // const posts = getTags();
+  const posts: Post[] = [];
   const paths = Object.keys(posts)
-    .map(tagSlug => ({
+    .map((tagSlug) => ({
       tagSlug,
-      posts: posts[tagSlug]
+      posts: [],
     }))
     .filter(tag => tag.posts.length > siteConfig.settings.postsPerPage)
     .map(tag => {
@@ -42,25 +36,27 @@ export async function getStaticPaths() {
 }
 
 type Props = {
-  posts: PostData[];
+  posts: Post[];
   page: number;
   total: number;
   tagSlug: string;
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const posts = getTags();
+  // @TODO: Fix all of this stuff :S
+  // const posts = getTags();
+  const posts: Post[] = [];
   const tagSlug = params?.tagSlug as string;
   const page: number = Number(params?.page || "2");
   const pointer: number = (page - 1) * siteConfig.settings.postsPerPage;
 
   return {
     props: {
-      posts: posts[tagSlug].slice(pointer, pointer + siteConfig.settings.postsPerPage),
-      total: posts[tagSlug].length,
+      posts: posts,
+      total: posts.length,
       page,
-      tagSlug
-    }
+      tagSlug,
+    },
   };
 };
 
@@ -83,7 +79,7 @@ export default function TagSlug({ posts, page, total, tagSlug }: Props) {
       <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
         <ul className="-mx-4">
           {posts.map((post) => (
-            <PostCard key={post.path} post={post} />
+            <PostCard key={post.url} post={post} />
           ))}
         </ul>
 

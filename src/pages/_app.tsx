@@ -1,6 +1,4 @@
 import { AppProps } from "next/app";
-import { MDXProvider } from "@mdx-js/react";
-import { MDXComponents } from "../components/layout/MDXComponents";
 import "../css/tailwind.css";
 
 export function reportWebVitals(metric: any) {
@@ -8,12 +6,10 @@ export function reportWebVitals(metric: any) {
   console.log(metric);
 }
 
+// @TODO: Generate RSS, at /rss
+// @TODO: Removal of MDXProvider here - ensure MDX Components (MagazineCard & NorDevCon still available)
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <MDXProvider components={MDXComponents}>
-      <Component {...pageProps} />
-    </MDXProvider>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;

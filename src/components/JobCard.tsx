@@ -1,17 +1,17 @@
+import { Job } from "contentlayer/generated";
 import Link from "next/link";
-import { JobData } from "src/DataTypes";
 import JobDetails from "src/components/JobDetails";
 import JobSubtitle from "src/components/JobSubtitle";
 
 type Props = {
-  job: JobData;
+  job: Job;
 };
 
 export default function JobCard({ job }: Props) {
   return (
     <li className="mb-6 py-4 px-4">
       <div className="md:w-10/12">
-        <Link href={job.path || ""}>
+        <Link href={job.url || ""}>
           <a>
             <h2 className="text-2xl text-foreground-primary font-bold tracking-tight hover:text-red-500">
               {job.title}&nbsp;
@@ -22,7 +22,8 @@ export default function JobCard({ job }: Props) {
 
         <JobDetails job={job} />
 
-        <p className="text-foreground-secondary text-lg mt-2">{job.excerpt}</p>
+        {/* @TODO: Add excerpt as a computed field */}
+        {/* <p className="mt-2 text-lg text-foreground-secondary">{job.excerpt}</p> */}
       </div>
     </li>
   );

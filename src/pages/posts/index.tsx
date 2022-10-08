@@ -1,25 +1,22 @@
 import Layout from "../../components/layout/Layout";
 import siteConfig from "../../../site.config";
-import { getPosts } from "@static-fns/blog";
 import PostCard from "../../components/PostCard";
 import PageMeta from "../../components/PageMeta";
 import Pagination from "../../components/Pagination";
-import { PostData } from "src/DataTypes";
+import { allPosts, Post } from "contentlayer/generated";
 
 export async function getStaticProps() {
-  const posts = getPosts();
-
   return {
     props: {
       page: 1,
-      posts: posts.slice(0, siteConfig.settings.postsPerPage),
-      total: posts.length
-    }
+      posts: allPosts.slice(0, siteConfig.settings.postsPerPage),
+      total: allPosts.length,
+    },
   };
 }
 
 type Props = {
-  posts: PostData[];
+  posts: Post[];
   page: number;
   total: number;
 };
@@ -37,7 +34,7 @@ export default function WordsRoute({ posts, page, total }: Props) {
         <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
           <ul className="-mx-4">
             {posts.map((post) => (
-              <PostCard key={post.path} post={post} />
+              <PostCard key={post.url} post={post} />
             ))}
           </ul>
 

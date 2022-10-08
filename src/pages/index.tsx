@@ -1,16 +1,15 @@
 import Layout from "../components/layout/Layout";
 import siteConfig from "../../site.config";
-import { getPosts, fetcher } from "@static-fns/blog";
+import { fetcher } from "src/fetcher";
 import Link from "next/link";
 import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";
 import MagazineCard from "../components/MagazineCard";
-import { PostData } from "src/DataTypes";
-import { allPosts } from "contentlayer/generated";
+import { allPosts, Post } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 
 type Props = {
-  posts: PostData[];
+  posts: Post[];
   initialEventData: any[];
 };
 
@@ -18,9 +17,9 @@ const meetupAPIEndpoint = `${siteConfig.meetupSrc}?limit=${siteConfig.meetupEven
 
 export async function getStaticProps() {
   const initialEventData = await fetcher(meetupAPIEndpoint);
-  const posts = allPosts.sort((a, b) => {
-    return compareDesc(new Date(a.date), new Date(b.date));
-  });
+  const posts = allPosts
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+    .slice(0, siteConfig.settings.postsPerPage);
 
   return {
     props: { posts, initialEventData },
@@ -82,7 +81,7 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
         </header>
         <ul className="-mx-4">
           {posts.map((post) => (
-            <PostCard key={post.path} post={post} />
+            <PostCard key={post.url} post={post} />
           ))}
         </ul>
       </section>
