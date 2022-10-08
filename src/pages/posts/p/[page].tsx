@@ -4,12 +4,11 @@ import Layout from "../../../components/layout/Layout";
 import PageMeta from "../../../components/PageMeta";
 import PostCard from "../../../components/PostCard";
 import Pagination from "../../../components/Pagination";
-import { Post } from "contentlayer/generated";
+import { allPosts, Post } from "contentlayer/generated";
 
 export async function getStaticPaths() {
-  const posts = [];
   const paths = new Array(
-    Math.floor(posts.length / siteConfig.settings.postsPerPage)
+    Math.floor(allPosts.length / siteConfig.settings.postsPerPage)
   ).fill(null);
 
   return {
@@ -21,15 +20,17 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const posts: Post[] = [];
   const page: number = Number(params?.page || "2");
   const pointer: number = (page - 1) * siteConfig.settings.postsPerPage;
 
   return {
     props: {
-      posts: posts.slice(pointer, pointer + siteConfig.settings.postsPerPage),
+      posts: allPosts.slice(
+        pointer,
+        pointer + siteConfig.settings.postsPerPage
+      ),
       page,
-      total: posts.length,
+      total: allPosts.length,
     },
   };
 };
