@@ -1,4 +1,5 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import removeMarkdown from 'remove-markdown';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -40,13 +41,26 @@ export const Post = defineDocumentType(() => ({
       // @TODO: Investigate removing the call to the replace method, is there a better contentlayer prop?
       resolve: (post) => post._raw.flattenedPath.replace('posts/', ''),
     },
+    // @TODO: Support these natively in the markdown posts (with actual yaml lists)
+    authors: {
+      type: 'array',
+      resolve: (post) => post.author.split(', '),
+    },
+    tagList: {
+      type: 'array',
+      resolve: (post) => post.tags.split(', '),
+    },
+    excerpt: {
+      type: 'string',
+      resolve: (post) => removeMarkdown(post.body.raw).slice(0, 280) + '...',
+    }
   },
 }))
 
 export const Job = defineDocumentType(() => ({
   name: 'Job',
   contentType: 'mdx',
-  filePathPattern: `jobs/**/*.mdx`,
+  filePathPattern: 'jobs/**/*.mdx',
   fields: {
     title: {
       type: 'string',

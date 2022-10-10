@@ -11,8 +11,7 @@ export default function PostCard({ post }: Props) {
   return (
     <li className="flex flex-col px-4 py-4 mb-6 rounded md:flex-row hover:border">
       <div className="w-full mb-1 mr-6 md:mt-2 md:mb-0 md:w-2/12">
-        {/* @TODO: Add excerpt as a computed field */}
-        {/* {post.tags && <TagList tags={post.tags} />} */}
+        {post.tagList && <TagList tags={post.tagList} />}
       </div>
       <div className="flex flex-col md:w-10/12">
         {post.date && (
@@ -27,8 +26,7 @@ export default function PostCard({ post }: Props) {
             </h2>
           </a>
         </Link>
-        {/* @TODO: Add excerpt as a computed field */}
-        {/* <p className="mt-2 text-lg text-foreground-secondary">{post.excerpt}</p> */}
+        <p className="mt-2 text-lg text-foreground-secondary">{post.excerpt}</p>
       </div>
     </li>
   );
