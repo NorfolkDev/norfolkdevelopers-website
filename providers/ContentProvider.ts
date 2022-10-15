@@ -12,6 +12,11 @@ export function getPostsByTag(tag: string): Post[] {
     .filter((post: Post) => post.tagList.includes(tag))
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 }
+
+export function getPostTags(): string[] {
+  const tags = allPosts.reduce((t: string[], post: Post) => [...t, ...post.tagList], []);
+
+  return [...new Set(tags)];
 }
 
 export function getJobs(expired: boolean = false): Job[] {

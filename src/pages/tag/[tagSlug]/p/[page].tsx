@@ -5,26 +5,20 @@ import PostCard from "src/components/PostCard";
 import PageMeta from "src/components/PageMeta";
 import Pagination from "src/components/Pagination";
 import { Post } from "contentlayer/generated";
+import { getPostsByTag, getPostTags } from "providers/ContentProvider";
 
 export async function getStaticPaths() {
-  // @TODO: Fix all of this stuff :S
-  // const posts = getTags();
-  const posts: Post[] = [];
-  const paths = Object.keys(posts)
-    .map((tagSlug) => ({
-      tagSlug,
-      posts: [],
-    }))
-    .filter(tag => tag.posts.length > siteConfig.settings.postsPerPage)
-    .map(tag => {
-      let totalPages = Math.ceil(tag.posts.length / siteConfig.settings.postsPerPage);
-      let paginator = new Array(totalPages - 1).fill(null);
+  let paths = getPostTags()
+    .map((tagSlug: string) => ({ tagSlug, posts: getPostsByTag(tagSlug) }))
+    .filter(({ posts }) => posts.length > siteConfig.settings.postsPerPage)
+    .map(({ tagSlug, posts }) => {
+      let total = Math.ceil(posts.length / siteConfig.settings.postsPerPage);
 
-      return paginator.map((_, i) => ({
+      return Array.from({ length: total - 1 }).map((_, i) => ({
         params: {
-          tagSlug: tag.tagSlug,
-          page: (i + 2).toString()
-        }
+          tagSlug,
+          page: (i + 2).toString(),
+        },
       }));
     })
     .flat();
@@ -43,16 +37,14 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  // @TODO: Fix all of this stuff :S
-  // const posts = getTags();
-  const posts: Post[] = [];
   const tagSlug = params?.tagSlug as string;
+  const posts: Post[] = getPostsByTag(tagSlug);
   const page: number = Number(params?.page || "2");
   const pointer: number = (page - 1) * siteConfig.settings.postsPerPage;
 
   return {
     props: {
-      posts: posts,
+      posts: posts.slice(pointer, pointer + siteConfig.settings.postsPerPage),
       total: posts.length,
       page,
       tagSlug,
@@ -65,18 +57,15 @@ export default function TagSlug({ posts, page, total, tagSlug }: Props) {
     <Layout location="words">
       <PageMeta title={`Posts Tagged: ${tagSlug} (Page: ${page})`} />
 
-      <h1
-        className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl ck
-      mr-auto ml-auto"
-      >
-        <span className="text-red-500 font-bold">/</span>
+      <h1 className="pb-4 mt-8 ml-auto mr-auto text-3xl font-bold lg:max-w-3xl ck">
+        <span className="font-bold text-red-500">/</span>
         tag
-        <span className="mx-2 text-red-500 font-bold">/</span>
+        <span className="mx-2 font-bold text-red-500">/</span>
         {tagSlug}
-        <span className="mx-2 text-red-500 font-bold">/</span>
+        <span className="mx-2 font-bold text-red-500">/</span>
         {page}
       </h1>
-      <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
+      <main className="block mt-4 border-gray-600 important:mr-auto important:ml-auto">
         <ul className="-mx-4">
           {posts.map((post) => (
             <PostCard key={post.url} post={post} />
