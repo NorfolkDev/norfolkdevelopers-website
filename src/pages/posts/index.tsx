@@ -31,11 +31,11 @@ export default function WordsRoute({ posts, page, total }: Props) {
       <PageMeta title="Posts" />
 
       <section className="section" id="posts">
-        <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
-          <span className="text-red-500 font-bold">/</span>
+        <h1 className="pb-4 mt-8 ml-auto mr-auto text-3xl font-bold lg:max-w-3xl">
+          <span className="font-bold text-red-500">/</span>
           {siteConfig.postsDirectory}
         </h1>
-        <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
+        <main className="block mt-4 border-gray-600 important:mr-auto important:ml-auto">
           <ul className="-mx-4">
             {posts.map((post) => (
               <PostCard key={post.url} post={post} />
