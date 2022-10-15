@@ -2,9 +2,10 @@ import Link from "next/link";
 import Layout from "../../components/layout/Layout";
 import { GetStaticProps } from "next";
 import PageMeta from "../../components/PageMeta";
+import { getPostTagSlugs } from "providers/ContentProvider";
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const tags: string[] = [];
+  const tags: string[] = getPostTagSlugs();
 
   return {
     props: {
@@ -18,6 +19,7 @@ type Props = {
 };
 
 export default function TagsRoute({ tags }: Props) {
+  // @TODO: Actually provide a design for this page - appears to have never had one
   return (
     <Layout>
       <PageMeta title="Tags" />
