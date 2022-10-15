@@ -4,6 +4,14 @@ import Layout from "src/components/layout/Layout";
 import PageMeta from "../../components/PageMeta";
 import Pagination from "../../components/Pagination";
 import { allPosts, Post } from "contentlayer/generated";
+import TagList from "src/components/TagList";
+import { Fragment } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { slugify } from "src/slugify";
+import PostDate from "src/components/PostDate";
+import { useMDXComponent } from "next-contentlayer/hooks";
+// import NorDevCon from "../../components/layout/NorDevCon";
 
 // @TODO: allPosts.find() can return null, but, we won't be passed null because we've mapped over existing posts - Fix this?
 type Props = {
@@ -31,44 +39,80 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   };
 };
 
+// @TODO: Load MDX Components, for Posts
+// const mdxComponents = {
+//   NorDevCon,
+// };
+
 export default function PostSlug({ post }: Props) {
-  return post ? (
-    <div>
-      <p>{post.title}</p>
-    </div>
-  ) : (
-    <div>
-      <p>404 - Post not found</p>
-    </div>
+  if (!post) {
+    // User should never see this route, post will never be null.
+    return (
+      <div>
+        <p>404 - Post not found</p>
+      </div>
+    );
+  }
+
+  const MDXContent = useMDXComponent(post.body.code);
+  const router = useRouter();
+  // @TODO: Refactor into a computed field
+  let editUrl = `${siteConfig.githubUrl}edit/master/src/pages/${router.pathname}/index.mdx`;
+
+  return (
+    <Layout>
+      <PageMeta
+        title={post.title}
+        image={post.hero ? `${siteConfig.rootUrl}${post.hero}` : undefined}
+        description={post.excerpt}
+      />
+
+      <article className="mt-8 ml-auto mr-auto article lg:max-w-3xl">
+        <header className="mb-12 inset">
+          <TagList tags={post.tagList} />
+
+          <h1 className="mt-2 mb-1 text-4xl font-bold leading-tight hashtag md:text-5xl">
+            {post.title}
+          </h1>
+          {post.author ?? (
+            <span className="block text-base text-gray-600">
+              by{" "}
+              {post.authors.map((author: string, i: number) => (
+                <Fragment key={author}>
+                  <Link
+                    href="/author/[authorSlug]"
+                    as={`/author/${slugify(author)}`}
+                  >
+                    <a className="underline">{author}</a>
+                  </Link>
+                  {i < post.author.length - 1 ? ", " : ""}
+                </Fragment>
+              ))}
+              {post.date && (
+                <>
+                  {" "}
+                  <PostDate date={new Date(post.date)} />
+                </>
+              )}
+            </span>
+          )}
+          {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
+        </header>
+        <div className="typography">
+          <MDXContent />
+        </div>
+        {/* <div dangerouslySetInnerHTML={{ __html: post.body.html }} /> */}
+        <footer className="py-4 mt-6 text-base">
+          <a
+            className="text-foreground-secondary hover:text-foreground-primary hover:underline"
+            href={editUrl}
+            target="_blank"
+            rel="nofollow"
+          >
+            Edit this post on GitHub
+          </a>
+        </footer>
+      </article>
+    </Layout>
   );
 }
-
-// export default function TagSlug({ post }: Props) {
-//   return (
-//     <Layout location="words">
-//       <PageMeta title={`Posts Tagged: ${tagSlug}`} />
-
-//       <h1 className="pb-4 mt-8 ml-auto mr-auto text-3xl font-bold lg:max-w-3xl ck">
-//         <span className="font-bold text-red-500">/</span>
-//         tag
-//         <span className="font-bold text-red-500">/</span>
-//         {tagSlug}
-//       </h1>
-//       <main className="block mt-4 border-gray-600 important:mr-auto important:ml-auto">
-//         <ul className="-mx-4">
-//           {posts.map((post) => (
-//             <PostCard key={post.url} post={post} />
-//           ))}
-//         </ul>
-
-//         <Pagination
-//           root="/tag"
-//           seperator={`${tagSlug}/p`}
-//           page={page}
-//           total={total}
-//           perPage={siteConfig.settings.postsPerPage}
-//         />
-//       </main>
-//     </Layout>
-//   );
-// }
