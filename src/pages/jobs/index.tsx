@@ -42,20 +42,22 @@ export default function JobsRoute({ jobs, page, total }: Props) {
           {jobs.length === 0 ? (
             <h2>There doesn't seem to be anything here.</h2>
           ) : (
-            <ul className="-mx-4">
-              {jobs.map((job) => (
-                <JobCard key={job.url} job={job} />
-              ))}
-            </ul>
-          )}
+            <>
+              <ul className="-mx-4">
+                {jobs.map((job) => (
+                  <JobCard key={job.url} job={job} />
+                ))}
+              </ul>
 
-          <Pagination
-            root="/jobs"
-            seperator="p"
-            page={page}
-            total={total}
-            perPage={siteConfig.settings.postsPerPage}
-          />
+              <Pagination
+                root="/jobs"
+                seperator="p"
+                page={page}
+                total={total}
+                perPage={siteConfig.settings.postsPerPage}
+              />
+            </>
+          )}
         </main>
       </section>
     </Layout>
