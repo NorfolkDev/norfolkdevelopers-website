@@ -19,6 +19,18 @@ export function getPostTags(): string[] {
   return [...new Set(tags)];
 }
 
+export function getPostAuthors(): string[] {
+  const authors = allPosts.reduce((a: string[], post: Post) => [...a, ...post.authors], []);
+
+  return [...new Set(authors)];
+}
+
+export function getPostsByAuthor(author: string): Post[] {
+  return allPosts
+    .filter((post: Post) => post.authors.includes(author))
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+}
+
 export function getJobs(expired: boolean = false): Job[] {
   return allJobs
     .filter((job) => isPast(new Date(job.expiryDate)) === expired)

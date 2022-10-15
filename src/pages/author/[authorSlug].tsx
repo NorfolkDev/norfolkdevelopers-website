@@ -5,44 +5,38 @@ import PostCard from "../../components/PostCard";
 import { slugify } from "src/slugify";
 import PageMeta from "../../components/PageMeta";
 import { Post } from "contentlayer/generated";
+import { getPostAuthors, getPostsByAuthor } from "providers/ContentProvider";
 
 export async function getStaticPaths() {
+  let paths = getPostAuthors().map((authorSlug) => ({
+    params: { authorSlug },
+  }));
+
   return {
-    paths: [],
-    // Object.keys(getAuthors()).map((author) => {
-    //   return { params: { authorSlug: author } };
-    // }) || [],
+    paths,
     fallback: false,
   };
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const authorSlug = params?.authorSlug as string;
+  let posts = getPostsByAuthor(authorSlug);
+
   return {
     props: {
-      posts: [],
-      slug: params?.authorSlug,
+      posts,
+      authorSlug,
     },
   };
 };
 
 type Props = {
   posts: Post[];
-  slug: string;
+  authorSlug: string;
 };
 
-export default function AuthorSlug({ posts, slug }: Props) {
-  const findAuthorName = useCallback(
-    (posts, slug) => {
-      let thisAuthor = "";
-      posts[0].author.forEach((author: string) =>
-        slugify(author) === slug ? (thisAuthor = author) : null
-      );
-      return thisAuthor;
-    },
-    [slug]
-  );
-
-  let title = `Posts by: ${findAuthorName(posts, slug)}`;
+export default function AuthorSlug({ posts, authorSlug }: Props) {
+  let title = `Posts by: ${authorSlug}}`;
 
   return (
     <Layout>
