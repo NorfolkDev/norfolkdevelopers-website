@@ -97,10 +97,11 @@ export default function PostSlug({ post }: Props) {
           )}
           {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
         </header>
+
         <div className="typography">
           <MDXContent components={mdxComponents} />
         </div>
-        {/* <div dangerouslySetInnerHTML={{ __html: post.body.html }} /> */}
+
         <footer className="py-4 mt-6 text-base">
           <a
             className="text-foreground-secondary hover:text-foreground-primary hover:underline"
