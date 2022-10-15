@@ -8,7 +8,7 @@ export function getPosts(): Post[] {
     .slice(0, siteConfig.settings.postsPerPage);
 }
 
-export function getJobs(expired = false): Job[] {
+export function getJobs(expired: boolean = false): Job[] {
   return allJobs
     .filter((job) => isPast(new Date(job.expiryDate)) === expired)
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
