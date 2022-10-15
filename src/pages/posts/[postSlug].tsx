@@ -11,7 +11,7 @@ import Link from "next/link";
 import { slugify } from "src/slugify";
 import PostDate from "src/components/PostDate";
 import { useMDXComponent } from "next-contentlayer/hooks";
-// import NorDevCon from "../../components/layout/NorDevCon";
+import NorDevCon from "../../components/layout/NorDevCon";
 
 // @TODO: allPosts.find() can return null, but, we won't be passed null because we've mapped over existing posts - Fix this?
 type Props = {
@@ -39,10 +39,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   };
 };
 
-// @TODO: Load MDX Components, for Posts
-// const mdxComponents = {
-//   NorDevCon,
-// };
+const mdxComponents = {
+  NorDevCon,
+};
 
 export default function PostSlug({ post }: Props) {
   if (!post) {
@@ -99,7 +98,7 @@ export default function PostSlug({ post }: Props) {
           {post.hero && <img className="mt-12 mb-12" src={post.hero} />}
         </header>
         <div className="typography">
-          <MDXContent />
+          <MDXContent components={mdxComponents} />
         </div>
         {/* <div dangerouslySetInnerHTML={{ __html: post.body.html }} /> */}
         <footer className="py-4 mt-6 text-base">
