@@ -5,16 +5,20 @@ import PageMeta from "../../../components/PageMeta";
 import PostCard from "../../../components/PostCard";
 import Pagination from "../../../components/Pagination";
 import { allPosts, Post } from "contentlayer/generated";
+import { getPosts } from "providers/ContentProvider";
 
 export async function getStaticPaths() {
-  const paths = new Array(
-    Math.floor(allPosts.length / siteConfig.settings.postsPerPage)
-  ).fill(null);
+  let posts = getPosts();
+  let paths = Array.from({
+    length: Math.floor(posts.length / siteConfig.settings.postsPerPage),
+  }).map((_, page) => ({
+    params: {
+      page: (page + 2).toString(),
+    },
+  }));
 
   return {
-    paths: paths.map((_, page) => ({
-      params: { page: (page + 2).toString() },
-    })),
+    paths,
     fallback: false,
   };
 }
@@ -22,15 +26,13 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const page: number = Number(params?.page || "2");
   const pointer: number = (page - 1) * siteConfig.settings.postsPerPage;
+  const posts: Post[] = getPosts();
 
   return {
     props: {
-      posts: allPosts.slice(
-        pointer,
-        pointer + siteConfig.settings.postsPerPage
-      ),
+      posts: posts.slice(pointer, pointer + siteConfig.settings.postsPerPage),
       page,
-      total: allPosts.length,
+      total: posts.length,
     },
   };
 };
@@ -47,13 +49,13 @@ export default function WordsRoute({ posts, page, total }: Props) {
       <PageMeta title={`Posts (Page ${page})`} />
 
       <section className="section" id="posts">
-        <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
-          <span className="text-red-500 font-bold">/</span>
+        <h1 className="pb-4 mt-8 ml-auto mr-auto text-3xl font-bold lg:max-w-3xl">
+          <span className="font-bold text-red-500">/</span>
           {siteConfig.postsDirectory}
-          <span className="mx-2 text-red-500 font-bold">/</span>
+          <span className="mx-2 font-bold text-red-500">/</span>
           {page}
         </h1>
-        <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
+        <main className="block mt-4 border-gray-600 important:mr-auto important:ml-auto">
           <ul className="-mx-4">
             {posts.map((post) => (
               <PostCard key={post.url} post={post} />

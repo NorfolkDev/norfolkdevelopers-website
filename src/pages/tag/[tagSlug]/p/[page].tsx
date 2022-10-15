@@ -5,11 +5,11 @@ import PostCard from "src/components/PostCard";
 import PageMeta from "src/components/PageMeta";
 import Pagination from "src/components/Pagination";
 import { Post } from "contentlayer/generated";
-import { getPostsByTag, getPostTags } from "providers/ContentProvider";
+import { getPostsByTagSlug, getPostTagSlugs } from "providers/ContentProvider";
 
 export async function getStaticPaths() {
-  let paths = getPostTags()
-    .map((tagSlug: string) => ({ tagSlug, posts: getPostsByTag(tagSlug) }))
+  let paths = getPostTagSlugs()
+    .map((tagSlug: string) => ({ tagSlug, posts: getPostsByTagSlug(tagSlug) }))
     .filter(({ posts }) => posts.length > siteConfig.settings.postsPerPage)
     .map(({ tagSlug, posts }) => {
       let total = Math.ceil(posts.length / siteConfig.settings.postsPerPage);
@@ -38,7 +38,7 @@ type Props = {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const tagSlug = params?.tagSlug as string;
-  const posts: Post[] = getPostsByTag(tagSlug);
+  const posts: Post[] = getPostsByTagSlug(tagSlug);
   const page: number = Number(params?.page || "2");
   const pointer: number = (page - 1) * siteConfig.settings.postsPerPage;
 

@@ -73,7 +73,8 @@ export default function PostSlug({ post }: Props) {
           <h1 className="mt-2 mb-1 text-4xl font-bold leading-tight hashtag md:text-5xl">
             {post.title}
           </h1>
-          {post.author ?? (
+
+          {post.authors.length && (
             <span className="block text-base text-gray-600">
               by{" "}
               {post.authors.map((author: string, i: number) => (
