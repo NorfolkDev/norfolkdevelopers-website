@@ -1,33 +1,31 @@
 import { allJobs, allPosts, Job, Post } from "contentlayer/generated";
 import { compareDesc, isPast } from "date-fns";
-import siteConfig from "site.config";
+import { slugify } from "src/slugify";
 
+/* 
+ * Index Methods - Return simply the slugs of content
+ */
+export function getPostTagSlugs(): string[] {
+  const tagSlugs = allPosts
+    .reduce((t: string[], post: Post) => [...t, ...post.tagList], [])
+    .map((tag) => slugify(tag));
+
+  return [...new Set(tagSlugs)];
+}
+
+export function getPostAuthorSlugs(): string[] {
+  const authorSlugs = allPosts
+    .reduce((a: string[], post: Post) => [...a, ...post.authors], [])
+    .map((author) => slugify(author));
+
+  return [...new Set(authorSlugs)];
+}
+
+/* 
+ * Get Methods - Return sorted arrays of content
+ */
 export function getPosts(): Post[] {
   return allPosts
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
-}
-
-export function getPostsByTag(tag: string): Post[] {
-  return allPosts
-    .filter((post: Post) => post.tagList.includes(tag))
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
-}
-
-export function getPostTags(): string[] {
-  const tags = allPosts.reduce((t: string[], post: Post) => [...t, ...post.tagList], []);
-
-  return [...new Set(tags)];
-}
-
-export function getPostAuthors(): string[] {
-  const authors = allPosts.reduce((a: string[], post: Post) => [...a, ...post.authors], []);
-
-  return [...new Set(authors)];
-}
-
-export function getPostsByAuthor(author: string): Post[] {
-  return allPosts
-    .filter((post: Post) => post.authors.includes(author))
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 }
 
@@ -37,3 +35,36 @@ export function getJobs(expired: boolean = false): Job[] {
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 }
 
+/* 
+ * Lookup Methods - Uses a slug to collect content by it's slug
+ */
+export function getPostsByTagSlug(tagSlug: string): Post[] {
+  return allPosts
+    .filter((post: Post) => 
+      post.tagList
+        .map((tag: string) => slugify(tag))
+        .includes(tagSlug)
+    )
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+}
+
+export function getPostsByAuthorSlug(authorSlug: string): Post[] {
+  return allPosts
+    .filter((post: Post) =>
+      post.authors
+        .map((author: string) => slugify(author))
+        .includes(authorSlug))
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+}
+
+export function getAuthorFromAuthorSlug(authorSlug: string) {
+  return allPosts
+    .reduce((a: string[], post: Post) => [...a, ...post.authors], [])
+    .find((author: string) => slugify(author) === authorSlug);
+}
+
+export function getTagFromTagSlug(tagSlug: string) {
+  return allPosts
+    .reduce((t: string[], post: Post) => [...t, ...post.tagList], [])
+    .find((tag: string) => slugify(tag) === tagSlug);
+}

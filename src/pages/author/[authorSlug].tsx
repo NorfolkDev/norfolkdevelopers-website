@@ -5,10 +5,14 @@ import PostCard from "../../components/PostCard";
 import { slugify } from "src/slugify";
 import PageMeta from "../../components/PageMeta";
 import { Post } from "contentlayer/generated";
-import { getPostAuthors, getPostsByAuthor } from "providers/ContentProvider";
+import {
+  getAuthorFromAuthorSlug,
+  getPostAuthorSlugs,
+  getPostsByAuthorSlug,
+} from "providers/ContentProvider";
 
 export async function getStaticPaths() {
-  let paths = getPostAuthors().map((authorSlug) => ({
+  let paths = getPostAuthorSlugs().map((authorSlug) => ({
     params: { authorSlug },
   }));
 
@@ -19,33 +23,34 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const authorSlug = params?.authorSlug as string;
-  let posts = getPostsByAuthor(authorSlug);
+  let authorSlug = params?.authorSlug as string;
+  let posts = getPostsByAuthorSlug(authorSlug);
+  let author = getAuthorFromAuthorSlug(authorSlug);
 
   return {
     props: {
       posts,
-      authorSlug,
+      author,
     },
   };
 };
 
 type Props = {
   posts: Post[];
-  authorSlug: string;
+  author: string;
 };
 
-export default function AuthorSlug({ posts, authorSlug }: Props) {
-  let title = `Posts by: ${authorSlug}}`;
+export default function AuthorSlug({ posts, author }: Props) {
+  let title = `Posts by: ${author}`;
 
   return (
     <Layout>
       <PageMeta title={title} />
 
-      <h1 className="mt-8 text-3xl font-bold pb-4 lg:max-w-3xl mr-auto ml-auto">
+      <h1 className="pb-4 mt-8 ml-auto mr-auto text-3xl font-bold lg:max-w-3xl">
         {title}
       </h1>
-      <main className="mt-4 border-gray-600 important:mr-auto important:ml-auto block">
+      <main className="block mt-4 border-gray-600 important:mr-auto important:ml-auto">
         <ol className="-mx-4">
           {posts.map((post: Post) => (
             <PostCard key={post.url} post={post} />
