@@ -2,11 +2,10 @@ import Layout from "src/components/layout/Layout";
 import Head from "next/head";
 import siteConfig from "site.config";
 import JobCard from "src/components/JobCard";
-import getConfig from "next/config";
-import { allJobs, Job } from "contentlayer/generated";
-import { compareDesc } from "date-fns";
+import { Job } from "contentlayer/generated";
 import { GetStaticProps } from "next";
 import Pagination from "src/components/Pagination";
+import { getJobs } from "providers/ContentProvider";
 
 type Props = {
   jobs: Job[];
@@ -15,14 +14,13 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
+  const Jobs = getJobs();
+
   return {
     props: {
       page: 1,
-      // @TODO: Refactor this out, into a data provider
-      jobs: allJobs
-        .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
-        .slice(0, siteConfig.settings.postsPerPage),
-      total: allJobs.length,
+      jobs: Jobs,
+      total: Jobs.length,
     },
   };
 };
