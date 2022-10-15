@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       page: 1,
-      posts: Posts,
+      posts: Posts.slice(0, siteConfig.settings.postsPerPage),
       total: Posts.length,
     },
   };
