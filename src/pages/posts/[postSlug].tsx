@@ -12,6 +12,7 @@ import { slugify } from "src/slugify";
 import PostDate from "src/components/PostDate";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import NorDevCon from "../../components/layout/NorDevCon";
+import MagazineCard from "../../components/MagazineCard";
 
 // @TODO: allPosts.find() can return null, but, we won't be passed null because we've mapped over existing posts - Fix this?
 type Props = {
@@ -40,6 +41,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 const mdxComponents = {
+  MagazineCard,
   NorDevCon,
 };
 
