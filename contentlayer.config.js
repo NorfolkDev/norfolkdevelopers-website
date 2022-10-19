@@ -1,3 +1,4 @@
+import rehypePrism from "@mapbox/rehype-prism";
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import removeMarkdown from "remove-markdown";
 import siteConfig from "./site.config";
@@ -132,4 +133,7 @@ export const Job = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Post, Job],
+  mdx: {
+    rehypePlugins: [rehypePrism],
+  },
 });
