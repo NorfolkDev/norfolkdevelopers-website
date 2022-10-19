@@ -21,7 +21,6 @@ module.exports = {
     // "tailwindcss/nesting",
     "tailwindcss",
     "postcss-nested",
-    "autoprefixer",
     ...(process.env.NODE_ENV === "production" ? [purgecss] : []),
   ],
 };
