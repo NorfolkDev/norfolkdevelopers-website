@@ -33,12 +33,12 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
     <Layout>
       <section className="mt-12 md:mt-6">
         <header className="py-6 md:py-8 lg:py-16">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+          <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
             Going straight to the <span className="text-red-500">♥️</span> of
             software development practice and process
           </h1>
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl mt-3 text-foreground-secondary tracking-normal leading-tight">
+          <h2 className="mt-3 text-xl leading-tight tracking-normal sm:text-2xl md:text-3xl text-foreground-secondary">
             Local, national and international speakers and workshops for Norfolk
             Developers.
           </h2>
@@ -53,7 +53,7 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
       </section>
       <section>
         <header className="flex flex-row items-center">
-          <h2 className="text-base uppercase border-b-4 border-background-secondary tracking-widest my-8 text-foreground-secondary">
+          <h2 className="my-8 text-base tracking-widest uppercase border-b-4 border-background-secondary text-foreground-secondary">
             Upcoming Events
           </h2>
           <span className="inline-block "></span>
@@ -72,7 +72,7 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
       </section>
       <section>
         <header className="flex flex-row items-center mt-8">
-          <h2 className="text-base uppercase border-b-4 border-background-secondary tracking-widest my-8 text-foreground-secondary">
+          <h2 className="my-8 text-base tracking-widest uppercase border-b-4 border-background-secondary text-foreground-secondary">
             Latest posts
           </h2>
           <span className="inline-block "></span>
@@ -88,7 +88,7 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
       </section>
       <section>
         <header className="flex flex-row items-center mt-8">
-          <h2 className="text-base uppercase border-b-4 border-background-secondary tracking-widest my-8 text-foreground-secondary">
+          <h2 className="my-8 text-base tracking-widest uppercase border-b-4 border-background-secondary text-foreground-secondary">
             Latest Magazine
           </h2>
           <span className="inline-block "></span>
