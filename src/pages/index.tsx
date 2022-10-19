@@ -5,8 +5,8 @@ import Link from "next/link";
 import PostCard from "../components/PostCard";
 import EventsList from "../components/EventsList";
 import MagazineCard from "../components/MagazineCard";
-import { allPosts, Post } from "contentlayer/generated";
-import { compareDesc } from "date-fns";
+import { Post } from "contentlayer/generated";
+import { getPosts } from "providers/ContentProvider";
 
 type Props = {
   posts: Post[];
@@ -17,13 +17,13 @@ const meetupAPIEndpoint = `${siteConfig.meetupSrc}?limit=${siteConfig.meetupEven
 
 export async function getStaticProps() {
   const initialEventData = await fetcher(meetupAPIEndpoint);
-  // @TODO: Refactor this out, into a data provider
-  const posts = allPosts
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
-    .slice(0, siteConfig.settings.postsPerPage);
+  const Posts = getPosts();
 
   return {
-    props: { posts, initialEventData },
+    props: {
+      posts: Posts.slice(0, siteConfig.settings.postsPerPage),
+      initialEventData,
+    },
     revalidate: 60,
   };
 }
