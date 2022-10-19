@@ -36,6 +36,11 @@ export const Post = defineDocumentType(() => ({
       type: 'string',
       resolve: (post) => `/${post._raw.flattenedPath}`,
     },
+    editUrl: {
+      type: "string",
+      resolve: (post) =>
+        `${siteConfig.githubUrl}edit/master/content/${post._raw.sourceFilePath}`,
+    },
     slug: {
       type: 'string',
       // @TODO: Investigate removing the call to the replace method, is there a better contentlayer prop?
