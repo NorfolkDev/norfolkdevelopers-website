@@ -22,7 +22,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: Posts.slice(0, siteConfig.settings.postsPerPage),
+      posts: Posts.slice(0, 3),
       initialEventData,
     },
     revalidate: 60,
