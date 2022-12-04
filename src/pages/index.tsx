@@ -7,6 +7,7 @@ import EventsList from "../components/EventsList";
 import MagazineCard from "../components/MagazineCard";
 import { Post } from "contentlayer/generated";
 import { getPosts } from "providers/ContentProvider";
+import DiscordCard from "src/components/DiscordCard";
 
 type Props = {
   posts: Post[];
@@ -85,6 +86,9 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
             <PostCard key={post.url} post={post} />
           ))}
         </ul>
+      </section>
+      <section>
+        <DiscordCard />
       </section>
       <section>
         <header className="flex flex-row items-center mt-8">
