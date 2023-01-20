@@ -2,7 +2,7 @@ import DiscordIcon from "src/icons/DiscordIcon";
 
 export default function DiscordCard() {
   return (
-    <div className="my-8 flex flex-col gap-8 p-8 overflow-hidden text-white bg-[#5865F2] rounded-lg lg:grid lg:grid-cols-4 lg:-mx-16 xl:-mx-32 lg:my-16">
+    <div className="flex flex-col gap-8 p-12 my-8 overflow-hidden text-white rounded-lg bg-discord lg:grid lg:grid-cols-4 lg:-mx-16 xl:-mx-32 lg:my-16">
       <div className="col-span-3 lg:self-center">
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
           Make new friends &amp; join the conversation
