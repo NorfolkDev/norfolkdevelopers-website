@@ -20,6 +20,7 @@ module.exports = {
           hover: "var(--color-href-hover)",
           active: "var(--color-href-active)",
         },
+        discord: "#5865F2",
       },
     },
   },
