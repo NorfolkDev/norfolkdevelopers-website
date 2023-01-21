@@ -5,6 +5,7 @@ type Props = {
   title?: string;
   description?: string;
   image?: string;
+  canonical?: string;
 };
 
 export default function PageMeta(props: Props) {

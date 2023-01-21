@@ -62,6 +62,7 @@ export default function PostSlug({ post }: Props) {
         title={post.title}
         image={post.hero ? `${siteConfig.rootUrl}${post.hero}` : undefined}
         description={post.excerpt}
+        canonical={post.canonical}
       />
 
       <article className="mt-8 ml-auto mr-auto article lg:max-w-3xl">

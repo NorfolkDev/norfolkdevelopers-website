@@ -32,6 +32,9 @@ export const Post = defineDocumentType(() => ({
     layout: {
       type: "string",
     },
+    canonical: {
+      type: "string",
+    },
   },
   computedFields: {
     url: {
