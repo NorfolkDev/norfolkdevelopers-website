@@ -37,7 +37,6 @@ export const Post = defineDocumentType(() => ({
     },
     sponsored: {
       type: "boolean",
-      default: false,
     },
   },
   computedFields: {

@@ -122,7 +122,7 @@ type SponsoredProps = {
   post: Post;
 };
 function Sponsored({ post }: SponsoredProps) {
-  if (post.sponsored === false) return null;
+  if (!post.sponsored) return null;
 
   return (
     <p className="inline-block rounded-full bg-orange-200 p-1 text-xs font-bold text-orange-600 px-2 mr-2 mb-2">
