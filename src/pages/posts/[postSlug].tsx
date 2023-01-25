@@ -68,6 +68,7 @@ export default function PostSlug({ post }: Props) {
       <article className="mt-8 ml-auto mr-auto article lg:max-w-3xl">
         <header className="mb-12 inset">
           <TagList tags={post.tagList} />
+          <Sponsored post={post} />
 
           <h1 className="mt-2 mb-1 text-4xl font-bold leading-tight hashtag md:text-5xl">
             {post.title}
@@ -114,5 +115,18 @@ export default function PostSlug({ post }: Props) {
         </footer>
       </article>
     </Layout>
+  );
+}
+
+type SponsoredProps = {
+  post: Post;
+};
+function Sponsored({ post }: SponsoredProps) {
+  if (post.sponsored === false) return null;
+
+  return (
+    <p className="inline-block rounded-full bg-orange-200 p-1 text-xs font-bold text-orange-600 px-2 mr-2 mb-2">
+      Sponsored Article
+    </p>
   );
 }

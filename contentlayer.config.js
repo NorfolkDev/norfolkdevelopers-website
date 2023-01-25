@@ -35,6 +35,10 @@ export const Post = defineDocumentType(() => ({
     canonical: {
       type: "string",
     },
+    sponsored: {
+      type: "boolean",
+      default: false,
+    },
   },
   computedFields: {
     url: {
