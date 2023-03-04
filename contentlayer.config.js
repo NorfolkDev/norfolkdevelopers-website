@@ -1,4 +1,5 @@
 import rehypePrism from "@mapbox/rehype-prism";
+import remarkGfm from 'remark-gfm'
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import removeMarkdown from "remove-markdown";
 import siteConfig from "./site.config";
@@ -141,5 +142,6 @@ export default makeSource({
   documentTypes: [Post, Job],
   mdx: {
     rehypePlugins: [rehypePrism],
+    remarkPlugins: [remarkGfm],
   },
 });
