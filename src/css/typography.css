@@ -145,3 +145,23 @@
   width: 100%;
   height: 100%;
 }
+
+.typography > table {
+  @apply mt-4 min-w-full divide-y divide-gray-300;
+}
+
+.typography > table + table {
+  @apply mt-0 border-gray-300 border-t;
+}
+
+.typography > table > thead > tr > th {
+  @apply py-2 px-3 text-left text-sm font-semibold text-gray-900;
+}
+
+.typography > table > tbody {
+  @apply divide-y divide-gray-200;
+}
+
+.typography > table > tbody > tr > td {
+  @apply whitespace-nowrap py-1 px-3 text-sm text-gray-700;
+}
