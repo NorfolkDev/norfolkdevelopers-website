@@ -155,7 +155,11 @@
 }
 
 .typography > table > thead > tr > th {
-  @apply py-2 px-3 text-left text-sm font-semibold text-gray-900;
+  @apply py-2 px-3 text-sm font-semibold text-gray-900;
+}
+
+.typography > table > thead > tr > th:not([align]) {
+  @apply text-left;
 }
 
 .typography > table > tbody {
