@@ -167,5 +167,9 @@
 }
 
 .typography > table > tbody > tr > td {
-  @apply whitespace-nowrap py-1 px-3 text-sm text-gray-700;
+}
+
+.typography > table > thead > tr > th:first-of-type,
+.typography > table > tbody > tr > td:first-of-type {
+  @apply pl-0
 }
