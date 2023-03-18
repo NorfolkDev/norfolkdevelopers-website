@@ -146,8 +146,21 @@
   height: 100%;
 }
 
+body.dark-mode .typography > table {
+  @apply text-gray-100 divide-gray-700;
+}
+
+body.dark-mode .typography > table > thead > tr > th {
+  @apply text-gray-300;
+}
+
+body.dark-mode .typography > table > tbody {
+  @apply divide-gray-700;
+
+}
+
 .typography > table {
-  @apply mt-4 min-w-full divide-y divide-gray-300;
+  @apply mt-4 min-w-full divide-y divide-gray-300 font-mono text-sm block overflow-x-auto whitespace-nowrap text-gray-700;
 }
 
 .typography > table + table {
@@ -155,7 +168,7 @@
 }
 
 .typography > table > thead > tr > th {
-  @apply py-2 px-3 text-sm font-semibold text-gray-900;
+  @apply py-2 px-3 font-semibold text-gray-900;
 }
 
 .typography > table > thead > tr > th:not([align]) {
@@ -167,6 +180,7 @@
 }
 
 .typography > table > tbody > tr > td {
+  @apply whitespace-nowrap py-1 px-3;
 }
 
 .typography > table > thead > tr > th:first-of-type,
