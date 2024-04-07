@@ -227,14 +227,8 @@ function CodeOfConductRoute() {
           className="mt-8 border-t-2 border-b-2 p-4 border-purple-700"
         >
           <p>
-            This anti-harassment policy was inspired by the{" "}
-            <a
-              className="text-purple-700 underline"
-              href="https://conference.accu.org/coc_code_of_conduct.html"
-            >
-              ACCU's Code of Conduct
-            </a>
-            , which itself is based on the example policy from the{" "}
+            This anti-harassment policy was inspired by the 
+            ACCU's Code of Conduct, which itself is based on the example policy from the{" "}
             <a
               className="text-purple-700 underline"
               href="https://geekfeminism.wikia.org/wiki/Conference_anti-harassment"
