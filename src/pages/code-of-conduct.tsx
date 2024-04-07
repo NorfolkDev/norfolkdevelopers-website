@@ -117,35 +117,11 @@ function CodeOfConductRoute() {
             better place.
           </p>
 
-          <p className="mt-2">
-            <strong>
-              You can make a report either personally or anonymously.
-            </strong>
-          </p>
 
-          <h4 className="mt-4 text-md font-bold">Anonymous Report</h4>
-
-          <p className="mt-2">
-            You can make an{" "}
-            <a
-              className="text-purple-700 underline"
-              href="https://norfolkdevelopers.wufoo.com/forms/zhey4wo1j2plxa/"
-            >
-              anonymous report here
-            </a>
-            .
-          </p>
-
-          <p className="mt-2">
-            We can't follow up an anonymous report with you directly, but we
-            will fully investigate it and take whatever action is necessary to
-            prevent a recurrence.
-          </p>
-
-          <h4 className="mt-4 text-md font-bold">Personal Report</h4>
+          <h4 className="mt-4 text-md font-bold">Make a Report</h4>
 
           <div className="mt-2">
-            You can make a personal report by:
+            You can make a report by:
             <ul className="my-2 mx-6 list-disc">
               <li>
                 Calling or messaging this phone number:{" "}
