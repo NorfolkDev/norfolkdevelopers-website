@@ -30,7 +30,8 @@
   }
 }
 
-.typography > p + p {
+.typography > p + p,
+.typography > table + p {
   @apply mt-6;
 }
 
