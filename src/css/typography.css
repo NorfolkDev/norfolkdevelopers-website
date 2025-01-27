@@ -43,6 +43,10 @@
 
 .typography > a,
 .typography > p > a,
+.typography > h2 > a,
+.typography > h3 > a,
+.typography > h4 > a,
+.typography > h5 > a,
 .typography > ul > li > a {
   background-image: linear-gradient(0deg, var(--color-href-base), var(--color-href-base));
   background-position: 0 100%;
