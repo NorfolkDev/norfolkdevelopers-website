@@ -1,8 +1,8 @@
 export default function NorDevCon({
   title = "The eastern region's biggest tech conference",
-  tagline = "Join us for the incredible line-up on the 23rd & 24th 2023",
+  tagline = "Join us for the incredible line-up on the 25-27th February 2026",
   cta = "Get your ticket",
-  href = "https://ti.to/norfolkdevelopers/nordevcon-23",
+  href = "https://ti.to/norfolkdevelopers/nordevcon-26",
   website = "https://nordevcon.com",
 }) {
   return (
