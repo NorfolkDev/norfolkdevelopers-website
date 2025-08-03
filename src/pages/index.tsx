@@ -59,13 +59,15 @@ export default function IndexRoute({ posts/* , initialEventData  */ }: Props) {
           </h2>
           <span className="inline-block "></span>
 
+        </header>
+        <div>
           <a
             href="https://www.meetup.com/Norfolk-Developers-NorDev/events/"
-            className="ml-auto text-foreground-primary"
+            className="mt-4 text-green-700 bg-green-200 rounded p-2 inline-block font-bold hover:text-green-900 hover:bg-green-400"
           >
-            All events &raquo;
+            See all our upcoming events on Meetup
           </a>
-        </header>
+        </div>
         {/*
         <EventsList
           endpoint={meetupAPIEndpoint}
