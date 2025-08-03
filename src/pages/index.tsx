@@ -14,22 +14,22 @@ type Props = {
   initialEventData: any[];
 };
 
-const meetupAPIEndpoint = `${siteConfig.meetupSrc}?limit=${siteConfig.meetupEventCount}`;
+// const meetupAPIEndpoint = `${siteConfig.meetupSrc}?limit=${siteConfig.meetupEventCount}`;
 
 export async function getStaticProps() {
-  const initialEventData = await fetcher(meetupAPIEndpoint);
+  // const initialEventData = await fetcher(meetupAPIEndpoint);
   const Posts = getPosts();
 
   return {
     props: {
       posts: Posts.slice(0, 3),
-      initialEventData,
+      // initialEventData,
     },
     revalidate: 60,
   };
 }
 
-export default function IndexRoute({ posts, initialEventData }: Props) {
+export default function IndexRoute({ posts/* , initialEventData  */ }: Props) {
   return (
     <Layout>
       <section className="mt-12 md:mt-6">
@@ -66,10 +66,12 @@ export default function IndexRoute({ posts, initialEventData }: Props) {
             All events &raquo;
           </a>
         </header>
+        {/*
         <EventsList
           endpoint={meetupAPIEndpoint}
           initialData={initialEventData}
         />
+        */}
       </section>
       <section>
         <header className="flex flex-row items-center mt-8">
